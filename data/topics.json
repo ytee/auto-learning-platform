@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "topics": [
+    {
+      "id": "safety",
+      "title": "Functional Safety",
+      "subtitle": "ISO 26262 × Brakes × ESC × Architecture",
+      "description": "Senior-level functional-safety preparation connecting ISO 26262 to vehicle domains, system architecture and engineering evidence.",
+      "legacyGlobal": "PREP_CONTENT"
+    },
+    {
+      "id": "autosar",
+      "title": "AUTOSAR",
+      "subtitle": "Architecture × System Design × BSW × OS × RTE",
+      "description": "Deep interview preparation for AUTOSAR Classic architecture, system design, stack configuration, generation, system services, OS, RTE and ISO 26262 interfacing.",
+      "content": "data/autosar/meta.json",
+      "questionFiles": [
+        "data/autosar/day1.json",
+        "data/autosar/day2.json",
+        "data/autosar/day3.json",
+        "data/autosar/day4.json",
+        "data/autosar/day5.json",
+        "data/autosar/day6.json",
+        "data/autosar/day7.json",
+        "data/autosar/day8.json",
+        "data/autosar/day9.json",
+        "data/autosar/day10.json"
+      ]
+    }
+  ]
+}

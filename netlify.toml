@@ -1,5 +1,9 @@
 [build]
+  command = "npm run validate"
   publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
 
 [[headers]]
   for = "/*"
@@ -7,3 +11,8 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

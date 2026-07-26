@@ -95,8 +95,8 @@ function validateConceptRuntime(file) {
   ) {
     fail(`${file}: invalid ISO 26262 baseline`);
   }
-  if (!Array.isArray(model.concepts) || model.concepts.length !== 5) {
-    fail(`${file}: expected 5 FSM pilot concepts`);
+  if (!Array.isArray(model.concepts) || model.concepts.length !== 23) {
+    fail(`${file}: expected 23 FSM concepts`);
   }
 
   const ids = new Set();

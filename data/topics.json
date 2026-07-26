@@ -6,7 +6,8 @@
       "title": "Functional Safety",
       "subtitle": "ISO 26262 × Brakes × ESC × Architecture",
       "description": "Advanced functional-safety learning connecting ISO 26262 to vehicle behavior, system architecture and engineering evidence.",
-      "legacyGlobal": "PREP_CONTENT"
+      "legacyGlobal": "PREP_CONTENT",
+      "concepts": "data/safety/concepts.json"
     },
     {
       "id": "autosar",

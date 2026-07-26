@@ -25,8 +25,6 @@ Guidance and deeper-dive prompts
 Knowledge validation and architecture exercises
 ```
 
-The layers have distinct purposes:
-
 | Layer | Purpose |
 |---|---|
 | Concepts | Primary explanations, context, examples and relationships |
@@ -38,19 +36,24 @@ The layers have distinct purposes:
 
 Existing questions, answers, quizzes, scenarios and exercises remain intact. Concepts are added alongside them and link to relevant checkpoints for practice.
 
-## Functional Safety Management concept pilot
+## Functional Safety Management concept collection
 
-The first concept collection covers Functional Safety Management using **ISO 26262:2018** as the published baseline.
+The Functional Safety module contains **23 Functional Safety Management concepts across all 10 route stages**, using **ISO 26262:2018** as the published baseline.
 
-Pilot concepts:
+| Stage | FSM concept coverage |
+|---|---|
+| 1 | FSM overview; safety culture; safety plan; confirmation measures; safety case |
+| 2 | Concept-phase safety governance; impact analysis and lifecycle re-entry |
+| 3 | System safety architecture governance; controlled technical baselines and interface authority |
+| 4 | Distributed development and DIA; change, configuration and reuse governance |
+| 5 | Safety-analysis governance and assumption control; analysis evidence readiness |
+| 6 | Hardware safety lifecycle management; random-hardware evidence and metric governance |
+| 7 | Software safety lifecycle management; software architecture, tool and integration governance |
+| 8 | Vehicle-domain safety integration; degraded operation, calibration and cross-function change control |
+| 9 | Verification and safety-validation governance; production, service and field safety management |
+| 10 | Safety release and residual-risk governance; assessment, tailoring and safety leadership |
 
-1. Functional Safety Management Overview
-2. Safety Culture
-3. Safety Plan
-4. Confirmation Measures
-5. Safety Case
-
-Each concept contains:
+Every concept contains:
 
 - learning objectives;
 - original explanatory material;
@@ -60,9 +63,26 @@ Each concept contains:
 - common mistakes;
 - related concepts;
 - linked existing questions;
-- standard and reference pointers.
+- ISO 26262 part and reference pointers.
 
 The concept material does not reproduce ISO normative text. Licensed standards remain authoritative.
+
+## Concepts UI
+
+Select **Functional Safety → Concepts** in the cockpit navigation. The Concepts view supports:
+
+- stage and difficulty identification;
+- related-concept navigation;
+- complete concept explanations and evidence flow;
+- direct concept URLs;
+- **Practice this concept**, which filters the existing route to linked checkpoints;
+- return to the concept or restore the complete route without losing progress.
+
+Example direct URL:
+
+```text
+#module=safety&view=concepts&concept=fsm-system-architecture-governance
+```
 
 ## Concept authoring
 
@@ -77,7 +97,8 @@ content-source/
             ├── safety-culture.md
             ├── safety-plan.md
             ├── confirmation-measures.md
-            └── safety-case.md
+            ├── safety-case.md
+            └── ... stage-2-to-stage-10 concepts ...
 ```
 
 The build generates the runtime model at:
@@ -86,45 +107,36 @@ The build generates the runtime model at:
 data/safety/concepts.json
 ```
 
-Authoring details and the required schema are documented in:
+The authoring schema is documented in:
 
 ```text
 content-source/CONCEPT_SCHEMA.md
 ```
 
-Generate concepts:
+Commands:
 
 ```bash
 npm run build:concepts
-```
-
-Check that a previously generated file is synchronized:
-
-```bash
 npm run check:concepts
-```
-
-Run the complete repository validation:
-
-```bash
 npm run validate
 ```
 
-`npm run validate` regenerates the runtime concept JSON before validating all learning content. Netlify uses the same command, so the generated concept model is included in the deployed static site.
+`npm run validate` regenerates the runtime concept JSON before validating all learning content. Netlify uses the same command, so the generated model is included in the deployed static site.
 
 ## Concept validation
 
-The concept pipeline checks:
+The pipeline checks:
 
-- required front-matter fields;
-- required Markdown sections;
+- required front-matter fields and Markdown sections;
 - ISO 26262:2018 baseline metadata;
 - supported difficulty and stage values;
-- duplicate concept IDs and display order;
+- duplicate IDs and display order;
 - related-concept references;
 - links to existing Functional Safety question IDs;
 - deterministic generated JSON;
-- required runtime fields;
+- five foundation concepts in Stage 1;
+- exactly two FSM concepts in every Stage 2–10;
+- Concepts UI hooks and linked-practice behavior;
 - learning-oriented user-facing terminology.
 
 ## Current learning modules
@@ -166,6 +178,7 @@ The concept pipeline checks:
 | Application | Automotive learning cockpit |
 | Learning-module selector | Active subsystem selector |
 | Module library | Vehicle learning garage |
+| Concepts | System manual / concept learning |
 | 10-stage curriculum | Learning route |
 | Stage | Route stage |
 | Question | Technical checkpoint |
@@ -177,8 +190,6 @@ The concept pipeline checks:
 | Quiz | Knowledge validation run |
 | Practical exercise | Architecture exercise |
 
-The metaphor supports navigation without changing the technical meaning of the learning material.
-
 ## Repository architecture
 
 ```text
@@ -186,6 +197,8 @@ auto-learning-platform/
 ├── index.html
 ├── assets/
 │   ├── app.js
+│   ├── concepts.js
+│   ├── concepts.css
 │   ├── styles.css
 │   ├── learning-language.js
 │   └── content.js
@@ -200,6 +213,7 @@ auto-learning-platform/
 │       └── day1.json ... day10.json
 ├── scripts/
 │   ├── build-concepts.mjs
+│   ├── validate-concepts-ui.mjs
 │   └── validate-content.mjs
 ├── .github/workflows/validate-content.yml
 ├── package.json
@@ -211,13 +225,15 @@ auto-learning-platform/
 | File | Responsibility |
 |---|---|
 | `index.html` | Static cockpit shell and view placeholders |
-| `assets/app.js` | Loading, retained state, filtering and rendering |
+| `assets/app.js` | Module loading, retained state, filtering and checkpoint rendering |
+| `assets/concepts.js` | Concept loading, navigation and concept-linked practice |
 | `assets/content.js` | Existing Functional Safety checkpoint bank |
 | `data/topics.json` | Learning-module manifest |
 | `data/autosar/*` | AUTOSAR curriculum and checkpoints |
 | `content-source/**/*.md` | Canonical concept explanations |
 | `scripts/build-concepts.mjs` | Concept parsing, link validation and JSON generation |
-| `scripts/validate-content.mjs` | Runtime model, question-bank and terminology validation |
+| `scripts/validate-concepts-ui.mjs` | Concepts UI and stage-distribution validation |
+| `scripts/validate-content.mjs` | Runtime model, checkpoint-bank and terminology validation |
 
 ## Retained browser state
 
@@ -239,13 +255,7 @@ npm run validate
 python3 -m http.server 8000
 ```
 
-Open:
-
-```text
-http://localhost:8000
-```
-
-Do not open `index.html` directly with a `file://` URL because browsers may prevent JavaScript from fetching JSON files.
+Open `http://localhost:8000`. Do not open `index.html` directly with a `file://` URL because browsers may prevent JavaScript from fetching JSON files.
 
 ## Deployment
 
@@ -279,7 +289,7 @@ Static files are published
 
 - Preserve technical depth and engineering context.
 - Teach concepts before using questions for practice and review.
-- Connect vehicle behavior, platform architecture and safety evidence.
+- Connect management decisions, vehicle behavior, architecture and safety evidence.
 - Use original explanations and paraphrased learning guidance.
 - Keep content vendor-neutral and release-aware where practical.
 - Verify implementation details against the exact standard and vendor stack used by a real project.

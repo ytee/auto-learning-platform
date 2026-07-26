@@ -6,6 +6,7 @@
   <meta name="description" content="A modular automotive engineering learning platform for Functional Safety, AUTOSAR and future vehicle topics.">
   <title>AutoLeaP | Automotive Learning Platform</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/concepts.css">
 </head>
 <body>
 <header class="hero">
@@ -28,6 +29,7 @@
 </header>
 <nav class="tabs" aria-label="Learning cockpit navigation">
   <button class="tab active" data-view="modules">Garage</button>
+  <button class="tab" data-view="concepts">Concepts</button>
   <button class="tab" data-view="route">10-Day Route</button>
   <button class="tab" data-view="systems">Systems</button>
   <button class="tab" data-view="interfaces">Interface Map</button>
@@ -50,6 +52,19 @@
     <label>System<select id="systemFilter"><option value="">All systems</option></select></label>
     <label>Status<select id="statusFilter"><option value="">All</option><option value="open">Not complete</option><option value="done">Complete</option><option value="bookmarked">Flagged</option></select></label>
     <div class="timer"><b id="timer">45:00</b><button id="timerToggle">Start</button><button id="timerReset" class="secondary">Reset</button></div>
+  </section>
+
+  <section id="view-concepts" class="view" aria-labelledby="conceptCollectionTitle">
+    <header class="section-head">
+      <p class="eyebrow">TECHNICAL BRIEFING</p>
+      <h2 id="conceptCollectionTitle">Concepts</h2>
+      <p id="conceptBaseline">Select a module to load its concept collection.</p>
+    </header>
+    <div id="conceptStatus" class="concept-status" role="status" aria-live="polite"></div>
+    <div class="concept-layout">
+      <nav id="conceptNav" class="concept-nav" aria-label="Concept navigation"></nav>
+      <div id="conceptDetail" class="concept-detail"></div>
+    </div>
   </section>
 
   <section id="view-route" class="view">
@@ -95,5 +110,6 @@
 <script src="assets/content.js"></script>
 <script src="assets/learning-language.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/concepts.js"></script>
 </body>
 </html>

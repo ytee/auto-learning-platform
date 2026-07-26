@@ -1,11 +1,11 @@
 {
   "name": "auto-learning-platform",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "type": "module",
   "scripts": {
     "build:concepts": "node scripts/build-concepts.mjs",
     "check:concepts": "node scripts/build-concepts.mjs --check",
-    "validate": "npm run build:concepts && node scripts/validate-content.mjs"
+    "validate": "npm run build:concepts && node scripts/validate-content.mjs && node scripts/validate-concepts-ui.mjs"
   }
 }

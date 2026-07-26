@@ -37,11 +37,45 @@ if (!safety?.concepts) fail('data/topics.json: Safety module must declare a conc
 
 const conceptModel = readJson(safety.concepts);
 if (conceptModel.module !== 'safety') fail('Safety concept model has an invalid module id');
-if (!Array.isArray(conceptModel.concepts) || conceptModel.concepts.length !== 5) {
-  fail('Safety concept model must contain the five FSM pilot concepts');
+if (!Array.isArray(conceptModel.concepts) || conceptModel.concepts.length !== 23) {
+  fail('Safety concept model must contain 23 FSM concepts');
 }
 
-const conceptIds = new Set(conceptModel.concepts.map(concept => concept.id));
+const expectedStageCounts = new Map([
+  [1, 5],
+  [2, 2],
+  [3, 2],
+  [4, 2],
+  [5, 2],
+  [6, 2],
+  [7, 2],
+  [8, 2],
+  [9, 2],
+  [10, 2]
+]);
+const conceptIds = new Set();
+const conceptOrders = new Set();
+const stageCounts = new Map();
+
+for (const concept of conceptModel.concepts) {
+  if (conceptIds.has(concept.id)) fail(`Duplicate concept id ${concept.id}`);
+  if (conceptOrders.has(concept.order)) fail(`Duplicate concept order ${concept.order}`);
+  conceptIds.add(concept.id);
+  conceptOrders.add(concept.order);
+  stageCounts.set(concept.stage, (stageCounts.get(concept.stage) || 0) + 1);
+}
+
+for (let order = 1; order <= 23; order += 1) {
+  if (!conceptOrders.has(order)) fail(`FSM concept display order ${order} is missing`);
+}
+
+for (const [stage, expectedCount] of expectedStageCounts) {
+  const actualCount = stageCounts.get(stage) || 0;
+  if (actualCount !== expectedCount) {
+    fail(`FSM stage ${stage} has ${actualCount} concepts; expected ${expectedCount}`);
+  }
+}
+
 for (const concept of conceptModel.concepts) {
   for (const relatedId of concept.relatedConcepts) {
     if (!conceptIds.has(relatedId)) fail(`${concept.id}: unresolved related concept ${relatedId}`);
@@ -59,4 +93,6 @@ for (const behavior of [
   if (!conceptsScript.includes(behavior)) fail(`assets/concepts.js: missing behavior ${behavior}`);
 }
 
-console.log(`Concepts UI validation passed for ${conceptModel.concepts.length} FSM concepts.`);
+console.log(
+  `Concepts UI validation passed for ${conceptModel.concepts.length} FSM concepts across stages 1–10.`
+);

@@ -80,6 +80,59 @@ function loadLegacy(globalName) {
   return content;
 }
 
+function validateConceptRuntime(file) {
+  if (!fs.existsSync(path.join(root, file))) fail(`${file}: generated concept model is missing`);
+
+  const model = readJson(file);
+  if (model.schemaVersion !== 1) fail(`${file}: unsupported schema version`);
+  if (model.module !== 'safety') fail(`${file}: module must be safety`);
+  if (model.collection?.id !== 'functional-safety-management') {
+    fail(`${file}: invalid collection`);
+  }
+  if (
+    model.standardBaseline?.family !== 'ISO 26262' ||
+    model.standardBaseline?.edition !== '2018'
+  ) {
+    fail(`${file}: invalid ISO 26262 baseline`);
+  }
+  if (!Array.isArray(model.concepts) || model.concepts.length !== 5) {
+    fail(`${file}: expected 5 FSM pilot concepts`);
+  }
+
+  const ids = new Set();
+  const requiredArrays = [
+    'systems',
+    'learningObjectives',
+    'explanation',
+    'whyItMatters',
+    'inputs',
+    'activities',
+    'outputs',
+    'commonMistakes',
+    'relatedConcepts',
+    'linkedQuestions',
+    'references'
+  ];
+
+  for (const concept of model.concepts) {
+    if (!concept.id || ids.has(concept.id)) fail(`${file}: duplicate or missing concept id ${concept.id}`);
+    ids.add(concept.id);
+
+    for (const field of ['title', 'summary', 'automotiveExample', 'source']) {
+      if (!concept[field]) fail(`${file}/${concept.id}: missing ${field}`);
+    }
+
+    for (const field of requiredArrays) {
+      if (!Array.isArray(concept[field]) || concept[field].length === 0) {
+        fail(`${file}/${concept.id}: missing ${field}`);
+      }
+    }
+  }
+
+  validateLearningModel('safety-concepts', model);
+  console.log(`safety-concepts: ${model.concepts.length} concepts validated`);
+}
+
 new vm.Script(readText('assets/app.js'), { filename: 'assets/app.js' });
 
 const indexHtml = readText('index.html');
@@ -137,4 +190,5 @@ for (const topic of manifest.topics) {
   validateLearningModel(topic.id, { ...content, questions });
 }
 
+validateConceptRuntime('data/safety/concepts.json');
 console.log('Vehicle learning content validation passed.');

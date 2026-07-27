@@ -6,6 +6,8 @@
   "scripts": {
     "build:concepts": "node scripts/build-concepts.mjs",
     "check:concepts": "node scripts/build-concepts.mjs --check",
-    "validate": "npm run build:concepts && node scripts/validate-content.mjs && node scripts/validate-concepts-ui.mjs"
+    "render:concept": "node scripts/render-concept-source.mjs",
+    "validate:schemas": "node scripts/validate-schema-contracts.mjs",
+    "validate": "npm run build:concepts && node scripts/validate-content.mjs && node scripts/validate-concepts-ui.mjs && npm run validate:schemas"
   }
 }

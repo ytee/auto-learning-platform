@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "contentType": "concept",
+  "metadata": {
+    "id": "fsm-safety-plan-example",
+    "title": "Safety Plan Example",
+    "module": "safety",
+    "collection": "functional-safety-management",
+    "order": 24,
+    "standard": {
+      "family": "ISO 26262",
+      "edition": "2018",
+      "parts": ["2", "8"],
+      "clauseRefs": ["ISO 26262-2", "ISO 26262-8"]
+    },
+    "difficulty": "Foundation",
+    "stage": 1,
+    "systems": ["FSM", "Planning"],
+    "relatedConcepts": ["fsm-overview"],
+    "linkedQuestions": ["D1Q2"],
+    "references": ["ISO 26262-2:2018", "ISO 26262-8:2018"]
+  },
+  "sections": {
+    "learningObjectives": [
+      "Explain why a project-specific safety plan is needed.",
+      "Identify the activities and evidence controlled by the plan."
+    ],
+    "concept": [
+      "A safety plan defines how functional-safety activities will be performed, reviewed, tracked and evidenced for a specific development.",
+      "It connects lifecycle obligations with project milestones, responsibilities, supplier deliveries and release criteria."
+    ],
+    "whyItMatters": [
+      "Without an actively maintained safety plan, technical work can become disconnected from required evidence, dependencies and confirmation measures."
+    ],
+    "inputs": ["Item and project scope", "Applicable lifecycle activities", "Organizational and supplier responsibilities"],
+    "activities": ["Tailor applicable activities", "Assign owners and milestones", "Plan reviews and confirmation measures", "Track deviations and closure"],
+    "outputsAndEvidence": ["Approved safety plan", "Responsibility assignments", "Review and assessment schedule", "Controlled deviation records"],
+    "automotiveExample": [
+      "For an integrated brake and ESC controller, the plan coordinates HARA updates, architecture reviews, supplier evidence, fault-injection milestones and release readiness across vehicle variants."
+    ],
+    "commonMistakes": ["Treating the plan as a one-time document", "Copying another project without tailoring", "Omitting supplier dependencies", "Failing to update the plan after a major change"]
+  }
+}

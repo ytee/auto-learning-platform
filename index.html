@@ -7,6 +7,7 @@
   <title>AutoLeaP | Automotive Learning Platform</title>
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/concepts.css">
+  <link rel="stylesheet" href="assets/navigation.css">
 </head>
 <body>
 <header class="hero">
@@ -18,7 +19,11 @@
       <p id="moduleSubtitle">Choose a vehicle subsystem to begin learning.</p>
     </div>
     <div class="hero-actions instrument-cluster">
-      <label class="topic-picker">Active subsystem<select id="moduleSelect"></select></label>
+      <select id="moduleSelect" class="internal-module-select" aria-hidden="true" tabindex="-1"></select>
+      <div>
+        <span class="cluster-label">ACTIVE LEARNING AREA</span>
+        <div id="activeArea" class="active-area">Concepts · Functional Safety</div>
+      </div>
       <div class="progress">
         <span class="cluster-label">LEARNING ODOMETER</span>
         <b id="progressText">0 checkpoints complete</b>
@@ -27,15 +32,36 @@
     </div>
   </div>
 </header>
-<nav class="tabs" aria-label="Learning cockpit navigation">
-  <button class="tab active" data-view="modules">Garage</button>
-  <button class="tab" data-view="concepts">Concepts</button>
-  <button class="tab" data-view="route">10-Day Route</button>
+
+<nav class="primary-navigation" aria-label="Primary learning navigation">
+  <details class="menu-group" data-menu-group="concepts">
+    <summary>Concepts</summary>
+    <div class="menu-panel">
+      <button type="button" data-menu-area="concepts" data-module="safety">Functional Safety</button>
+    </div>
+  </details>
+  <details class="menu-group" data-menu-group="exercises">
+    <summary>Exercises</summary>
+    <div class="menu-panel">
+      <button type="button" data-menu-area="exercises" data-module="safety">Functional Safety</button>
+      <button type="button" data-menu-area="exercises" data-module="autosar">AUTOSAR</button>
+    </div>
+  </details>
+</nav>
+
+<nav id="exerciseNavigation" class="tabs exercise-navigation hidden" aria-label="Exercise navigation">
+  <button class="tab" data-view="route">Learning Route</button>
   <button class="tab" data-view="systems">Systems</button>
   <button class="tab" data-view="interfaces">Interface Map</button>
   <button class="tab" data-view="coverage">Coverage Map</button>
   <button class="tab" data-view="validation">Validation Run</button>
 </nav>
+
+<div class="legacy-view-triggers" aria-hidden="true">
+  <button class="tab" data-view="modules" tabindex="-1">Garage</button>
+  <button class="tab" data-view="concepts" tabindex="-1">Concepts</button>
+</div>
+
 <main>
   <section id="view-modules" class="view active">
     <header class="section-head">
@@ -111,5 +137,6 @@
 <script src="assets/learning-language.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/concepts.js"></script>
+<script src="assets/navigation.js"></script>
 </body>
 </html>

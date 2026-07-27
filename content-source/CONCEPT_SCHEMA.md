@@ -2,6 +2,25 @@
 
 AutoLeaP uses Markdown as the canonical source for long-form concept learning. Runtime JSON is generated and validated; it should not be edited manually.
 
+## Versioned machine-readable contract
+
+The formal generation contracts are version-controlled under:
+
+```text
+schemas/v1/
+├── concept-authoring.schema.json
+├── concept.schema.json
+└── concept-collection.schema.json
+```
+
+Generate structured concept JSON using `concept-authoring.schema.json`, then render it into canonical Markdown:
+
+```bash
+npm run render:concept -- generated-concept.json path/to/concept.md
+```
+
+See `schemas/README.md` for the compatibility policy, examples and generation instructions.
+
 ## Source layout
 
 ```text
@@ -9,11 +28,7 @@ content-source/
 └── safety/
     └── concepts/
         └── functional-safety-management/
-            ├── overview.md
-            ├── safety-culture.md
-            ├── safety-plan.md
-            ├── confirmation-measures.md
-            └── safety-case.md
+            └── *.md
 ```
 
 Generated output:
@@ -62,32 +77,22 @@ Every concept must contain these level-two Markdown headings:
 
 ## Authoring principles
 
-- Use ISO 26262:2018 as the published baseline.
+- Use the declared standard edition as the baseline.
 - Write original explanations; do not reproduce normative standard text.
-- Use clause and part pointers for navigation, not as a substitute for the licensed standard.
+- Use clause and part pointers for navigation, not as a substitute for licensed standards.
 - Explain lifecycle context, engineering intent and practical consequences.
-- Prefer concrete brake, ESC or vehicle-platform examples.
-- Keep concepts independent from the question wording.
-- Link concepts to existing questions for practice and review.
-- Do not edit generated JSON manually.
-
-## Learn → Practice → Review
-
-```text
-Concept source
-    ↓
-Generated runtime model
-    ↓
-Learner studies explanation and example
-    ↓
-Linked existing checkpoints provide practice
-    ↓
-Guidance, quiz and architecture exercises support review
-```
-
-Concepts are the primary learning material. Existing questions, answers, probes, quizzes and exercises remain the practice and review layer.
+- Prefer concrete vehicle, ECU or platform examples.
+- Keep concepts independent from the linked exercise wording.
+- Link concepts to existing exercises for practice and review.
+- Do not edit generated runtime JSON manually.
 
 ## Commands
+
+Render generated authoring JSON:
+
+```bash
+npm run render:concept -- input.json output.md
+```
 
 Generate runtime JSON:
 
@@ -95,21 +100,22 @@ Generate runtime JSON:
 npm run build:concepts
 ```
 
-Verify that Markdown and generated JSON are valid and synchronized:
+Verify Markdown and generated JSON:
 
 ```bash
 npm run check:concepts
 ```
 
-Run all repository validation:
+Validate schemas and current content:
 
 ```bash
+npm run validate:schemas
 npm run validate
 ```
 
-## Validation rules
+## Repository semantic rules
 
-The concept build fails for:
+The concept build additionally rejects:
 
 - missing required metadata or sections;
 - duplicate concept IDs or display order;
@@ -117,5 +123,5 @@ The concept build fails for:
 - invalid standard baseline metadata;
 - missing related-concept targets;
 - self-referencing concepts;
-- missing linked Functional Safety question IDs;
+- missing linked exercise IDs;
 - stale generated JSON.

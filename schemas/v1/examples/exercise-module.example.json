@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "example-module",
+  "title": "Example Automotive Module",
+  "shortTitle": "Example",
+  "eyebrow": "AUTOMOTIVE LEARNING",
+  "subtitle": "1 stage · Concepts × Architecture × Evidence",
+  "description": "Minimal example showing the exercise-module generation contract.",
+  "methodTitle": "Reason before revealing guidance",
+  "methodSteps": ["Read the checkpoint.", "Form an answer.", "Reveal guidance and review confidence."],
+  "caseStudy": {
+    "title": "Example ECU",
+    "description": "A representative ECU used consistently across the learning route."
+  },
+  "notice": "Original learning material; authoritative specifications remain the source of truth.",
+  "referenceLabel": "Reference map",
+  "matrixTitle": "Domain interface matrix",
+  "matrixHeaders": ["Domain", "Scope", "Interface"],
+  "focusTitle": "Coverage map",
+  "focusHeaders": ["Area", "Coverage", "Stage"],
+  "focusNote": "Connect engineering intent to implementation and evidence.",
+  "knowledgeCheckTitle": "Knowledge check and architecture exercise",
+  "architectureExercise": {
+    "title": "Architecture exercise",
+    "prompt": "Develop and defend a suitable architecture.",
+    "structure": ["Clarify scope.", "Define interfaces.", "Plan evidence."],
+    "challenges": ["A supplier assumption is unmet.", "A timing budget is exceeded."]
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "Foundations",
+      "focus": "Core concepts and boundaries.",
+      "deliverable": "Create a system map.",
+      "target": "45 min"
+    }
+  ],
+  "tracks": [
+    {
+      "name": "Architecture",
+      "desc": "System decomposition and interfaces.",
+      "iso": "Relevant standards and platform specifications"
+    }
+  ],
+  "matrix": [["Vehicle function", "System behavior", "Architecture"]],
+  "focusMap": [["Architecture", "System boundaries and interfaces", "Stage 1"]],
+  "quiz": [
+    {
+      "q": "Which artifact defines the system boundary?",
+      "options": ["Item definition", "Test log"],
+      "answer": 0,
+      "why": "The item definition establishes the boundary and interfaces."
+    }
+  ],
+  "references": [
+    {
+      "name": "Applicable standards",
+      "note": "Use the release and edition applicable to the project."
+    }
+  ]
+}

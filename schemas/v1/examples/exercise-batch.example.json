@@ -1,0 +1,20 @@
+[
+  {
+    "id": "EX01-01",
+    "day": 1,
+    "tier": "Foundation",
+    "kind": "Concept",
+    "tracks": ["Functional Safety Management"],
+    "question": "Why must a safety plan be maintained through the project rather than approved only once?",
+    "minutes": 5,
+    "answer": [
+      "The project scope, architecture, suppliers, variants and evidence status change during development.",
+      "The plan must continue to represent applicable activities, responsibilities, milestones and confirmation measures."
+    ],
+    "probes": [
+      "Which changes trigger a plan update?",
+      "Who approves deviations from the plan?"
+    ],
+    "refs": ["ISO 26262-2:2018"]
+  }
+]

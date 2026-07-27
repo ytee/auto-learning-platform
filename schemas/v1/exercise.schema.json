@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/ytee/auto-learning-platform/main/schemas/v1/exercise.schema.json",
+  "title": "AutoLeaP Exercise Checkpoint v1",
+  "description": "One practice or review checkpoint. The day field is the route-stage number in schema v1.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "day", "tier", "kind", "tracks", "question", "minutes", "answer", "probes", "refs"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$"},
+    "day": {"type": "integer", "minimum": 1, "maximum": 10},
+    "tier": {"type": "string", "enum": ["Foundation", "Intermediate", "Advanced", "Expert"]},
+    "kind": {"type": "string", "minLength": 1},
+    "tracks": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+    "question": {"type": "string", "minLength": 1},
+    "minutes": {"type": "integer", "minimum": 1},
+    "answer": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+    "probes": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+    "refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/ytee/auto-learning-platform/main/schemas/v1/exercise-batch.schema.json",
+  "title": "AutoLeaP Exercise Stage Batch v1",
+  "description": "A stage/day JSON file containing exercise checkpoints.",
+  "type": "array",
+  "items": {"$ref": "exercise.schema.json"},
+  "minItems": 1
+}

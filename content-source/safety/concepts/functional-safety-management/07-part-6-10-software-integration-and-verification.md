@@ -1,0 +1,81 @@
+---
+id: software-integration-and-verification
+title: Software Integration and Verification
+module: iso26262-software-level
+collection: functional-safety-software
+order: 7
+standard: {"family":"ISO 26262","edition":"2018","parts":["6"],"clauseRefs":["ISO 26262-6:2018 Clause 10"]}
+difficulty: Advanced
+stage: 7
+systems: ["Automotive embedded software","Safety-related ECU software","ADAS and chassis control systems"]
+relatedConcepts: ["software-architectural-design","software-unit-verification","embedded-software-testing"]
+linkedQuestions: ["Q_SW_INTEGRATION_001","Q_RESOURCE_USAGE_001"]
+references: ["ISO 26262-Part6-10.pdf pages 51-56"]
+---
+
+## Learning objectives
+
+- Explain objectives of software integration and verification
+- Identify what integration tests must demonstrate
+- Choose integration verification methods including requirements-based tests, interface tests, fault injection and resource usage evaluation
+- Describe function coverage and call coverage at architectural level
+
+## Concept
+
+Define integration steps, integrate software elements into fully integrated embedded software, and verify that integrated units and components implement architectural requirements and safety measures without unintended functionality.
+
+Software integration and verification define integration steps and integrate software elements until the embedded software is fully integrated.
+
+The activity verifies that safety measures from software architectural safety analyses are properly implemented and that integrated units and components fulfil requirements according to the software architectural design.
+
+Integration tests demonstrate compliance with software architecture, compliance with hardware-software interface specification, correct functionality, robustness including absence of inaccessible software and effective error handling, and sufficient resources to support functionality.
+
+If testing is not performed in the target environment, differences between test and target environments, including source or object code differences and processor word-width differences, need analysis and additional target-environment tests.
+
+## Why it matters
+
+Many safety defects appear only when units interact through real interfaces, scheduling, shared resources and hardware constraints.
+
+Integration verification shows that architecture-level safety assumptions survived implementation and integration.
+
+## Inputs
+
+- Software unit implementation
+- Software architectural design specification
+- Hardware-software interface specification
+- Software safety requirements
+- Integration strategy
+- Test environment description
+- Safety analysis results
+
+## Activities
+
+- Define software integration steps
+- Integrate software units and components
+- Execute requirements-based integration tests
+- Execute interface tests and fault-injection tests
+- Evaluate resource usage on target hardware where needed
+- Perform back-to-back tests between model and code where applicable
+- Verify control flow and data flow
+- Perform static code analysis and abstract interpretation
+- Measure function coverage and call coverage
+
+## Outputs and evidence
+
+- Integrated embedded software
+- Refined software verification specification
+- Software verification report
+- Resource usage report
+- Architectural coverage evidence
+
+## Automotive example
+
+After integrating sensor processing, diagnostics, control computation and communication modules in an ABS ECU, integration tests verify interface data formats, timing, fault detection, fallback behavior, CPU load and function-call coverage.
+
+## Common mistakes
+
+- Testing only individual units and assuming integration correctness
+- Ignoring differences between emulator and target hardware
+- Skipping resource usage measurements on target hardware
+- Leaving unspecified or deactivated functions without evidence
+- Not measuring function or call coverage

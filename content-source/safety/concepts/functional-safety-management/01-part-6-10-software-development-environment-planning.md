@@ -1,0 +1,68 @@
+---
+id: software-development-environment-planning
+title: Software Development Environment Planning
+module: iso26262-software-level
+collection: functional-safety-software
+order: 1
+standard: {"family":"ISO 26262","edition":"2018","parts":["6"],"clauseRefs":["ISO 26262-6:2018 Clause 5"]}
+difficulty: Foundation
+stage: 1
+systems: ["Automotive embedded software","Safety-related ECU software","ADAS and chassis control systems"]
+relatedConcepts: ["software-safety-requirements-specification","software-architectural-design"]
+linkedQuestions: ["Q_SW_DEV_ENV_001","Q_CODING_GUIDELINES_001"]
+references: ["ISO 26262-Part6-10.pdf pages 3-5"]
+---
+
+## Learning objectives
+
+- Identify planning activities expected before software safety work begins
+- Explain why coding and modelling guidelines are part of the safety lifecycle
+- Recognize the documentation expected for the software development environment
+
+## Concept
+
+Plan the software development lifecycle, coding and modelling guidelines, development paradigms, and requirement analysis approach before safety-related software work products are produced.
+
+Clause 6-5 covers general software-level topics. The activity set includes defining software development-cycle phases, preparing coding guidelines, planning software models and design, and planning development paradigms and requirement analysis.
+
+A suitable language or modelling notation should have unambiguous syntax and semantics, support modularity and encapsulation, support structured constructs, and be usable with safety requirements management where models are used.
+
+Assembly language can be justified for low-level, hardware-facing, interrupt, or time-critical routines, but it requires suitable tailoring of the normal software lifecycle.
+
+## Why it matters
+
+Weak development-environment planning creates inconsistent requirements, uncontrolled modelling practices, and coding rules that are difficult to verify.
+
+Good planning gives reviewers a baseline for later architectural, unit, integration, and embedded-software verification.
+
+## Inputs
+
+- Project safety lifecycle plan
+- Organizational coding guidelines
+- Organizational modelling guidelines
+- Software development process constraints
+
+## Activities
+
+- Define software development phases
+- Prepare coding guidelines
+- Plan model and design approach
+- Plan software development paradigms
+- Plan requirement analysis approach
+
+## Outputs and evidence
+
+- Documentation of the software development environment
+- Tailored coding guidelines
+- Tailored modelling guidelines
+
+## Automotive example
+
+For an ADAS ECU, the team defines C language restrictions, MAAB modelling rules, static-analysis tooling, and review checkpoints before deriving software safety requirements.
+
+## Common mistakes
+
+- Starting software safety requirements without agreed coding or modelling rules
+- Using assembly code without lifecycle tailoring
+- Selecting a modelling language that cannot express relevant safety constraints
+- Treating development-environment documentation as optional

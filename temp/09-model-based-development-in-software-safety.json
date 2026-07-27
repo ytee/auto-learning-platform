@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "contentType": "concept",
+  "metadata": {
+    "id": "model-based-development-in-software-safety",
+    "title": "Model-Based Development in Software Safety",
+    "module": "iso26262-software-level",
+    "collection": "functional-safety-software",
+    "order": 9,
+    "standard": {
+      "family": "ISO 26262",
+      "edition": "2018",
+      "parts": [
+        "6"
+      ],
+      "clauseRefs": [
+        "ISO 26262-6:2018 Clauses 6 to 11",
+        "ISO 26262-8:2018 Clause 6"
+      ]
+    },
+    "difficulty": "Advanced",
+    "stage": 9,
+    "systems": [
+      "Automotive embedded software",
+      "Safety-related ECU software",
+      "ADAS and chassis control systems"
+    ],
+    "relatedConcepts": [
+      "software-safety-requirements-specification",
+      "software-architectural-design",
+      "software-unit-design-and-implementation",
+      "software-unit-verification"
+    ],
+    "linkedQuestions": [
+      "Q_MBD_001",
+      "Q_BACK_TO_BACK_001"
+    ],
+    "references": [
+      "ISO 26262-Part6-10.pdf pages 60-67"
+    ]
+  },
+  "sections": {
+    "learningObjectives": [
+      "Explain how models can support multiple software lifecycle work products",
+      "Identify benefits of model-based development for consistency, simulation, formal verification and code generation",
+      "Recognize risks where models fail to express robustness, architecture, basic software or operating-system aspects",
+      "Describe back-to-back testing and verification models"
+    ],
+    "concept": [
+      "Use models across requirements, architecture, unit design, implementation, integration and verification while controlling risks from incomplete modelling, code generation, resource usage, and model-code equivalence.",
+      "Model-based development can affect more than one software lifecycle work product, including requirements, architectural design, detailed design, integration and generated code.",
+      "Models can capture functionality, behavior, design or properties of software and support requirements verification and validation by simulation or formal methods.",
+      "Models can support architectural design by describing static aspects such as components, interfaces, data flows and attributes, and dynamic aspects such as event chains, scheduling and message passing.",
+      "Executable code can be generated directly from models; this can lower manual coding error risk but may introduce issues if robustness properties, resource use, generated-code verifiability or model-code equivalence are not controlled.",
+      "Verification models can support back-to-back testing, early fault detection, efficient test generation, automated testing and formal verification."
+    ],
+    "whyItMatters": [
+      "Model-based development can improve lifecycle continuity and consistency but can also concentrate systematic faults if model scope and tool behavior are misunderstood.",
+      "Safety evidence must cover both the model and generated code, including robustness and target-resource behavior."
+    ],
+    "inputs": [
+      "Requirement models",
+      "Architectural models",
+      "Software unit design models",
+      "Modelling guidelines",
+      "Coding guidelines",
+      "Code-generation configuration",
+      "Verification models",
+      "Target-resource constraints"
+    ],
+    "activities": [
+      "Use models to capture requirements, architecture or unit design",
+      "Generate code from qualified model artefacts where applicable",
+      "Perform model-in-the-loop and software-in-the-loop verification",
+      "Execute back-to-back model-code tests",
+      "Analyze resource usage of generated code",
+      "Document textual explanations for aspects not captured by the model"
+    ],
+    "outputsAndEvidence": [
+      "Model-based work products",
+      "Generated source code",
+      "Back-to-back test results",
+      "Model verification evidence",
+      "Resource usage evidence",
+      "Updated software verification report"
+    ],
+    "automotiveExample": [
+      "A chassis-control algorithm is designed in Simulink, verified by MIL and SIL tests, auto-generated to C, back-to-back tested against the model, and checked for execution time and memory consumption on the target ECU."
+    ],
+    "commonMistakes": [
+      "Assuming a model captures all safety requirements",
+      "Omitting textual requirements for robustness against missing or erroneous inputs",
+      "Ignoring basic software and operating-system architecture outside the model",
+      "Not checking model-code equivalence",
+      "Underestimating resource usage of generated code"
+    ]
+  }
+}

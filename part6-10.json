@@ -1,0 +1,771 @@
+{
+  "schemaVersion": 1,
+  "module": "iso26262-software-level",
+  "collection": {
+    "id": "functional-safety-software",
+    "title": "ISO 26262 Part 6 Software-Level Concepts"
+  },
+  "standardBaseline": {
+    "family": "ISO 26262",
+    "edition": "2018",
+    "status": "Derived from supplied TÜV SÜD training slide deck for learning use"
+  },
+  "generatedFrom": "ISO26262-Part6-10.pdf",
+  "concepts": [
+    {
+      "id": "software-development-environment-planning",
+      "title": "Software Development Environment Planning",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 1,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clause 5"
+        ]
+      },
+      "difficulty": "Foundation",
+      "stage": 1,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Plan the software development lifecycle, coding and modelling guidelines, development paradigms, and requirement analysis approach before safety-related software work products are produced.",
+      "learningObjectives": [
+        "Identify planning activities expected before software safety work begins",
+        "Explain why coding and modelling guidelines are part of the safety lifecycle",
+        "Recognize the documentation expected for the software development environment"
+      ],
+      "explanation": [
+        "Clause 6-5 covers general software-level topics. The activity set includes defining software development-cycle phases, preparing coding guidelines, planning software models and design, and planning development paradigms and requirement analysis.",
+        "A suitable language or modelling notation should have unambiguous syntax and semantics, support modularity and encapsulation, support structured constructs, and be usable with safety requirements management where models are used.",
+        "Assembly language can be justified for low-level, hardware-facing, interrupt, or time-critical routines, but it requires suitable tailoring of the normal software lifecycle."
+      ],
+      "whyItMatters": [
+        "Weak development-environment planning creates inconsistent requirements, uncontrolled modelling practices, and coding rules that are difficult to verify.",
+        "Good planning gives reviewers a baseline for later architectural, unit, integration, and embedded-software verification."
+      ],
+      "inputs": [
+        "Project safety lifecycle plan",
+        "Organizational coding guidelines",
+        "Organizational modelling guidelines",
+        "Software development process constraints"
+      ],
+      "activities": [
+        "Define software development phases",
+        "Prepare coding guidelines",
+        "Plan model and design approach",
+        "Plan software development paradigms",
+        "Plan requirement analysis approach"
+      ],
+      "outputs": [
+        "Documentation of the software development environment",
+        "Tailored coding guidelines",
+        "Tailored modelling guidelines"
+      ],
+      "automotiveExample": "For an ADAS ECU, the team defines C language restrictions, MAAB modelling rules, static-analysis tooling, and review checkpoints before deriving software safety requirements.",
+      "commonMistakes": [
+        "Starting software safety requirements without agreed coding or modelling rules",
+        "Using assembly code without lifecycle tailoring",
+        "Selecting a modelling language that cannot express relevant safety constraints",
+        "Treating development-environment documentation as optional"
+      ],
+      "relatedConcepts": [
+        "software-safety-requirements-specification",
+        "software-architectural-design"
+      ],
+      "linkedQuestions": [
+        "Q_SW_DEV_ENV_001",
+        "Q_CODING_GUIDELINES_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 3-5"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    },
+    {
+      "id": "software-safety-requirements-specification",
+      "title": "Software Safety Requirements Specification",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 2,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clause 6",
+          "ISO 26262-8:2018 Clause 6"
+        ]
+      },
+      "difficulty": "Intermediate",
+      "stage": 2,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Specify software safety requirements derived from technical safety requirements allocated to software, including safety functions, monitoring, safe-state behavior, interfaces, timing, and operating modes.",
+      "learningObjectives": [
+        "Derive software safety requirements from technical safety requirements",
+        "List typical attributes of software safety requirements",
+        "Explain required quality properties such as traceability, completeness, and consistency",
+        "Select verification methods for requirements based on ASIL and complexity"
+      ],
+      "explanation": [
+        "Software safety requirements are derived directly from technical safety requirements allocated to software or from software functions and properties whose violation could break the allocated technical safety requirements.",
+        "Typical content includes functions for safe execution, safe or degraded state achievement, hardware fault detection and mitigation, self-test and monitoring of software or operating-system failures, production and service tests, software modification control, and time-critical behavior.",
+        "The requirements specification should demonstrate hierarchical structure, vertical and horizontal traceability, completeness, external consistency, and internal consistency.",
+        "Verification provides evidence that software safety requirements are precise, clear, feasible, consistent, understandable, verifiable, and compliant with the technical safety requirements, system design, and relevant hardware safety requirements."
+      ],
+      "whyItMatters": [
+        "Software safety requirements are the bridge between system safety intent and implementable software behavior.",
+        "Poorly specified safety requirements propagate faults into architecture, unit design, integration tests, and final embedded-software validation."
+      ],
+      "inputs": [
+        "Technical safety requirements specification",
+        "Technical safety concept",
+        "System architectural design specification",
+        "Hardware-software interface specification",
+        "Documentation of the software development environment",
+        "Hardware design specification",
+        "Specification of non-safety-related functions",
+        "Specification of software properties"
+      ],
+      "activities": [
+        "Derive software safety requirements",
+        "Specify ASIL and operating modes",
+        "Specify interfaces, timing and resource constraints",
+        "Assign safety-related and non-safety-related functions",
+        "Verify requirements using walkthrough, inspection, semi-formal or formal methods"
+      ],
+      "outputs": [
+        "Software safety requirements specification",
+        "Software verification report",
+        "Updated traceability to system safety requirements"
+      ],
+      "automotiveExample": "For automated emergency braking, software safety requirements specify sensor plausibility checks, brake request timing, degraded-state behavior, diagnostic reporting, and ASIL allocation for each safety function.",
+      "commonMistakes": [
+        "Writing vague requirements that cannot be verified",
+        "Omitting timing constraints and operating-mode transitions",
+        "Missing horizontal traceability between software and hardware requirements",
+        "Forgetting requirements for diagnostics, monitoring, production, service, or software update behavior"
+      ],
+      "relatedConcepts": [
+        "software-development-environment-planning",
+        "software-architectural-design",
+        "software-unit-verification"
+      ],
+      "linkedQuestions": [
+        "Q_SW_SAFETY_REQ_001",
+        "Q_TRACEABILITY_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 6-12"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    },
+    {
+      "id": "software-architectural-design",
+      "title": "Software Architectural Design",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 3,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clause 7"
+        ]
+      },
+      "difficulty": "Advanced",
+      "stage": 3,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Develop and verify a software architecture that satisfies software safety requirements, allocates requirements to components, supports implementation and verification, manages complexity, and handles ASIL coexistence through freedom from interference.",
+      "learningObjectives": [
+        "Explain static and dynamic aspects of software architecture",
+        "Apply architectural principles such as modularity, encapsulation, cohesion, low coupling and scheduling control",
+        "Describe freedom from interference for mixed-ASIL software",
+        "Identify architectural verification methods"
+      ],
+      "explanation": [
+        "Software architecture represents software elements and their interactions in a hierarchical structure, including static aspects such as component interfaces and dynamic aspects such as process sequences and timing behavior.",
+        "The architecture should satisfy safety and non-safety software requirements in one development process and provide a structure that supports detailed design, implementation, and verification.",
+        "Architecture should allocate software safety requirements to components; consider cohesiveness, low coupling, hierarchical structure, restricted component and interface size, scheduling properties, spatial isolation, shared-resource management, and error detection and handling.",
+        "Where components of different ASILs or safety and non-safety components coexist, the software is treated according to the highest ASIL unless freedom from interference is demonstrated."
+      ],
+      "whyItMatters": [
+        "Architecture controls how requirements become implementable components and how mixed-criticality software can safely coexist.",
+        "Architectural weaknesses often appear later as timing failures, memory corruption, resource conflicts, or integration defects."
+      ],
+      "inputs": [
+        "Documentation of the software development environment",
+        "Refined hardware-software interface specification",
+        "Software safety requirements specification",
+        "Technical safety concept",
+        "System architectural design specification",
+        "Qualified software components",
+        "Specification of non-safety-related functions and software properties"
+      ],
+      "activities": [
+        "Define static architecture including components, interfaces, data types, global variables and constraints",
+        "Define dynamic architecture including event chains, data flow, control flow, concurrency and timing",
+        "Allocate software safety requirements to software components",
+        "Apply modularity, encapsulation, cohesion and low-coupling principles",
+        "Analyze freedom from interference and shared-resource access",
+        "Verify architecture by inspection, control-flow analysis, data-flow analysis, simulation, scheduling analysis or formal verification"
+      ],
+      "outputs": [
+        "Software architectural design specification",
+        "Safety analysis report",
+        "Dependent failure analysis report",
+        "Software verification report"
+      ],
+      "automotiveExample": "An electronic stability control ECU separates wheel-speed processing, yaw-rate plausibility, brake-pressure control, diagnostics, and communication services into components with explicit interfaces and timing budgets.",
+      "commonMistakes": [
+        "Mixing ASIL and QM components without freedom-from-interference evidence",
+        "Ignoring dynamic behavior such as scheduling and timing",
+        "Using global variables without architectural control",
+        "Creating tightly coupled components that hinder verification",
+        "Treating architecture as a diagram only, without interface, data-flow and timing details"
+      ],
+      "relatedConcepts": [
+        "software-safety-requirements-specification",
+        "freedom-from-interference",
+        "software-integration-and-verification"
+      ],
+      "linkedQuestions": [
+        "Q_SW_ARCH_001",
+        "Q_FFI_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 13-28"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    },
+    {
+      "id": "software-unit-design-and-implementation",
+      "title": "Software Unit Design and Implementation",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 4,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clause 8"
+        ]
+      },
+      "difficulty": "Intermediate",
+      "stage": 4,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Develop detailed software unit design from the architecture and implement software units using design and coding principles that improve robustness, testability, readability, and verifiability.",
+      "learningObjectives": [
+        "Translate architectural elements into software unit design",
+        "Identify notations suitable for unit design",
+        "Apply unit-level design principles such as one entry and exit, no recursion, strong typing and defensive programming",
+        "Recognize construction concerns for resources, scheduling, loops, communication and plausibility checks"
+      ],
+      "explanation": [
+        "Software unit design is developed from the software architecture and can be represented using natural language, informal, semi-formal, or formal notations. In model-based development, the functional model may serve as the basis for code generation.",
+        "Implementation can be manual or automatically generated from the unit design in accordance with the software development environment.",
+        "Design principles target correct execution order, interface consistency, correct data and control flow, simplicity, readability, robustness, suitability for modification, and verifiability.",
+        "Construction concerns include shared-resource control, deterministic scheduling, feedback and feed-forward loop safety, inter-CPU communication monitoring, and plausibility checks before executing safety-critical functions."
+      ],
+      "whyItMatters": [
+        "Unit design is the point where architecture becomes code; weak unit design directly causes implementation defects and test gaps.",
+        "Robust unit design prevents common embedded failures such as division by zero, invalid inputs, uncontrolled pointers, deadlocks, stack issues and timing violations."
+      ],
+      "inputs": [
+        "Software architectural design specification",
+        "Software safety requirements allocated to software units",
+        "Hardware-software interface specification",
+        "Target hardware constraints",
+        "Coding guidelines",
+        "Software development environment documentation"
+      ],
+      "activities": [
+        "Create software unit design specification",
+        "Select suitable notation based on ASIL and complexity",
+        "Implement software units manually or by code generation",
+        "Apply coding and modelling guidelines",
+        "Apply defensive programming and resource-control mechanisms",
+        "Perform unit design verification using walkthrough, inspection, control-flow analysis and data-flow analysis"
+      ],
+      "outputs": [
+        "Software unit design specification",
+        "Software unit implementation",
+        "Source code specification",
+        "Refined software verification specification"
+      ],
+      "automotiveExample": "A brake-control unit design specifies input range checks, initialized state variables, no recursion, bounded execution time, semaphore-protected shared buffers, and CRC-protected inter-processor messages.",
+      "commonMistakes": [
+        "Implementing code before unit design is complete",
+        "Using implicit type conversions or uncontrolled pointers in safety-related code",
+        "Ignoring peak-load scheduling behavior",
+        "Skipping plausibility checks on safety-critical inputs",
+        "Assuming auto-generated code is automatically robust"
+      ],
+      "relatedConcepts": [
+        "software-architectural-design",
+        "software-unit-verification",
+        "model-based-development-in-software-safety"
+      ],
+      "linkedQuestions": [
+        "Q_SW_UNIT_DESIGN_001",
+        "Q_DEFENSIVE_PROGRAMMING_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 29-39"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    },
+    {
+      "id": "freedom-from-interference",
+      "title": "Freedom from Interference",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 5,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clause 7",
+          "ISO 26262-9:2018"
+        ]
+      },
+      "difficulty": "Advanced",
+      "stage": 5,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Demonstrate absence of cascading failures between software elements, especially where mixed ASIL or safety and non-safety components coexist on the same processor or within the same embedded software.",
+      "learningObjectives": [
+        "Define freedom from interference in software architecture",
+        "Classify interference causes across timing, execution, memory and information exchange",
+        "Identify mechanisms used to achieve or support freedom from interference",
+        "Explain why missing freedom-from-interference evidence can force development at the highest ASIL"
+      ],
+      "explanation": [
+        "Freedom from interference means absence of cascading failures between two or more elements that could lead to violation of a safety requirement.",
+        "If software contains components of different ASILs, or safety-related and non-safety-related components, all embedded software is treated according to the highest ASIL unless coexistence criteria and freedom from interference are shown.",
+        "Common interference causes include blocking, deadlocks, livelocks, incorrect execution-time allocation, incorrect synchronization, memory corruption, stack overflow or underflow, information loss, delay, insertion, masquerade, sequence errors, corruption and communication-channel blocking.",
+        "Mechanisms include memory protection, parity, ECC, CRC, redundant storage, restricted memory access, static memory allocation, alive supervision, deadline monitoring, control-flow monitoring, robust communication protocols, identifiers, keep-alive messages, alive counters and sequence numbers."
+      ],
+      "whyItMatters": [
+        "Freedom-from-interference evidence enables mixed-criticality software reuse without forcing every component to the highest ASIL.",
+        "Without it, a lower-ASIL or QM component can corrupt timing, memory or communication behavior of a higher-ASIL function."
+      ],
+      "inputs": [
+        "Software architectural design specification",
+        "ASIL allocation of software components",
+        "Shared-resource inventory",
+        "Memory and timing partitioning concept",
+        "Communication interface specification",
+        "Safety analysis results"
+      ],
+      "activities": [
+        "Identify potential timing, memory and communication interference paths",
+        "Define partitioning and access-control measures",
+        "Specify monitoring and error-detection mechanisms",
+        "Verify partitioning during software integration and testing",
+        "Document evidence for coexistence of mixed-ASIL elements"
+      ],
+      "outputs": [
+        "Freedom-from-interference analysis",
+        "Dependent failure analysis report",
+        "Partitioning verification evidence",
+        "Updated software architectural design specification"
+      ],
+      "automotiveExample": "A QM infotainment gateway task and an ASIL C braking communication task share one processor; timing budgets, memory protection, CRC checks and deadline monitoring are used to prove the QM task cannot delay or corrupt the braking task.",
+      "commonMistakes": [
+        "Claiming mixed-ASIL coexistence without evidence",
+        "Checking memory interference but ignoring timing interference",
+        "Assuming operating-system partitioning is sufficient without verification",
+        "Allowing shared resources without conflict detection and handling"
+      ],
+      "relatedConcepts": [
+        "software-architectural-design",
+        "software-integration-and-verification"
+      ],
+      "linkedQuestions": [
+        "Q_FFI_001",
+        "Q_MIXED_ASIL_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 40-44"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    },
+    {
+      "id": "software-unit-verification",
+      "title": "Software Unit Verification",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 6,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clause 9"
+        ]
+      },
+      "difficulty": "Intermediate",
+      "stage": 6,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Verify that software unit design satisfies allocated requirements, that implemented units comply with unit design, and that units contain neither unintended functionality nor unintended safety-relevant properties.",
+      "learningObjectives": [
+        "Distinguish verification of unit design from verification of implemented software units",
+        "Select unit verification methods such as inspection, static analysis, requirements-based tests, interface tests and fault injection",
+        "Derive unit test cases using requirement analysis, equivalence classes, boundary values and error guessing",
+        "Explain structural coverage metrics at software-unit level"
+      ],
+      "explanation": [
+        "Software unit verification provides evidence that unit design satisfies allocated software requirements and supports implementation.",
+        "It also verifies safety measures from safety analyses and shows that implemented software units comply with unit design and allocated requirements at the required ASIL.",
+        "Verification methods include walkthrough, pair programming, inspection, semi-formal and formal verification, control-flow and data-flow analysis, static code analysis, abstract interpretation, requirements-based testing, interface testing, fault injection, resource-usage evaluation and back-to-back comparison where applicable.",
+        "Test cases can be derived from requirement analysis, equivalence classes, boundary values and error guessing. Structural coverage metrics include statement coverage, branch coverage and MC/DC."
+      ],
+      "whyItMatters": [
+        "Unit verification removes defects before integration, when faults are cheaper and easier to isolate.",
+        "Coverage analysis can reveal missing requirement-based tests, inadequate requirements, dead code, deactivated code and unintended functionality."
+      ],
+      "inputs": [
+        "Software unit design specification",
+        "Software unit implementation",
+        "Allocated software safety requirements",
+        "Software verification specification",
+        "Coding guidelines",
+        "Model and generated code where model-based development is used"
+      ],
+      "activities": [
+        "Review unit design against allocated requirements",
+        "Inspect source code or generated code",
+        "Perform static code analysis and abstract interpretation",
+        "Execute requirements-based unit tests and interface tests",
+        "Run fault injection and resource-usage evaluation",
+        "Measure structural coverage with statement, branch and MC/DC metrics"
+      ],
+      "outputs": [
+        "Software verification report",
+        "Unit test results",
+        "Structural coverage report",
+        "Defect records and corrective actions"
+      ],
+      "automotiveExample": "For a steering-angle plausibility unit, tests cover valid ranges, boundary values, stale sensor input, CRC failure, division protection, execution time and branch coverage.",
+      "commonMistakes": [
+        "Relying only on walkthroughs for high-ASIL unit verification",
+        "Skipping structural coverage analysis",
+        "Testing only nominal values and missing boundary cases",
+        "Not comparing model and generated code behavior where auto-code is used",
+        "Ignoring resource usage at unit level"
+      ],
+      "relatedConcepts": [
+        "software-unit-design-and-implementation",
+        "software-integration-and-verification",
+        "model-based-development-in-software-safety"
+      ],
+      "linkedQuestions": [
+        "Q_SW_UNIT_VERIFICATION_001",
+        "Q_COVERAGE_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 45-50"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    },
+    {
+      "id": "software-integration-and-verification",
+      "title": "Software Integration and Verification",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 7,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clause 10"
+        ]
+      },
+      "difficulty": "Advanced",
+      "stage": 7,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Define integration steps, integrate software elements into fully integrated embedded software, and verify that integrated units and components implement architectural requirements and safety measures without unintended functionality.",
+      "learningObjectives": [
+        "Explain objectives of software integration and verification",
+        "Identify what integration tests must demonstrate",
+        "Choose integration verification methods including requirements-based tests, interface tests, fault injection and resource usage evaluation",
+        "Describe function coverage and call coverage at architectural level"
+      ],
+      "explanation": [
+        "Software integration and verification define integration steps and integrate software elements until the embedded software is fully integrated.",
+        "The activity verifies that safety measures from software architectural safety analyses are properly implemented and that integrated units and components fulfil requirements according to the software architectural design.",
+        "Integration tests demonstrate compliance with software architecture, compliance with hardware-software interface specification, correct functionality, robustness including absence of inaccessible software and effective error handling, and sufficient resources to support functionality.",
+        "If testing is not performed in the target environment, differences between test and target environments, including source or object code differences and processor word-width differences, need analysis and additional target-environment tests."
+      ],
+      "whyItMatters": [
+        "Many safety defects appear only when units interact through real interfaces, scheduling, shared resources and hardware constraints.",
+        "Integration verification shows that architecture-level safety assumptions survived implementation and integration."
+      ],
+      "inputs": [
+        "Software unit implementation",
+        "Software architectural design specification",
+        "Hardware-software interface specification",
+        "Software safety requirements",
+        "Integration strategy",
+        "Test environment description",
+        "Safety analysis results"
+      ],
+      "activities": [
+        "Define software integration steps",
+        "Integrate software units and components",
+        "Execute requirements-based integration tests",
+        "Execute interface tests and fault-injection tests",
+        "Evaluate resource usage on target hardware where needed",
+        "Perform back-to-back tests between model and code where applicable",
+        "Verify control flow and data flow",
+        "Perform static code analysis and abstract interpretation",
+        "Measure function coverage and call coverage"
+      ],
+      "outputs": [
+        "Integrated embedded software",
+        "Refined software verification specification",
+        "Software verification report",
+        "Resource usage report",
+        "Architectural coverage evidence"
+      ],
+      "automotiveExample": "After integrating sensor processing, diagnostics, control computation and communication modules in an ABS ECU, integration tests verify interface data formats, timing, fault detection, fallback behavior, CPU load and function-call coverage.",
+      "commonMistakes": [
+        "Testing only individual units and assuming integration correctness",
+        "Ignoring differences between emulator and target hardware",
+        "Skipping resource usage measurements on target hardware",
+        "Leaving unspecified or deactivated functions without evidence",
+        "Not measuring function or call coverage"
+      ],
+      "relatedConcepts": [
+        "software-architectural-design",
+        "software-unit-verification",
+        "embedded-software-testing"
+      ],
+      "linkedQuestions": [
+        "Q_SW_INTEGRATION_001",
+        "Q_RESOURCE_USAGE_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 51-56"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    },
+    {
+      "id": "embedded-software-testing",
+      "title": "Testing of the Embedded Software",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 8,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clause 11"
+        ]
+      },
+      "difficulty": "Intermediate",
+      "stage": 8,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Verify that the fully integrated embedded software fulfils software safety requirements in the target environment and contains no undesired safety-relevant functionality or properties.",
+      "learningObjectives": [
+        "State the purpose of embedded-software testing",
+        "Identify suitable test environments for final software safety verification",
+        "Explain why target-hardware execution is required",
+        "Evaluate test results against expected results and software safety requirements coverage"
+      ],
+      "explanation": [
+        "Testing of embedded software verifies that safety-related requirements are fulfilled when the software executes in the target environment.",
+        "Verification of software safety requirements is planned, specified and executed in suitable environments such as hardware-in-the-loop, ECU network environments, lab cars, mule vehicles, rest-of-bus simulations or vehicles.",
+        "Verification of embedded software safety requirements is executed on target hardware and evaluated for compliance with expected results and coverage of software safety requirements."
+      ],
+      "whyItMatters": [
+        "Final target-environment testing confirms that integrated software behaves safely under realistic hardware, network and vehicle conditions.",
+        "It provides release-level evidence that complements unit and integration verification."
+      ],
+      "inputs": [
+        "Integrated embedded software",
+        "Software safety requirements specification",
+        "Software verification specification",
+        "Target hardware",
+        "Hardware-in-the-loop or vehicle test environment",
+        "Expected results and acceptance criteria"
+      ],
+      "activities": [
+        "Plan embedded-software safety verification",
+        "Specify target-environment test cases",
+        "Execute tests on target hardware",
+        "Use HIL, ECU network benches, lab cars, mule vehicles or production vehicles as appropriate",
+        "Evaluate results against expected behavior and requirements coverage"
+      ],
+      "outputs": [
+        "Validated embedded software test results",
+        "Software verification report",
+        "Software safety requirements coverage evidence",
+        "Release verification evidence"
+      ],
+      "automotiveExample": "A lane-keeping ECU is tested on target hardware in HIL and vehicle environments to verify diagnostics, degraded-mode transitions, timing, communication loss handling and safety requirement coverage.",
+      "commonMistakes": [
+        "Treating simulator-only testing as sufficient final evidence",
+        "Not executing software safety verification on target hardware",
+        "Evaluating pass or fail without checking requirements coverage",
+        "Ignoring vehicle operating modes and network environments"
+      ],
+      "relatedConcepts": [
+        "software-integration-and-verification",
+        "software-safety-requirements-specification"
+      ],
+      "linkedQuestions": [
+        "Q_EMBEDDED_SW_TEST_001",
+        "Q_TARGET_ENV_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 57-59"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    },
+    {
+      "id": "model-based-development-in-software-safety",
+      "title": "Model-Based Development in Software Safety",
+      "module": "iso26262-software-level",
+      "collection": "functional-safety-software",
+      "order": 9,
+      "standard": {
+        "family": "ISO 26262",
+        "edition": "2018",
+        "parts": [
+          "6"
+        ],
+        "clauseRefs": [
+          "ISO 26262-6:2018 Clauses 6 to 11",
+          "ISO 26262-8:2018 Clause 6"
+        ]
+      },
+      "difficulty": "Advanced",
+      "stage": 9,
+      "systems": [
+        "Automotive embedded software",
+        "Safety-related ECU software",
+        "ADAS and chassis control systems"
+      ],
+      "summary": "Use models across requirements, architecture, unit design, implementation, integration and verification while controlling risks from incomplete modelling, code generation, resource usage, and model-code equivalence.",
+      "learningObjectives": [
+        "Explain how models can support multiple software lifecycle work products",
+        "Identify benefits of model-based development for consistency, simulation, formal verification and code generation",
+        "Recognize risks where models fail to express robustness, architecture, basic software or operating-system aspects",
+        "Describe back-to-back testing and verification models"
+      ],
+      "explanation": [
+        "Model-based development can affect more than one software lifecycle work product, including requirements, architectural design, detailed design, integration and generated code.",
+        "Models can capture functionality, behavior, design or properties of software and support requirements verification and validation by simulation or formal methods.",
+        "Models can support architectural design by describing static aspects such as components, interfaces, data flows and attributes, and dynamic aspects such as event chains, scheduling and message passing.",
+        "Executable code can be generated directly from models; this can lower manual coding error risk but may introduce issues if robustness properties, resource use, generated-code verifiability or model-code equivalence are not controlled.",
+        "Verification models can support back-to-back testing, early fault detection, efficient test generation, automated testing and formal verification."
+      ],
+      "whyItMatters": [
+        "Model-based development can improve lifecycle continuity and consistency but can also concentrate systematic faults if model scope and tool behavior are misunderstood.",
+        "Safety evidence must cover both the model and generated code, including robustness and target-resource behavior."
+      ],
+      "inputs": [
+        "Requirement models",
+        "Architectural models",
+        "Software unit design models",
+        "Modelling guidelines",
+        "Coding guidelines",
+        "Code-generation configuration",
+        "Verification models",
+        "Target-resource constraints"
+      ],
+      "activities": [
+        "Use models to capture requirements, architecture or unit design",
+        "Generate code from qualified model artefacts where applicable",
+        "Perform model-in-the-loop and software-in-the-loop verification",
+        "Execute back-to-back model-code tests",
+        "Analyze resource usage of generated code",
+        "Document textual explanations for aspects not captured by the model"
+      ],
+      "outputs": [
+        "Model-based work products",
+        "Generated source code",
+        "Back-to-back test results",
+        "Model verification evidence",
+        "Resource usage evidence",
+        "Updated software verification report"
+      ],
+      "automotiveExample": "A chassis-control algorithm is designed in Simulink, verified by MIL and SIL tests, auto-generated to C, back-to-back tested against the model, and checked for execution time and memory consumption on the target ECU.",
+      "commonMistakes": [
+        "Assuming a model captures all safety requirements",
+        "Omitting textual requirements for robustness against missing or erroneous inputs",
+        "Ignoring basic software and operating-system architecture outside the model",
+        "Not checking model-code equivalence",
+        "Underestimating resource usage of generated code"
+      ],
+      "relatedConcepts": [
+        "software-safety-requirements-specification",
+        "software-architectural-design",
+        "software-unit-design-and-implementation",
+        "software-unit-verification"
+      ],
+      "linkedQuestions": [
+        "Q_MBD_001",
+        "Q_BACK_TO_BACK_001"
+      ],
+      "references": [
+        "ISO 26262-Part6-10.pdf pages 60-67"
+      ],
+      "source": "ISO26262-Part6-10.pdf"
+    }
+  ]
+}

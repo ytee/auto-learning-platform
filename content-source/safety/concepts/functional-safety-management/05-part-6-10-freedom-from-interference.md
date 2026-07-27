@@ -1,0 +1,74 @@
+---
+id: freedom-from-interference
+title: Freedom from Interference
+module: iso26262-software-level
+collection: functional-safety-software
+order: 5
+standard: {"family":"ISO 26262","edition":"2018","parts":["6"],"clauseRefs":["ISO 26262-6:2018 Clause 7","ISO 26262-9:2018"]}
+difficulty: Advanced
+stage: 5
+systems: ["Automotive embedded software","Safety-related ECU software","ADAS and chassis control systems"]
+relatedConcepts: ["software-architectural-design","software-integration-and-verification"]
+linkedQuestions: ["Q_FFI_001","Q_MIXED_ASIL_001"]
+references: ["ISO 26262-Part6-10.pdf pages 40-44"]
+---
+
+## Learning objectives
+
+- Define freedom from interference in software architecture
+- Classify interference causes across timing, execution, memory and information exchange
+- Identify mechanisms used to achieve or support freedom from interference
+- Explain why missing freedom-from-interference evidence can force development at the highest ASIL
+
+## Concept
+
+Demonstrate absence of cascading failures between software elements, especially where mixed ASIL or safety and non-safety components coexist on the same processor or within the same embedded software.
+
+Freedom from interference means absence of cascading failures between two or more elements that could lead to violation of a safety requirement.
+
+If software contains components of different ASILs, or safety-related and non-safety-related components, all embedded software is treated according to the highest ASIL unless coexistence criteria and freedom from interference are shown.
+
+Common interference causes include blocking, deadlocks, livelocks, incorrect execution-time allocation, incorrect synchronization, memory corruption, stack overflow or underflow, information loss, delay, insertion, masquerade, sequence errors, corruption and communication-channel blocking.
+
+Mechanisms include memory protection, parity, ECC, CRC, redundant storage, restricted memory access, static memory allocation, alive supervision, deadline monitoring, control-flow monitoring, robust communication protocols, identifiers, keep-alive messages, alive counters and sequence numbers.
+
+## Why it matters
+
+Freedom-from-interference evidence enables mixed-criticality software reuse without forcing every component to the highest ASIL.
+
+Without it, a lower-ASIL or QM component can corrupt timing, memory or communication behavior of a higher-ASIL function.
+
+## Inputs
+
+- Software architectural design specification
+- ASIL allocation of software components
+- Shared-resource inventory
+- Memory and timing partitioning concept
+- Communication interface specification
+- Safety analysis results
+
+## Activities
+
+- Identify potential timing, memory and communication interference paths
+- Define partitioning and access-control measures
+- Specify monitoring and error-detection mechanisms
+- Verify partitioning during software integration and testing
+- Document evidence for coexistence of mixed-ASIL elements
+
+## Outputs and evidence
+
+- Freedom-from-interference analysis
+- Dependent failure analysis report
+- Partitioning verification evidence
+- Updated software architectural design specification
+
+## Automotive example
+
+A QM infotainment gateway task and an ASIL C braking communication task share one processor; timing budgets, memory protection, CRC checks and deadline monitoring are used to prove the QM task cannot delay or corrupt the braking task.
+
+## Common mistakes
+
+- Claiming mixed-ASIL coexistence without evidence
+- Checking memory interference but ignoring timing interference
+- Assuming operating-system partitioning is sufficient without verification
+- Allowing shared resources without conflict detection and handling

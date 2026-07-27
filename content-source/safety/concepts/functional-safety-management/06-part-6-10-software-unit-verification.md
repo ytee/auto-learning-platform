@@ -1,0 +1,76 @@
+---
+id: software-unit-verification
+title: Software Unit Verification
+module: iso26262-software-level
+collection: functional-safety-software
+order: 6
+standard: {"family":"ISO 26262","edition":"2018","parts":["6"],"clauseRefs":["ISO 26262-6:2018 Clause 9"]}
+difficulty: Intermediate
+stage: 6
+systems: ["Automotive embedded software","Safety-related ECU software","ADAS and chassis control systems"]
+relatedConcepts: ["software-unit-design-and-implementation","software-integration-and-verification","model-based-development-in-software-safety"]
+linkedQuestions: ["Q_SW_UNIT_VERIFICATION_001","Q_COVERAGE_001"]
+references: ["ISO 26262-Part6-10.pdf pages 45-50"]
+---
+
+## Learning objectives
+
+- Distinguish verification of unit design from verification of implemented software units
+- Select unit verification methods such as inspection, static analysis, requirements-based tests, interface tests and fault injection
+- Derive unit test cases using requirement analysis, equivalence classes, boundary values and error guessing
+- Explain structural coverage metrics at software-unit level
+
+## Concept
+
+Verify that software unit design satisfies allocated requirements, that implemented units comply with unit design, and that units contain neither unintended functionality nor unintended safety-relevant properties.
+
+Software unit verification provides evidence that unit design satisfies allocated software requirements and supports implementation.
+
+It also verifies safety measures from safety analyses and shows that implemented software units comply with unit design and allocated requirements at the required ASIL.
+
+Verification methods include walkthrough, pair programming, inspection, semi-formal and formal verification, control-flow and data-flow analysis, static code analysis, abstract interpretation, requirements-based testing, interface testing, fault injection, resource-usage evaluation and back-to-back comparison where applicable.
+
+Test cases can be derived from requirement analysis, equivalence classes, boundary values and error guessing. Structural coverage metrics include statement coverage, branch coverage and MC/DC.
+
+## Why it matters
+
+Unit verification removes defects before integration, when faults are cheaper and easier to isolate.
+
+Coverage analysis can reveal missing requirement-based tests, inadequate requirements, dead code, deactivated code and unintended functionality.
+
+## Inputs
+
+- Software unit design specification
+- Software unit implementation
+- Allocated software safety requirements
+- Software verification specification
+- Coding guidelines
+- Model and generated code where model-based development is used
+
+## Activities
+
+- Review unit design against allocated requirements
+- Inspect source code or generated code
+- Perform static code analysis and abstract interpretation
+- Execute requirements-based unit tests and interface tests
+- Run fault injection and resource-usage evaluation
+- Measure structural coverage with statement, branch and MC/DC metrics
+
+## Outputs and evidence
+
+- Software verification report
+- Unit test results
+- Structural coverage report
+- Defect records and corrective actions
+
+## Automotive example
+
+For a steering-angle plausibility unit, tests cover valid ranges, boundary values, stale sensor input, CRC failure, division protection, execution time and branch coverage.
+
+## Common mistakes
+
+- Relying only on walkthroughs for high-ASIL unit verification
+- Skipping structural coverage analysis
+- Testing only nominal values and missing boundary cases
+- Not comparing model and generated code behavior where auto-code is used
+- Ignoring resource usage at unit level

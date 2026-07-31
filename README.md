@@ -1,196 +1,96 @@
 # Automotive Learning Platform (AutoLeaP)
 
-**AutoLeaP** is a modular, static learning platform for advanced automotive engineering topics.
+**AutoLeaP** is a modular static web application for learning automotive software, vehicle platforms and embedded engineering.
 
-Current learning modules:
+Current modules:
 
-- **Functional Safety**
-- **AUTOSAR Classic Platform**
-
-The platform combines concept learning, technical checkpoints, deeper-dive prompts, architecture exercises, knowledge validation, confidence tracking and browser-retained progress.
+- **Functional Safety** — 23 Functional Safety Management concepts and 100 practice checkpoints.
+- **AUTOSAR Classic Platform** — 100 architecture, configuration, stack and integration exercises.
+- **Embedded Systems & Firmware** — 10 core concepts and 100 exercises spanning firmware, RTOS, Linux, Android/AAOS, platform architecture and technical leadership.
 
 ## Learning model
 
-AutoLeaP follows a **Learn → Practice → Review** flow:
-
 ```text
-Concept explanation
+Learn one concept
       ↓
-Automotive example and common mistakes
+Study an engineering example
       ↓
-Linked existing technical checkpoints
+Attempt difficult technical and role-based exercises
       ↓
-Guidance and deeper-dive prompts
+Reveal guidance and deeper probes
       ↓
-Knowledge validation and architecture exercises
+Record completion and confidence
 ```
 
 | Layer | Purpose |
 |---|---|
-| Concepts | Primary explanations, context, examples and relationships |
-| Questions | Practice and active recollection |
-| Answers | Review guidance and key learning points |
-| Probes | Deeper-dive review prompts |
-| Quizzes | Knowledge validation |
-| Architecture exercises | Applied system-level learning |
+| Concepts | Strong foundations, engineering flow, examples and common mistakes |
+| Exercises | Active recollection, debugging, architecture and decision-making |
+| Guidance | Key technical reasoning and review points |
+| Probes | Tough follow-up questions and boundary cases |
+| Validation | Quizzes and architecture exercises |
 
-Existing questions, answers, quizzes, scenarios and exercises remain intact. Concepts are added alongside them and link to relevant checkpoints for practice.
+## Simplified interface
 
-## Functional Safety Management concept collection
+AutoLeaP uses progressive disclosure so the complete curriculum does not crowd one page.
 
-The Functional Safety module contains **23 Functional Safety Management concepts across all 10 route stages**, using **ISO 26262:2018** as the published baseline.
+- Choose **Concepts** or **Exercises**.
+- Select one topic.
+- Select one concept, stage, system or validation question.
+- Only one exercise stage is displayed at a time.
+- Search and diagnostic filters remain collapsed until requested.
+- A floating **Go to Top** button is always available.
 
-| Stage | FSM concept coverage |
-|---|---|
-| 1 | FSM overview; safety culture; safety plan; confirmation measures; safety case |
-| 2 | Concept-phase safety governance; impact analysis and lifecycle re-entry |
-| 3 | System safety architecture governance; controlled technical baselines and interface authority |
-| 4 | Distributed development and DIA; change, configuration and reuse governance |
-| 5 | Safety-analysis governance and assumption control; analysis evidence readiness |
-| 6 | Hardware safety lifecycle management; random-hardware evidence and metric governance |
-| 7 | Software safety lifecycle management; software architecture, tool and integration governance |
-| 8 | Vehicle-domain safety integration; degraded operation, calibration and cross-function change control |
-| 9 | Verification and safety-validation governance; production, service and field safety management |
-| 10 | Safety release and residual-risk governance; assessment, tailoring and safety leadership |
+Direct module and concept links remain compatible, and browser-retained completion, confidence and bookmarks are preserved.
 
-Every concept contains:
+The design rationale and comparison with Bengali Sadhana are documented in [`docs/clean-learning-ui.md`](docs/clean-learning-ui.md).
+
+## Embedded Systems & Firmware
+
+The module is employer-neutral. Two supplied role descriptions were used only as coverage inputs for embedded platform engineering, Android/Linux leadership, common software features and product ownership.
+
+### Ten-stage route
+
+1. Embedded systems foundations
+2. Processor, memory and hardware interfaces
+3. Firmware, boot and BSP architecture
+4. RTOS, concurrency and timing
+5. Embedded Linux platform engineering
+6. Android platform and Android Automotive
+7. Connectivity, infotainment and OTA
+8. Reusable platforms and product variability
+9. Performance, security, quality and release
+10. Engineering and product leadership
+
+Each stage contains exactly ten exercises, including:
+
+- at least two strong foundation questions;
+- difficult advanced and expert technical questions;
+- one technical-management scenario;
+- one product-owner scenario;
+- one engineering-manager scenario;
+- one board-level architecture exercise.
+
+The full bank contains **100 exercises** and the concept collection links every stage concept directly to its ten exercises.
+
+## Functional Safety Management concepts
+
+Functional Safety uses ISO 26262:2018 as its published baseline. The 23-concept collection covers foundations plus two management concepts for every route stage from 2 through 10.
+
+Each concept provides:
 
 - learning objectives;
-- original explanatory material;
-- why the topic matters;
-- inputs, activities and outputs/evidence;
+- original explanation;
+- inputs, activities, outputs and evidence;
 - an automotive example;
 - common mistakes;
 - related concepts;
-- linked existing questions;
-- ISO 26262 part and reference pointers.
+- linked practice checkpoints;
+- reference pointers.
 
-The concept material does not reproduce ISO normative text. Licensed standards remain authoritative.
+Licensed standards remain authoritative; AutoLeaP does not reproduce normative text.
 
-## Concepts UI
-
-Select **Functional Safety → Concepts** in the cockpit navigation. The Concepts view supports:
-
-- stage and difficulty identification;
-- related-concept navigation;
-- complete concept explanations and evidence flow;
-- direct concept URLs;
-- **Practice this concept**, which filters the existing route to linked checkpoints;
-- return to the concept or restore the complete route without losing progress.
-
-Example direct URL:
-
-```text
-#module=safety&view=concepts&concept=fsm-system-architecture-governance
-```
-
-## Concept authoring
-
-Markdown is the canonical source:
-
-```text
-content-source/
-└── safety/
-    └── concepts/
-        └── functional-safety-management/
-            ├── overview.md
-            ├── safety-culture.md
-            ├── safety-plan.md
-            ├── confirmation-measures.md
-            ├── safety-case.md
-            └── ... stage-2-to-stage-10 concepts ...
-```
-
-The build generates the runtime model at:
-
-```text
-data/safety/concepts.json
-```
-
-The authoring schema is documented in:
-
-```text
-content-source/CONCEPT_SCHEMA.md
-```
-
-Commands:
-
-```bash
-npm run build:concepts
-npm run check:concepts
-npm run validate
-```
-
-`npm run validate` regenerates the runtime concept JSON before validating all learning content. Netlify uses the same command, so the generated model is included in the deployed static site.
-
-## Concept validation
-
-The pipeline checks:
-
-- required front-matter fields and Markdown sections;
-- ISO 26262:2018 baseline metadata;
-- supported difficulty and stage values;
-- duplicate IDs and display order;
-- related-concept references;
-- links to existing Functional Safety question IDs;
-- deterministic generated JSON;
-- five foundation concepts in Stage 1;
-- exactly two FSM concepts in every Stage 2–10;
-- Concepts UI hooks and linked-practice behavior;
-- learning-oriented user-facing terminology.
-
-## Current learning modules
-
-### Functional Safety
-
-100 checkpoints across 10 stages covering:
-
-- ISO 26262 lifecycle and Functional Safety Management;
-- item definition, HARA, safety goals, FSC and TSC;
-- SysML, MBSE and system safety architecture;
-- requirements, traceability and supplier interfaces;
-- FMEA, FTA, DFA and ASIL decomposition;
-- random hardware failures and hardware metrics;
-- software safety architecture and verification;
-- brakes, ESC and vehicle-control safety;
-- CAN, diagnostics, production, service and validation;
-- safety case, architecture trade-offs and release decisions.
-
-### AUTOSAR Classic Platform
-
-100 checkpoints across 10 stages covering:
-
-- Classic and Adaptive platform concepts;
-- VFB, software components, ports and interfaces;
-- system design, ECU allocation and communication mapping;
-- ARXML, ECU Extract, ECU Configuration and generation workflow;
-- BSW, MCAL, ECU abstraction and Complex Drivers;
-- COM, PduR, CanIf, CanDrv, CanTp, CanSM, ComM, Nm and E2E;
-- EcuM, BswM, WdgM, Dem, Det, FiM, NvM and Dcm;
-- AUTOSAR OS scheduling, protection and multicore;
-- RTE communication, events, concurrency and service access;
-- integration, troubleshooting, performance and ISO 26262 interfacing.
-
-## Automotive cockpit model
-
-| Platform concept | Automotive metaphor |
-|---|---|
-| Application | Automotive learning cockpit |
-| Learning-module selector | Active subsystem selector |
-| Module library | Vehicle learning garage |
-| Concepts | System manual / concept learning |
-| 10-stage curriculum | Learning route |
-| Stage | Route stage |
-| Question | Technical checkpoint |
-| Topic track | Automotive system |
-| Search and filters | Diagnostic filters |
-| Progress | Learning odometer |
-| Bookmark | Flagged checkpoint |
-| Browser storage | Retained module state / NvM analogy |
-| Quiz | Knowledge validation run |
-| Practical exercise | Architecture exercise |
-
-## Repository architecture
+## Content structure
 
 ```text
 auto-learning-platform/
@@ -199,52 +99,85 @@ auto-learning-platform/
 │   ├── app.js
 │   ├── concepts.js
 │   ├── concepts.css
+│   ├── navigation.js
+│   ├── navigation.css
 │   ├── styles.css
 │   ├── learning-language.js
 │   └── content.js
 ├── content-source/
-│   ├── CONCEPT_SCHEMA.md
-│   └── safety/concepts/functional-safety-management/*.md
+│   ├── safety/concepts/functional-safety-management/*.md
+│   └── embedded-systems/concepts/*.json
 ├── data/
 │   ├── topics.json
-│   ├── safety/concepts.json              Generated during validation
-│   └── autosar/
+│   ├── safety/concepts.json
+│   ├── autosar/
+│   │   ├── meta.json
+│   │   └── day1.json ... day10.json
+│   └── embedded/
 │       ├── meta.json
-│       └── day1.json ... day10.json
+│       ├── day1.json ... day10.json
+│       └── concepts.json
+├── schemas/v1/
 ├── scripts/
+│   ├── assemble-embedded-source.mjs
 │   ├── build-concepts.mjs
+│   ├── render-concept-source.mjs
+│   ├── validate-content.mjs
 │   ├── validate-concepts-ui.mjs
-│   └── validate-content.mjs
-├── .github/workflows/validate-content.yml
+│   └── validate-schema-contracts.mjs
+├── docs/clean-learning-ui.md
 ├── package.json
 └── netlify.toml
 ```
 
-### Main file responsibilities
+Functional Safety concepts use Markdown as their canonical source. Embedded Systems concepts use the versioned JSON concept records under `content-source/embedded-systems/concepts/`. The build assembles both forms into deterministic runtime JSON for the site.
 
-| File | Responsibility |
-|---|---|
-| `index.html` | Static cockpit shell and view placeholders |
-| `assets/app.js` | Module loading, retained state, filtering and checkpoint rendering |
-| `assets/concepts.js` | Concept loading, navigation and concept-linked practice |
-| `assets/content.js` | Existing Functional Safety checkpoint bank |
-| `data/topics.json` | Learning-module manifest |
-| `data/autosar/*` | AUTOSAR curriculum and checkpoints |
-| `content-source/**/*.md` | Canonical concept explanations |
-| `scripts/build-concepts.mjs` | Concept parsing, link validation and JSON generation |
-| `scripts/validate-concepts-ui.mjs` | Concepts UI and stage-distribution validation |
-| `scripts/validate-content.mjs` | Runtime model, checkpoint-bank and terminology validation |
+## Versioned generation contracts
+
+Machine-readable schemas are stored under `schemas/v1/`:
+
+- `concept-authoring.schema.json`
+- `concept.schema.json`
+- `concept-collection.schema.json`
+- `exercise.schema.json`
+- `exercise-batch.schema.json`
+- `exercise-module.schema.json`
+
+Breaking contract changes require a new version directory such as `schemas/v2/`.
+
+## Validation
+
+```bash
+npm run build:concepts
+npm run check:concepts
+npm run validate:schemas
+npm run validate
+```
+
+The validation pipeline checks:
+
+- deterministic concept generation;
+- concept metadata and required sections;
+- concept relationships and linked exercise IDs;
+- ten stages and 100 exercises per module;
+- exactly ten exercises per stage;
+- declared tracks and supported difficulty levels;
+- the Embedded module's foundation, difficult technical, management and role-scenario mix;
+- versioned JSON Schema contracts;
+- simplified navigation, stage focus and Go-to-top UI hooks;
+- learning-oriented user-facing terminology.
 
 ## Retained browser state
 
-Completion, confidence ratings and flags are stored by module:
+Progress is stored per module in the current browser profile:
 
 ```text
 autoNotesNvM:safety
 autoNotesNvM:autosar
+autoNotesNvM:embedded
 ```
 
-The current state belongs to the browser profile and is not synchronized across devices.
+State is not synchronized across devices.
 
 ## Run locally
 
@@ -255,48 +188,18 @@ npm run validate
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000`. Do not open `index.html` directly with a `file://` URL because browsers may prevent JavaScript from fetching JSON files.
+Open `http://localhost:8000`. A local HTTP server is required because the application fetches JSON assets.
 
 ## Deployment
 
-AutoLeaP is deployed as a static Netlify site:
-
-```text
-https://osg1991-auto-leap.netlify.app/
-```
-
-Netlify configuration:
-
-```toml
-[build]
-command = "npm run validate"
-publish = "."
-```
-
-Deployment flow:
-
-```text
-Push or merge to main
-        ↓
-GitHub Actions validates and generates content
-        ↓
-Netlify runs the same validation and generation
-        ↓
-Static files are published
-```
+The static site is deployed through Netlify. Both GitHub Actions and Netlify run `npm run validate` before publication.
 
 ## Content principles
 
-- Preserve technical depth and engineering context.
-- Teach concepts before using questions for practice and review.
-- Connect management decisions, vehicle behavior, architecture and safety evidence.
-- Use original explanations and paraphrased learning guidance.
-- Keep content vendor-neutral and release-aware where practical.
-- Verify implementation details against the exact standard and vendor stack used by a real project.
-- Do not treat AUTOSAR conformance as equivalent to ISO 26262 compliance.
-
-## Copyright and standards
-
-AutoLeaP contains original learning concepts, checkpoints and paraphrased guidance with specification pointers. It does not reproduce ISO or AUTOSAR normative text.
-
-Licensed standards, official AUTOSAR specifications and project-specific vendor documentation remain authoritative.
+- Teach strong foundations before difficult applications.
+- Preserve technical depth and system context.
+- Include debugging, architecture, technical-management and product decisions.
+- Keep role-derived coverage employer-neutral.
+- Connect software behavior to hardware, timing, interfaces, security, quality and release evidence.
+- Use original explanations and project-appropriate reference pointers.
+- Verify release-specific implementation details against authoritative platform and vendor documentation.

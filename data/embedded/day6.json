@@ -1,0 +1,122 @@
+[
+  {
+    "id": "E06-01",
+    "day": 6,
+    "tier": "Foundation",
+    "kind": "Concept",
+    "tracks": ["Android Platform"],
+    "question": "Explain the Android software stack from Linux kernel to application.",
+    "minutes": 5,
+    "answer": ["The Linux kernel provides process, memory, driver and security foundations.", "HAL implementations expose hardware capabilities through stable framework-facing contracts.", "Native daemons and system services implement platform capabilities.", "Binder provides the primary IPC model and Android Runtime executes managed application code.", "Applications operate within lifecycle, permission and sandbox rules defined by the framework."],
+    "probes": ["Where do vendor services run?", "What is the difference between framework API and HAL contract?", "Why is Binder central to architecture?"],
+    "refs": ["AOSP architecture", "Android stack"]
+  },
+  {
+    "id": "E06-02",
+    "day": 6,
+    "tier": "Foundation",
+    "kind": "Concept",
+    "tracks": ["Android Platform"],
+    "question": "Explain Binder IPC, service discovery and thread-pool behavior.",
+    "minutes": 5,
+    "answer": ["Clients obtain service handles and issue transactions through the Binder driver.", "The service manager provides discovery according to platform conventions.", "Transactions execute on service Binder threads unless work is delegated.", "Synchronous calls create dependency and deadlock risks across services.", "Identity, permissions, payload size and lifecycle must be handled explicitly."],
+    "probes": ["What causes Binder thread starvation?", "When should a call be one-way?", "How is caller identity propagated?"],
+    "refs": ["Binder IPC", "Android services"]
+  },
+  {
+    "id": "E06-03",
+    "day": 6,
+    "tier": "Intermediate",
+    "kind": "Technical",
+    "tracks": ["Android Platform", "AAOS & Infotainment"],
+    "question": "Differentiate AIDL, HAL interfaces, system services and application APIs.",
+    "minutes": 7,
+    "answer": ["AIDL defines typed IPC contracts.", "HAL contracts isolate framework or system software from vendor hardware implementation.", "System services implement platform policy, coordination and lifecycle.", "Application APIs expose supported capabilities with permission and compatibility guarantees.", "A clean design avoids exposing hardware details directly to applications."],
+    "probes": ["Where should caching occur?", "What is a stable AIDL interface?", "How do vendor extensions remain maintainable?"],
+    "refs": ["Android interfaces", "HAL architecture"]
+  },
+  {
+    "id": "E06-04",
+    "day": 6,
+    "tier": "Advanced",
+    "kind": "Technical",
+    "tracks": ["Android Platform", "Security & Quality"],
+    "question": "An Android service passes functional tests but occasionally deadlocks under load. How do you diagnose it?",
+    "minutes": 7,
+    "answer": ["Capture Binder, scheduler and lock traces with thread stacks during the stall.", "Map synchronous call chains and callback re-entry.", "Check Binder thread-pool exhaustion and locks held across IPC.", "Inspect service lifecycle and death-recipient handling.", "Redesign long or cyclic operations into asynchronous state machines with bounded work."],
+    "probes": ["Why is holding a lock across Binder dangerous?", "How can callbacks create cycles?", "What telemetry detects early degradation?"],
+    "refs": ["Android concurrency", "Binder debugging"]
+  },
+  {
+    "id": "E06-05",
+    "day": 6,
+    "tier": "Advanced",
+    "kind": "Debugging",
+    "tracks": ["Android Platform", "AAOS & Infotainment"],
+    "question": "An AAOS application cannot read a vehicle property even though the VHAL reports it. What do you check?",
+    "minutes": 7,
+    "answer": ["Verify property ID, area, access mode, change mode and supported configuration.", "Trace VHAL to car service registration and property manager exposure.", "Check permissions, SELinux denials and user/profile restrictions.", "Confirm the application uses the correct API and handles availability or error states.", "Validate timing, subscription rate and stale-data behavior."],
+    "probes": ["How do vendor properties differ from standard ones?", "Where are permissions enforced?", "What should the UI show when data is unavailable?"],
+    "refs": ["AAOS Vehicle HAL", "Car services"]
+  },
+  {
+    "id": "E06-06",
+    "day": 6,
+    "tier": "Expert",
+    "kind": "Architecture",
+    "tracks": ["Android Platform", "AAOS & Infotainment", "Platform Architecture"],
+    "question": "Design a reusable AAOS service for climate control across several vehicle platforms.",
+    "minutes": 7,
+    "answer": ["Define a platform-neutral capability model and stable application API.", "Map vehicle-specific signals and actuators in the VHAL or adaptation layer.", "Keep policy, arbitration and safety constraints in owned system services rather than UI applications.", "Support variants through declared capabilities and configuration.", "Specify permissions, lifecycle, degraded behavior, test doubles and compatibility rules."],
+    "probes": ["How are rear-zone variants represented?", "What if a vehicle network is unavailable?", "Which behaviors belong outside Android?"],
+    "refs": ["AAOS common feature", "Vehicle integration"]
+  },
+  {
+    "id": "E06-07",
+    "day": 6,
+    "tier": "Advanced",
+    "kind": "Technical management",
+    "tracks": ["Technical Management", "Android Platform"],
+    "question": "How do you govern Android platform customization without creating an unmergeable fork?",
+    "minutes": 7,
+    "answer": ["Define customization layers and prohibit product code in core framework where extension points exist.", "Track every platform patch with owner, rationale and upstream status.", "Continuously integrate new AOSP baselines instead of large periodic jumps.", "Use compatibility tests, API reviews and product configuration for variation.", "Fund upstreaming or architectural replacement for high-maintenance patches."],
+    "probes": ["Which patches are unavoidable?", "How do you quantify fork cost?", "Who approves framework changes?"],
+    "refs": ["Android platform governance", "AOSP lifecycle"]
+  },
+  {
+    "id": "E06-08",
+    "day": 6,
+    "tier": "Advanced",
+    "kind": "Product owner scenario",
+    "tracks": ["Product Ownership", "Role Scenarios"],
+    "question": "A customer requests a branded AAOS experience that conflicts with platform consistency. How do you decide?",
+    "minutes": 7,
+    "answer": ["Clarify the customer outcome and distinguish branding from behavioral divergence.", "Preserve common services, APIs and accessibility while allowing themed or configured presentation.", "Evaluate maintenance, certification and multi-product impact.", "Use extension points and feature flags rather than forked framework logic.", "Set explicit limits for custom behavior and ownership of long-term support."],
+    "probes": ["What should never be customized per product?", "How do UX and platform roadmaps align?", "When can a fork be strategic?"],
+    "refs": ["Product variability", "Digital experience"]
+  },
+  {
+    "id": "E06-09",
+    "day": 6,
+    "tier": "Advanced",
+    "kind": "Engineering manager scenario",
+    "tracks": ["Technical Management", "Role Scenarios"],
+    "question": "Android application and platform teams repeatedly miss integration milestones. What changes do you make?",
+    "minutes": 7,
+    "answer": ["Create end-to-end feature ownership with shared interface milestones.", "Provide emulated services and contract tests before target hardware is ready.", "Publish integration branches, compatibility rules and failure triage ownership.", "Measure integration lead time and late contract churn.", "Align team incentives to product readiness rather than local code completion."],
+    "probes": ["Who owns broken mocks?", "How early should APIs freeze?", "What if hardware dependencies remain uncertain?"],
+    "refs": ["Integration leadership", "Team interfaces"]
+  },
+  {
+    "id": "E06-10",
+    "day": 6,
+    "tier": "Expert",
+    "kind": "Board exercise",
+    "tracks": ["Android Platform", "AAOS & Infotainment"],
+    "question": "Trace and defend an AAOS vehicle feature from application UI to physical actuator.",
+    "minutes": 7,
+    "answer": ["Show application, framework API, car service, Binder/AIDL, VHAL, vehicle network service and embedded controller boundaries.", "Define permissions, user state, lifecycle and failure propagation.", "Specify latency, data freshness, arbitration and degraded behavior.", "Identify what Android may request versus what the vehicle controller must enforce.", "Close with test strategy, observability and variant handling."],
+    "probes": ["Where is the final safety authority?", "How are service restarts handled?", "Which interface is customer-visible and stable?"],
+    "refs": ["AAOS feature architecture", "End-to-end integration"]
+  }
+]

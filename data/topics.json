@@ -27,6 +27,26 @@
         "data/autosar/day9.json",
         "data/autosar/day10.json"
       ]
+    },
+    {
+      "id": "embedded",
+      "title": "Embedded Systems & Firmware",
+      "subtitle": "Firmware × RTOS × Linux × Android/AAOS × Platform Leadership",
+      "description": "A rigorous learning route from embedded fundamentals and difficult platform debugging through reusable-product architecture, technical management and global product ownership.",
+      "content": "data/embedded/meta.json",
+      "questionFiles": [
+        "data/embedded/day1.json",
+        "data/embedded/day2.json",
+        "data/embedded/day3.json",
+        "data/embedded/day4.json",
+        "data/embedded/day5.json",
+        "data/embedded/day6.json",
+        "data/embedded/day7.json",
+        "data/embedded/day8.json",
+        "data/embedded/day9.json",
+        "data/embedded/day10.json"
+      ],
+      "concepts": "data/embedded/concepts.json"
     }
   ]
 }

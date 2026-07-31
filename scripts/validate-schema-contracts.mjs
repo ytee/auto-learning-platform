@@ -131,12 +131,20 @@ validateFile(
   path.join(schemaRoot, 'exercise-module.schema.json')
 );
 
-const conceptRuntime = path.join(root, 'data', 'safety', 'concepts.json');
-if (!fs.existsSync(conceptRuntime)) fail('Generated data/safety/concepts.json is missing; run npm run build:concepts');
-validateFile(conceptRuntime, path.join(schemaRoot, 'concept-collection.schema.json'));
+for (const moduleId of ['safety', 'embedded']) {
+  const conceptRuntime = path.join(root, 'data', moduleId, 'concepts.json');
+  if (!fs.existsSync(conceptRuntime)) {
+    fail(`Generated data/${moduleId}/concepts.json is missing; run npm run build:concepts`);
+  }
+  validateFile(conceptRuntime, path.join(schemaRoot, 'concept-collection.schema.json'));
+}
 
-const autosarMeta = path.join(root, 'data', 'autosar', 'meta.json');
-validateFile(autosarMeta, path.join(schemaRoot, 'exercise-module.schema.json'));
+for (const moduleId of ['autosar', 'embedded']) {
+  validateFile(
+    path.join(root, 'data', moduleId, 'meta.json'),
+    path.join(schemaRoot, 'exercise-module.schema.json')
+  );
+}
 
 for (let stage = 1; stage <= 10; stage += 1) {
   validateFile(
@@ -145,6 +153,17 @@ for (let stage = 1; stage <= 10; stage += 1) {
   );
 }
 
+for (let stage = 1; stage <= 5; stage += 1) {
+  validateFile(
+    path.join(root, 'data', 'embedded', `day${stage}.json`),
+    path.join(schemaRoot, 'exercise-batch.schema.json')
+  );
+}
+validateFile(
+  path.join(root, 'data', 'embedded', 'day6-10.json'),
+  path.join(schemaRoot, 'exercise-batch.schema.json')
+);
+
 console.log(
-  `Schema contracts passed: ${schemaFiles.length} schemas, concept runtime, AUTOSAR module and 10 exercise batches.`
+  `Schema contracts passed: ${schemaFiles.length} schemas, two concept runtimes, two modular exercise modules and sixteen exercise batches.`
 );

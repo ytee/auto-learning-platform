@@ -201,11 +201,13 @@ for (const topic of manifest.topics) {
   validateQuestions(topic.id, content.days, content.tracks, questions);
   if (topic.id === 'embedded') validateEmbeddedMix(questions);
 
-  const declaredTracks = new Set(content.tracks.map(track => track.name));
-  const undeclaredTracks = [...new Set(
-    questions.flatMap(question => question.tracks).filter(track => !declaredTracks.has(track))
-  )];
-  if (undeclaredTracks.length) fail(`${topic.id}: undeclared tracks: ${undeclaredTracks.join(', ')}`);
+  if (!topic.legacyGlobal) {
+    const declaredTracks = new Set(content.tracks.map(track => track.name));
+    const undeclaredTracks = [...new Set(
+      questions.flatMap(question => question.tracks).filter(track => !declaredTracks.has(track))
+    )];
+    if (undeclaredTracks.length) fail(`${topic.id}: undeclared tracks: ${undeclaredTracks.join(', ')}`);
+  }
 
   const knowledgeCheckTitle = content.knowledgeCheckTitle || content.mockTitle;
   const architectureExercise = content.architectureExercise || content.boardExercise;

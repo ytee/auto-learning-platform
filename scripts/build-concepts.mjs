@@ -3,56 +3,74 @@ import path from 'node:path';
 import vm from 'node:vm';
 
 const root = process.cwd();
-const sourceDirectory = path.join(
-  root,
-  'content-source',
-  'safety',
-  'concepts',
-  'functional-safety-management'
-);
-const outputFile = path.join(root, 'data', 'safety', 'concepts.json');
 const checkOnly = process.argv.includes('--check');
+const knownDifficulties = new Set(['Foundation', 'Intermediate', 'Advanced', 'Expert']);
+const fail = message => { throw new Error(message); };
+
+const collections = [
+  {
+    module: 'safety',
+    collection: 'functional-safety-management',
+    title: 'Functional Safety Management',
+    sourceDirectory: 'content-source/safety/concepts/functional-safety-management',
+    outputFile: 'data/safety/concepts.json',
+    baseline: { family: 'ISO 26262', edition: '2018', status: 'published-baseline' },
+    expectedCount: 23,
+    questionIds() {
+      const sandbox = { window: {} };
+      vm.createContext(sandbox);
+      vm.runInContext(
+        fs.readFileSync(path.join(root, 'assets/content.js'), 'utf8'),
+        sandbox,
+        { filename: 'assets/content.js' }
+      );
+      const questions = sandbox.window.PREP_CONTENT?.questions;
+      if (!Array.isArray(questions)) fail('assets/content.js: Functional Safety questions not found');
+      return new Set(questions.map(question => question.id));
+    }
+  },
+  {
+    module: 'embedded',
+    collection: 'embedded-systems-firmware',
+    title: 'Embedded Systems & Firmware',
+    sourceDirectory: 'content-source/embedded-systems/concepts',
+    outputFile: 'data/embedded/concepts.json',
+    baseline: {
+      family: 'AutoLeaP Embedded Systems Body of Knowledge',
+      edition: '2026',
+      status: 'learning-baseline'
+    },
+    expectedCount: 10,
+    questionIds() {
+      const questions = Array.from({ length: 10 }, (_, index) =>
+        JSON.parse(fs.readFileSync(path.join(root, `data/embedded/day${index + 1}.json`), 'utf8'))
+      ).flat();
+      if (!Array.isArray(questions) || questions.length !== 100) {
+        fail('data/embedded: expected 100 exercises across day1.json to day10.json');
+      }
+      return new Set(questions.map(question => question.id));
+    }
+  }
+];
 
 const requiredMetadata = [
-  'id',
-  'title',
-  'module',
-  'collection',
-  'order',
-  'standard',
-  'difficulty',
-  'stage',
-  'systems',
-  'relatedConcepts',
-  'linkedQuestions',
-  'references'
+  'id', 'title', 'module', 'collection', 'order', 'standard',
+  'difficulty', 'stage', 'systems', 'relatedConcepts',
+  'linkedQuestions', 'references'
 ];
 
 const requiredSections = [
-  'Learning objectives',
-  'Concept',
-  'Why it matters',
-  'Inputs',
-  'Activities',
-  'Outputs and evidence',
-  'Automotive example',
-  'Common mistakes'
+  'Learning objectives', 'Concept', 'Why it matters', 'Inputs',
+  'Activities', 'Outputs and evidence', 'Automotive example', 'Common mistakes'
 ];
-
-const knownDifficulties = new Set(['Foundation', 'Intermediate', 'Advanced', 'Expert']);
-const fail = message => { throw new Error(message); };
 
 function parseValue(rawValue, file, key) {
   const value = rawValue.trim();
   if (!value) return '';
 
   if (
-    value.startsWith('[') ||
-    value.startsWith('{') ||
-    value.startsWith('"') ||
-    value === 'true' ||
-    value === 'false' ||
-    value === 'null'
+    value.startsWith('[') || value.startsWith('{') || value.startsWith('"') ||
+    value === 'true' || value === 'false' || value === 'null'
   ) {
     try {
       return JSON.parse(value);
@@ -67,118 +85,86 @@ function parseValue(rawValue, file, key) {
 
 function parseFrontMatter(text, file) {
   if (!text.startsWith('---\n')) fail(`${file}: Markdown must begin with front matter`);
-
   const closingMarker = text.indexOf('\n---\n', 4);
   if (closingMarker === -1) fail(`${file}: front matter closing marker is missing`);
 
-  const frontMatterText = text.slice(4, closingMarker);
   const metadata = {};
-
-  for (const rawLine of frontMatterText.split(/\r?\n/)) {
+  for (const rawLine of text.slice(4, closingMarker).split(/\r?\n/)) {
     const line = rawLine.trim();
     if (!line || line.startsWith('#')) continue;
-
     const separator = line.indexOf(':');
     if (separator === -1) fail(`${file}: invalid front matter line "${rawLine}"`);
-
     const key = line.slice(0, separator).trim();
-    const rawValue = line.slice(separator + 1);
     if (!key) fail(`${file}: empty front matter key`);
     if (Object.hasOwn(metadata, key)) fail(`${file}: duplicate front matter key ${key}`);
-
-    metadata[key] = parseValue(rawValue, file, key);
+    metadata[key] = parseValue(line.slice(separator + 1), file, key);
   }
-
   return { metadata, body: text.slice(closingMarker + 5) };
 }
 
 function parseSections(body, file) {
   const sections = {};
-  let currentHeading = null;
-  let currentLines = [];
+  let heading = null;
+  let lines = [];
 
   const flush = () => {
-    if (!currentHeading) return;
-    const value = currentLines.join('\n').trim();
-    if (Object.hasOwn(sections, currentHeading)) fail(`${file}: duplicate section ${currentHeading}`);
-    sections[currentHeading] = value;
+    if (!heading) return;
+    if (Object.hasOwn(sections, heading)) fail(`${file}: duplicate section ${heading}`);
+    sections[heading] = lines.join('\n').trim();
   };
 
   for (const line of body.split(/\r?\n/)) {
-    const heading = line.match(/^##\s+(.+?)\s*$/);
-    if (heading) {
+    const match = line.match(/^##\s+(.+?)\s*$/);
+    if (match) {
       flush();
-      currentHeading = heading[1];
-      currentLines = [];
-      continue;
+      heading = match[1];
+      lines = [];
+    } else if (heading) {
+      lines.push(line);
     }
-    if (currentHeading) currentLines.push(line);
   }
-
   flush();
   return sections;
 }
 
-function parseBulletList(value, file, sectionName) {
-  const items = value
-    .split(/\r?\n/)
-    .map(line => line.trim())
-    .filter(Boolean)
-    .map(line => {
-      if (!line.startsWith('- ')) fail(`${file}: ${sectionName} must contain only Markdown bullet items`);
-      return line.slice(2).trim();
-    });
-
-  if (!items.length) fail(`${file}: ${sectionName} must not be empty`);
+function parseBulletList(value, file, section) {
+  const items = value.split(/\r?\n/).map(line => line.trim()).filter(Boolean).map(line => {
+    if (!line.startsWith('- ')) fail(`${file}: ${section} must contain only Markdown bullets`);
+    return line.slice(2).trim();
+  });
+  if (!items.length) fail(`${file}: ${section} must not be empty`);
   return items;
 }
 
-function parseParagraphs(value, file, sectionName) {
+function parseParagraphs(value, file, section) {
   const paragraphs = value
     .split(/\n\s*\n/)
-    .map(paragraph => paragraph.replace(/\s*\n\s*/g, ' ').trim())
+    .map(item => item.replace(/\s*\n\s*/g, ' ').trim())
     .filter(Boolean);
-
-  if (!paragraphs.length) fail(`${file}: ${sectionName} must not be empty`);
+  if (!paragraphs.length) fail(`${file}: ${section} must not be empty`);
   return paragraphs;
 }
 
-function loadSafetyQuestionIds() {
-  const contentFile = path.join(root, 'assets', 'content.js');
-  const sandbox = { window: {} };
-  vm.createContext(sandbox);
-  vm.runInContext(fs.readFileSync(contentFile, 'utf8'), sandbox, { filename: 'assets/content.js' });
-
-  const questions = sandbox.window.PREP_CONTENT?.questions;
-  if (!Array.isArray(questions)) fail('assets/content.js: Functional Safety questions not found');
-  return new Set(questions.map(question => question.id));
-}
-
-function validateMetadata(metadata, file) {
+function validateMetadata(metadata, file, config) {
   for (const field of requiredMetadata) {
     if (!Object.hasOwn(metadata, field)) fail(`${file}: missing metadata field ${field}`);
   }
-
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(metadata.id)) fail(`${file}: invalid concept id ${metadata.id}`);
-  if (metadata.module !== 'safety') fail(`${file}: module must be safety`);
-  if (metadata.collection !== 'functional-safety-management') {
-    fail(`${file}: collection must be functional-safety-management`);
-  }
-  if (!Number.isInteger(metadata.order) || metadata.order < 1) fail(`${file}: order must be a positive integer`);
+  if (metadata.module !== config.module) fail(`${file}: module must be ${config.module}`);
+  if (metadata.collection !== config.collection) fail(`${file}: collection must be ${config.collection}`);
+  if (!Number.isInteger(metadata.order) || metadata.order < 1) fail(`${file}: order must be positive`);
   if (!Number.isInteger(metadata.stage) || metadata.stage < 1 || metadata.stage > 10) {
-    fail(`${file}: stage must be an integer from 1 to 10`);
+    fail(`${file}: stage must be from 1 to 10`);
   }
   if (!knownDifficulties.has(metadata.difficulty)) fail(`${file}: invalid difficulty ${metadata.difficulty}`);
 
+  const standard = metadata.standard;
   if (
-    typeof metadata.standard !== 'object' ||
-    metadata.standard === null ||
-    metadata.standard.family !== 'ISO 26262' ||
-    metadata.standard.edition !== '2018' ||
-    !Array.isArray(metadata.standard.parts) ||
-    !metadata.standard.parts.length ||
-    !Array.isArray(metadata.standard.clauseRefs) ||
-    !metadata.standard.clauseRefs.length
+    !standard || typeof standard !== 'object' ||
+    typeof standard.family !== 'string' || !standard.family ||
+    typeof standard.edition !== 'string' || !standard.edition ||
+    !Array.isArray(standard.parts) || !standard.parts.length ||
+    !Array.isArray(standard.clauseRefs) || !standard.clauseRefs.length
   ) {
     fail(`${file}: invalid standard metadata`);
   }
@@ -190,21 +176,20 @@ function validateMetadata(metadata, file) {
   }
 }
 
-function buildConcept(filePath, questionIds) {
+function buildConcept(filePath, config, questionIds) {
   const relativeFile = path.relative(root, filePath).split(path.sep).join('/');
-  const source = fs.readFileSync(filePath, 'utf8');
-  const { metadata, body } = parseFrontMatter(source, relativeFile);
+  const { metadata, body } = parseFrontMatter(fs.readFileSync(filePath, 'utf8'), relativeFile);
   const sections = parseSections(body, relativeFile);
+  validateMetadata(metadata, relativeFile, config);
 
-  validateMetadata(metadata, relativeFile);
-  for (const sectionName of requiredSections) {
-    if (!sections[sectionName]) fail(`${relativeFile}: missing section ${sectionName}`);
+  for (const section of requiredSections) {
+    if (!sections[section]) fail(`${relativeFile}: missing section ${section}`);
   }
-
   for (const questionId of metadata.linkedQuestions) {
     if (!questionIds.has(questionId)) fail(`${relativeFile}: linked question ${questionId} does not exist`);
   }
 
+  const explanation = parseParagraphs(sections.Concept, relativeFile, 'Concept');
   return {
     id: metadata.id,
     title: metadata.title,
@@ -215,9 +200,9 @@ function buildConcept(filePath, questionIds) {
     difficulty: metadata.difficulty,
     stage: metadata.stage,
     systems: metadata.systems,
-    summary: parseParagraphs(sections.Concept, relativeFile, 'Concept')[0],
+    summary: explanation[0],
     learningObjectives: parseBulletList(sections['Learning objectives'], relativeFile, 'Learning objectives'),
-    explanation: parseParagraphs(sections.Concept, relativeFile, 'Concept'),
+    explanation,
     whyItMatters: parseParagraphs(sections['Why it matters'], relativeFile, 'Why it matters'),
     inputs: parseBulletList(sections.Inputs, relativeFile, 'Inputs'),
     activities: parseBulletList(sections.Activities, relativeFile, 'Activities'),
@@ -231,26 +216,27 @@ function buildConcept(filePath, questionIds) {
   };
 }
 
-function buildModel() {
-  if (!fs.existsSync(sourceDirectory)) {
-    fail(`Concept source directory not found: ${path.relative(root, sourceDirectory)}`);
-  }
+function buildCollection(config) {
+  const sourceDirectory = path.join(root, config.sourceDirectory);
+  if (!fs.existsSync(sourceDirectory)) fail(`Concept source directory not found: ${config.sourceDirectory}`);
 
-  const markdownFiles = fs.readdirSync(sourceDirectory)
+  const files = fs.readdirSync(sourceDirectory)
     .filter(file => file.endsWith('.md'))
     .sort()
     .map(file => path.join(sourceDirectory, file));
 
-  if (!markdownFiles.length) fail('No FSM concept Markdown files found');
+  if (files.length !== config.expectedCount) {
+    fail(`${config.module}: expected ${config.expectedCount} concept sources; found ${files.length}`);
+  }
 
-  const questionIds = loadSafetyQuestionIds();
-  const concepts = markdownFiles.map(file => buildConcept(file, questionIds));
+  const questionIds = config.questionIds();
+  const concepts = files.map(file => buildConcept(file, config, questionIds));
   const ids = new Set();
   const orders = new Set();
 
   for (const concept of concepts) {
-    if (ids.has(concept.id)) fail(`Duplicate concept id ${concept.id}`);
-    if (orders.has(concept.order)) fail(`Duplicate concept order ${concept.order}`);
+    if (ids.has(concept.id)) fail(`${config.module}: duplicate concept id ${concept.id}`);
+    if (orders.has(concept.order)) fail(`${config.module}: duplicate concept order ${concept.order}`);
     ids.add(concept.id);
     orders.add(concept.order);
   }
@@ -263,27 +249,28 @@ function buildModel() {
   }
 
   concepts.sort((left, right) => left.order - right.order || left.id.localeCompare(right.id));
-
-  return {
+  const model = {
     schemaVersion: 1,
-    module: 'safety',
-    collection: { id: 'functional-safety-management', title: 'Functional Safety Management' },
-    standardBaseline: { family: 'ISO 26262', edition: '2018', status: 'published-baseline' },
-    generatedFrom: 'content-source/safety/concepts/functional-safety-management',
+    module: config.module,
+    collection: { id: config.collection, title: config.title },
+    standardBaseline: config.baseline,
+    generatedFrom: config.sourceDirectory,
     concepts
   };
+
+  const output = path.join(root, config.outputFile);
+  const serialized = `${JSON.stringify(model, null, 2)}\n`;
+  if (checkOnly) {
+    if (!fs.existsSync(output)) fail(`${config.outputFile} is missing; run npm run build:concepts`);
+    if (fs.readFileSync(output, 'utf8') !== serialized) {
+      fail(`${config.outputFile} is stale; run npm run build:concepts`);
+    }
+    console.log(`${config.module}: ${concepts.length} concepts validated; generated JSON is current`);
+  } else {
+    fs.mkdirSync(path.dirname(output), { recursive: true });
+    fs.writeFileSync(output, serialized);
+    console.log(`${config.module}: wrote ${concepts.length} concepts to ${config.outputFile}`);
+  }
 }
 
-const model = buildModel();
-const serialized = `${JSON.stringify(model, null, 2)}\n`;
-
-if (checkOnly) {
-  if (!fs.existsSync(outputFile)) fail(`${path.relative(root, outputFile)} is missing; run npm run build:concepts`);
-  const current = fs.readFileSync(outputFile, 'utf8');
-  if (current !== serialized) fail(`${path.relative(root, outputFile)} is stale; run npm run build:concepts`);
-  console.log(`FSM concepts: ${model.concepts.length} sources validated; generated JSON is current`);
-} else {
-  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-  fs.writeFileSync(outputFile, serialized);
-  console.log(`FSM concepts: wrote ${model.concepts.length} concepts to ${path.relative(root, outputFile)}`);
-}
+collections.forEach(buildCollection);

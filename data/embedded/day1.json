@@ -1,0 +1,182 @@
+[
+  {
+    "id": "E01-01",
+    "day": 1,
+    "tier": "Foundation",
+    "kind": "Concept",
+    "tracks": ["Foundations"],
+    "question": "Differentiate firmware, embedded software, middleware, platform software and application software.",
+    "minutes": 5,
+    "answer": [
+      "Firmware is software tightly coupled to device initialization, control and persistent execution, but the term is used differently across organizations.",
+      "Embedded software is the broader set of software executing within a constrained product.",
+      "Middleware and platform software provide reusable services, communication, abstraction and lifecycle support.",
+      "Application software implements product or customer-facing behavior above the platform contracts.",
+      "The useful distinction is responsibility, lifecycle, coupling and change impact—not file extension or programming language."
+    ],
+    "probes": ["Where would a motor-control loop belong?", "Can Linux user-space code still be embedded software?", "Why do unclear boundaries increase release risk?"],
+    "refs": ["Embedded software architecture", "Platform layering"]
+  },
+  {
+    "id": "E01-02",
+    "day": 1,
+    "tier": "Foundation",
+    "kind": "Comparison",
+    "tracks": ["Foundations"],
+    "question": "Compare a microcontroller, microprocessor and heterogeneous SoC for product selection.",
+    "minutes": 5,
+    "answer": [
+      "An MCU integrates CPU, memory and peripherals for deterministic, low-power control with limited resources.",
+      "An MPU commonly relies on external memory and an MMU, supporting rich operating systems and larger applications.",
+      "A heterogeneous SoC combines several compute classes such as application cores, real-time cores, GPU, DSP or accelerators.",
+      "Selection must consider timing, boot, power, safety, security, software ecosystem, cost and supply lifecycle.",
+      "Peak compute alone is a poor selection criterion."
+    ],
+    "probes": ["When is a dual-chip architecture better than one SoC?", "What changes when virtualization is required?", "How does long-term availability affect the decision?"],
+    "refs": ["Processor architecture", "SoC selection"]
+  },
+  {
+    "id": "E01-03",
+    "day": 1,
+    "tier": "Intermediate",
+    "kind": "Architecture",
+    "tracks": ["Foundations", "Platform Architecture"],
+    "question": "How do you partition a feature between hardware, firmware, operating system services and applications?",
+    "minutes": 7,
+    "answer": [
+      "Start from end-to-end behavior, timing, safety, security and update requirements.",
+      "Place functions close to hardware when deterministic reaction or direct control is essential.",
+      "Use platform services for reusable policy, lifecycle, communication and resource management.",
+      "Keep product differentiation in applications behind stable contracts.",
+      "Evaluate failure containment, observability, testability, ownership and future migration before finalizing the partition."
+    ],
+    "probes": ["What evidence justifies moving code into hardware?", "How do you avoid platform leakage into applications?", "Who owns cross-layer failure behavior?"],
+    "refs": ["Embedded architecture", "System decomposition"]
+  },
+  {
+    "id": "E01-04",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Technical",
+    "tracks": ["Foundations", "Performance & Reliability"],
+    "question": "A control function meets average timing but occasionally misses a 2 ms deadline. How would you investigate?",
+    "minutes": 7,
+    "answer": [
+      "Measure end-to-end latency with timestamped causal tracing rather than CPU averages.",
+      "Separate execution time, blocking, interrupt interference, cache effects, DMA contention and scheduling delay.",
+      "Capture worst-case operating modes, thermal states, memory pressure and communication bursts.",
+      "Correlate deadline misses with shared-resource use and priority relationships.",
+      "Fix the architectural cause and establish a reproducible timing regression test."
+    ],
+    "probes": ["Why is average CPU utilization misleading?", "Which clocks must be synchronized?", "How would you distinguish cache from scheduler effects?"],
+    "refs": ["Real-time performance", "Timing analysis"]
+  },
+  {
+    "id": "E01-05",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Debugging",
+    "tracks": ["Foundations", "Firmware & BSP"],
+    "question": "A new board boots only when a debugger is attached. What hypotheses and tests do you use?",
+    "minutes": 7,
+    "answer": [
+      "Check reset timing, power rails, clocks, strap pins and watchdog behavior because a debugger changes timing and reset state.",
+      "Verify startup code, vector placement, stack initialization and linker symbols.",
+      "Look for uninitialized memory, race conditions and missing delays hidden by debugger slowdown.",
+      "Use early GPIO, trace buffer or serial breadcrumbs before runtime services are available.",
+      "Compare cold, warm and software resets and record the earliest divergence."
+    ],
+    "probes": ["How can a debugger mask a watchdog failure?", "What does a repeated reset signature look like?", "Which evidence should be retained for board bring-up?"],
+    "refs": ["Board bring-up", "Startup debugging"]
+  },
+  {
+    "id": "E01-06",
+    "day": 1,
+    "tier": "Expert",
+    "kind": "Architecture review",
+    "tracks": ["Foundations", "Platform Architecture"],
+    "question": "Review an architecture that uses one high-performance SoC for UI, connectivity and a hard real-time actuator loop.",
+    "minutes": 7,
+    "answer": [
+      "Challenge temporal and spatial isolation assumptions between rich and real-time workloads.",
+      "Examine boot dependencies, fault containment, thermal throttling and common power or clock failures.",
+      "Require bounded communication paths, independent supervision and defined degraded behavior.",
+      "Assess whether a separate real-time controller reduces systemic risk and validation complexity.",
+      "The decision should be supported by measured timing, failure analysis, security boundaries and lifecycle cost."
+    ],
+    "probes": ["What failures remain common even with hypervisor partitioning?", "How would OTA affect the actuator path?", "When is consolidation still justified?"],
+    "refs": ["System architecture", "Mixed-criticality systems"]
+  },
+  {
+    "id": "E01-07",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Technical management",
+    "tracks": ["Technical Management"],
+    "question": "How would you establish technical direction for several embedded teams using different stacks?",
+    "minutes": 7,
+    "answer": [
+      "Define product outcomes and a small set of non-negotiable architecture principles.",
+      "Map ownership, interfaces, supported platforms and lifecycle responsibilities.",
+      "Create decision records, review gates and shared engineering metrics without centralizing every implementation choice.",
+      "Fund common tooling and integration environments where they reduce repeated effort.",
+      "Use architecture councils to resolve cross-team trade-offs and continuously remove obsolete standards."
+    ],
+    "probes": ["Which decisions belong locally?", "How do you detect architecture drift?", "What metrics discourage local optimization?"],
+    "refs": ["Engineering leadership", "Architecture governance"]
+  },
+  {
+    "id": "E01-08",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Product owner scenario",
+    "tracks": ["Product Ownership", "Role Scenarios"],
+    "question": "Three product lines request similar features with different deadlines. How should a common-feature product owner respond?",
+    "minutes": 7,
+    "answer": [
+      "Identify the stable customer outcome and separate common capability from product-specific presentation or policy.",
+      "Quantify value, adoption, urgency, technical dependency and reuse benefit for each request.",
+      "Create a shared platform increment with explicit extension points rather than a forced lowest-common denominator.",
+      "Sequence delivery so early products do not create irreversible platform debt.",
+      "Publish scope, acceptance criteria, variant ownership and deprecation plans."
+    ],
+    "probes": ["What belongs in the platform backlog?", "How do you price future reuse against current delay?", "When should a product fork be permitted?"],
+    "refs": ["Product strategy", "Platform reuse"]
+  },
+  {
+    "id": "E01-09",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Engineering manager scenario",
+    "tracks": ["Technical Management", "Role Scenarios"],
+    "question": "A strong senior engineer rejects the common platform and proposes a local rewrite. How do you handle it?",
+    "minutes": 7,
+    "answer": [
+      "Ask for the technical problem, constraints and evidence before treating it as resistance.",
+      "Compare local benefits against integration, staffing, support, security and migration costs.",
+      "Run a bounded technical spike if uncertainty is material.",
+      "Make the decision transparent, document trade-offs and assign ownership for consequences.",
+      "Preserve psychological safety while holding the team accountable to the chosen architecture."
+    ],
+    "probes": ["What if the local design is objectively better?", "How do you prevent endless re-litigation?", "What signals indicate a people problem rather than a technical disagreement?"],
+    "refs": ["People leadership", "Technical decision-making"]
+  },
+  {
+    "id": "E01-10",
+    "day": 1,
+    "tier": "Expert",
+    "kind": "Board exercise",
+    "tracks": ["Foundations", "Platform Architecture", "Technical Management"],
+    "question": "Design the top-level architecture and organization model for a connected embedded product family.",
+    "minutes": 7,
+    "answer": [
+      "Define product capabilities, hardware classes, execution environments and update boundaries.",
+      "Separate reusable platform services from product applications and hardware-specific adaptation.",
+      "Specify contracts for data, lifecycle, diagnostics, security and observability.",
+      "Show ownership across hardware, BSP, platform, applications, cloud and release engineering.",
+      "Close with major risks, validation strategy, roadmap increments and decisions that must remain reversible."
+    ],
+    "probes": ["Where is the system-of-record for configuration?", "How are field failures routed to owners?", "Which part of the design is most likely to become a bottleneck?"],
+    "refs": ["Embedded platform architecture", "Global engineering model"]
+  }
+]

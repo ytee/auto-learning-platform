@@ -33,7 +33,7 @@ const collections = [
     module: 'embedded',
     collection: 'embedded-systems-firmware',
     title: 'Embedded Systems & Firmware',
-    sourceDirectory: 'content-source/embedded-systems/concepts',
+    sourceJson: 'content-source/embedded-systems/concepts.json',
     outputFile: 'data/embedded/concepts.json',
     baseline: {
       family: 'AutoLeaP Embedded Systems Body of Knowledge',
@@ -42,11 +42,13 @@ const collections = [
     },
     expectedCount: 10,
     questionIds() {
-      const questions = Array.from({ length: 10 }, (_, index) =>
-        JSON.parse(fs.readFileSync(path.join(root, `data/embedded/day${index + 1}.json`), 'utf8'))
-      ).flat();
+      const manifest = JSON.parse(fs.readFileSync(path.join(root, 'data/topics.json'), 'utf8'));
+      const topic = manifest.topics.find(item => item.id === 'embedded');
+      const questions = topic.questionFiles.flatMap(file =>
+        JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'))
+      );
       if (!Array.isArray(questions) || questions.length !== 100) {
-        fail('data/embedded: expected 100 exercises across day1.json to day10.json');
+        fail('data/embedded: expected 100 exercises across declared question files');
       }
       return new Set(questions.map(question => question.id));
     }
@@ -217,6 +219,45 @@ function buildConcept(filePath, config, questionIds) {
 }
 
 function buildCollection(config) {
+  if (config.sourceJson) {
+    const sourcePath = path.join(root, config.sourceJson);
+    if (!fs.existsSync(sourcePath)) fail(`Concept source file not found: ${config.sourceJson}`);
+    const model = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
+    const questionIds = config.questionIds();
+    if (model.module !== config.module || model.collection?.id !== config.collection) {
+      fail(`${config.sourceJson}: module or collection mismatch`);
+    }
+    if (!Array.isArray(model.concepts) || model.concepts.length !== config.expectedCount) {
+      fail(`${config.sourceJson}: expected ${config.expectedCount} concepts`);
+    }
+    const ids = new Set(model.concepts.map(concept => concept.id));
+    const orders = new Set();
+    for (const concept of model.concepts) {
+      if (!concept.id || concept.module !== config.module) fail(`${config.sourceJson}: invalid concept identity`);
+      if (orders.has(concept.order)) fail(`${config.sourceJson}: duplicate concept order ${concept.order}`);
+      orders.add(concept.order);
+      for (const relatedId of concept.relatedConcepts || []) {
+        if (!ids.has(relatedId)) fail(`${concept.id}: related concept ${relatedId} does not exist`);
+      }
+      for (const questionId of concept.linkedQuestions || []) {
+        if (!questionIds.has(questionId)) fail(`${concept.id}: linked question ${questionId} does not exist`);
+      }
+    }
+    model.generatedFrom = config.sourceJson;
+    const output = path.join(root, config.outputFile);
+    const serialized = `${JSON.stringify(model, null, 2)}\n`;
+    if (checkOnly) {
+      if (!fs.existsSync(output)) fail(`${config.outputFile} is missing; run npm run build:concepts`);
+      if (fs.readFileSync(output, 'utf8') !== serialized) fail(`${config.outputFile} is stale; run npm run build:concepts`);
+      console.log(`${config.module}: ${model.concepts.length} JSON-authored concepts validated; generated JSON is current`);
+    } else {
+      fs.mkdirSync(path.dirname(output), { recursive: true });
+      fs.writeFileSync(output, serialized);
+      console.log(`${config.module}: wrote ${model.concepts.length} concepts to ${config.outputFile}`);
+    }
+    return;
+  }
+
   const sourceDirectory = path.join(root, config.sourceDirectory);
   if (!fs.existsSync(sourceDirectory)) fail(`Concept source directory not found: ${config.sourceDirectory}`);
 

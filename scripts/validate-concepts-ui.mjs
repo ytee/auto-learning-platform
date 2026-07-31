@@ -11,27 +11,20 @@ new vm.Script(readText('assets/concepts.js'), { filename: 'assets/concepts.js' }
 new vm.Script(readText('assets/navigation.js'), { filename: 'assets/navigation.js' });
 
 const indexHtml = readText('index.html');
-const requiredHooks = [
+for (const hook of [
   'assets/concepts.css',
   'assets/navigation.css',
   'data-view="concepts"',
   'id="view-concepts"',
-  'id="conceptCollectionTitle"',
-  'id="conceptBaseline"',
   'id="conceptNav"',
   'id="conceptDetail"',
-  'data-menu-group="concepts"',
-  'data-menu-group="exercises"',
-  'data-menu-area="concepts" data-module="safety"',
-  'data-menu-area="exercises" data-module="safety"',
-  'data-menu-area="exercises" data-module="autosar"',
-  'id="exerciseNavigation"',
+  'id="routeStages"',
+  'id="systemCards"',
+  'id="knowledgeCheck"',
   'assets/concepts.js',
   'assets/navigation.js'
-];
-
-for (const hook of requiredHooks) {
-  if (!indexHtml.includes(hook)) fail(`index.html: missing Concepts/navigation UI hook ${hook}`);
+]) {
+  if (!indexHtml.includes(hook)) fail(`index.html: missing learning UI hook ${hook}`);
 }
 
 const appScriptPosition = indexHtml.indexOf('assets/app.js');
@@ -45,57 +38,61 @@ if (navigationScriptPosition < conceptsScriptPosition) {
 }
 
 const manifest = readJson('data/topics.json');
-const safety = manifest.topics?.find(module => module.id === 'safety');
-const autosar = manifest.topics?.find(module => module.id === 'autosar');
-if (!safety?.concepts) fail('data/topics.json: Safety module must declare a concepts path');
-if (!autosar) fail('data/topics.json: AUTOSAR module is required for the Exercises menu');
-
-const conceptModel = readJson(safety.concepts);
-if (conceptModel.module !== 'safety') fail('Safety concept model has an invalid module id');
-if (!Array.isArray(conceptModel.concepts) || conceptModel.concepts.length !== 23) {
-  fail('Safety concept model must contain 23 FSM concepts');
-}
-
-const expectedStageCounts = new Map([
-  [1, 5],
-  [2, 2],
-  [3, 2],
-  [4, 2],
-  [5, 2],
-  [6, 2],
-  [7, 2],
-  [8, 2],
-  [9, 2],
-  [10, 2]
-]);
-const conceptIds = new Set();
-const conceptOrders = new Set();
-const stageCounts = new Map();
-
-for (const concept of conceptModel.concepts) {
-  if (conceptIds.has(concept.id)) fail(`Duplicate concept id ${concept.id}`);
-  if (conceptOrders.has(concept.order)) fail(`Duplicate concept order ${concept.order}`);
-  conceptIds.add(concept.id);
-  conceptOrders.add(concept.order);
-  stageCounts.set(concept.stage, (stageCounts.get(concept.stage) || 0) + 1);
-}
-
-for (let order = 1; order <= 23; order += 1) {
-  if (!conceptOrders.has(order)) fail(`FSM concept display order ${order} is missing`);
-}
-
-for (const [stage, expectedCount] of expectedStageCounts) {
-  const actualCount = stageCounts.get(stage) || 0;
-  if (actualCount !== expectedCount) {
-    fail(`FSM stage ${stage} has ${actualCount} concepts; expected ${expectedCount}`);
+const expectedModules = new Set(['safety', 'autosar', 'embedded']);
+for (const moduleId of expectedModules) {
+  if (!manifest.topics?.some(module => module.id === moduleId)) {
+    fail(`data/topics.json: missing ${moduleId} module`);
   }
 }
 
-for (const concept of conceptModel.concepts) {
-  for (const relatedId of concept.relatedConcepts) {
-    if (!conceptIds.has(relatedId)) fail(`${concept.id}: unresolved related concept ${relatedId}`);
+function validateConceptCollection(moduleId, expectedCount, expectedStageCounts = null) {
+  const module = manifest.topics.find(item => item.id === moduleId);
+  if (!module?.concepts) fail(`${moduleId}: missing concepts path`);
+  const model = readJson(module.concepts);
+  if (model.module !== moduleId) fail(`${moduleId}: concept model has invalid module id`);
+  if (!Array.isArray(model.concepts) || model.concepts.length !== expectedCount) {
+    fail(`${moduleId}: expected ${expectedCount} concepts`);
   }
+
+  const ids = new Set();
+  const orders = new Set();
+  const stageCounts = new Map();
+  for (const concept of model.concepts) {
+    if (!concept.id || ids.has(concept.id)) fail(`${moduleId}: duplicate or missing concept id ${concept.id}`);
+    if (!Number.isInteger(concept.order) || orders.has(concept.order)) {
+      fail(`${moduleId}: duplicate or invalid concept order ${concept.order}`);
+    }
+    ids.add(concept.id);
+    orders.add(concept.order);
+    stageCounts.set(concept.stage, (stageCounts.get(concept.stage) || 0) + 1);
+  }
+
+  for (let order = 1; order <= expectedCount; order += 1) {
+    if (!orders.has(order)) fail(`${moduleId}: concept order ${order} is missing`);
+  }
+  for (const concept of model.concepts) {
+    for (const relatedId of concept.relatedConcepts) {
+      if (!ids.has(relatedId)) fail(`${moduleId}/${concept.id}: unresolved related concept ${relatedId}`);
+    }
+  }
+  if (expectedStageCounts) {
+    for (const [stage, expected] of expectedStageCounts) {
+      const actual = stageCounts.get(stage) || 0;
+      if (actual !== expected) fail(`${moduleId}: stage ${stage} has ${actual} concepts; expected ${expected}`);
+    }
+  }
+  return model;
 }
+
+const safetyModel = validateConceptCollection('safety', 23, new Map([
+  [1, 5], [2, 2], [3, 2], [4, 2], [5, 2],
+  [6, 2], [7, 2], [8, 2], [9, 2], [10, 2]
+]));
+const embeddedModel = validateConceptCollection(
+  'embedded',
+  10,
+  new Map(Array.from({ length: 10 }, (_, index) => [index + 1, 1]))
+);
 
 const conceptsScript = readText('assets/concepts.js');
 for (const behavior of [
@@ -110,15 +107,33 @@ for (const behavior of [
 
 const navigationScript = readText('assets/navigation.js');
 for (const behavior of [
-  "openDestination('concepts', 'safety')",
-  'data-menu-area',
-  'exerciseNavigation',
+  'simpleLearningNavigation',
+  'simpleTopicSelect',
+  'simpleStageSelect',
+  'simpleConceptSelect',
+  'simpleSystemSelect',
+  'simpleQuizPosition',
+  'goToTop',
+  'simple-toolbar-closed',
+  'simple-stage-hidden',
   'moduleSelect',
   'activeArea'
 ]) {
-  if (!navigationScript.includes(behavior)) fail(`assets/navigation.js: missing behavior ${behavior}`);
+  if (!navigationScript.includes(behavior)) fail(`assets/navigation.js: missing simplified behavior ${behavior}`);
+}
+
+const navigationStyles = readText('assets/navigation.css');
+for (const style of [
+  '.simple-learning-navigation',
+  '.simple-context-controls',
+  '.go-to-top',
+  '.simple-stage-hidden',
+  '.simple-quiz-hidden'
+]) {
+  if (!navigationStyles.includes(style)) fail(`assets/navigation.css: missing style ${style}`);
 }
 
 console.log(
-  `Concepts UI validation passed for ${conceptModel.concepts.length} FSM concepts and the Concepts/Exercises menu layout.`
+  `Learning UI validation passed: ${safetyModel.concepts.length} Safety concepts, ` +
+  `${embeddedModel.concepts.length} Embedded concepts and simplified progressive navigation.`
 );

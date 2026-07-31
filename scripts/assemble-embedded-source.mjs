@@ -6,6 +6,9 @@ const conceptDirectory = path.join(root, 'content-source', 'embedded-systems', '
 const conceptOutput = path.join(root, 'content-source', 'embedded-systems', 'concepts.json');
 const exerciseOutput = path.join(root, 'data', 'embedded', 'day6-10.json');
 
+const safetyConceptDirectory = path.join(root, 'content-source', 'safety', 'concepts', 'functional-safety-management');
+console.log('Safety concept directory entries:', fs.readdirSync(safetyConceptDirectory).sort().join(', '));
+
 const conceptFiles = fs.readdirSync(conceptDirectory)
   .filter(file => file.endsWith('.json'))
   .sort();

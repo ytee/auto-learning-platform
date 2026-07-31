@@ -261,13 +261,22 @@ function buildCollection(config) {
   const sourceDirectory = path.join(root, config.sourceDirectory);
   if (!fs.existsSync(sourceDirectory)) fail(`Concept source directory not found: ${config.sourceDirectory}`);
 
-  const files = fs.readdirSync(sourceDirectory)
+  const candidateFiles = fs.readdirSync(sourceDirectory)
     .filter(file => file.endsWith('.md'))
     .sort()
     .map(file => path.join(sourceDirectory, file));
 
+  const files = candidateFiles.filter(file => {
+    const relativeFile = path.relative(root, file).split(path.sep).join('/');
+    const { metadata } = parseFrontMatter(fs.readFileSync(file, 'utf8'), relativeFile);
+    return metadata.module === config.module && metadata.collection === config.collection;
+  });
+
   if (files.length !== config.expectedCount) {
-    fail(`${config.module}: expected ${config.expectedCount} concept sources; found ${files.length}`);
+    fail(
+      `${config.module}/${config.collection}: expected ${config.expectedCount} concept sources; ` +
+      `found ${files.length} among ${candidateFiles.length} Markdown files`
+    );
   }
 
   const questionIds = config.questionIds();

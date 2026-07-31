@@ -124,6 +124,7 @@ main {
   padding: 20px 18px 82px;
 }
 .simple-context-controls {
+  display: none;
   position: sticky;
   top: 64px;
   z-index: 35;

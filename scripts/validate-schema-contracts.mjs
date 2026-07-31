@@ -153,13 +153,17 @@ for (let stage = 1; stage <= 10; stage += 1) {
   );
 }
 
-for (let stage = 1; stage <= 10; stage += 1) {
+for (let stage = 1; stage <= 5; stage += 1) {
   validateFile(
     path.join(root, 'data', 'embedded', `day${stage}.json`),
     path.join(schemaRoot, 'exercise-batch.schema.json')
   );
 }
+validateFile(
+  path.join(root, 'data', 'embedded', 'day6-10.json'),
+  path.join(schemaRoot, 'exercise-batch.schema.json')
+);
 
 console.log(
-  `Schema contracts passed: ${schemaFiles.length} schemas, two concept runtimes, two modular exercise modules and twenty exercise batches.`
+  `Schema contracts passed: ${schemaFiles.length} schemas, two concept runtimes, two modular exercise modules and sixteen exercise batches.`
 );

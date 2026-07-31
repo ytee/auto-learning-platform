@@ -40,6 +40,7 @@
   ],
   "focusTitle": "Embedded Systems & Firmware coverage map",
   "focusHeaders": ["Learning track", "Stages", "Coverage"],
+  "focusNote": "The route deliberately combines foundational engineering, difficult cross-layer debugging, technical management and employer-neutral role scenarios. Use the filters to isolate a track, but complete the full route to preserve end-to-end platform context.",
   "focusMap": [
     ["Strong fundamentals", "1–4", "Execution models, processor/memory, firmware/BSP, RTOS and timing."],
     ["Platform internals", "5–7", "Embedded Linux, Android/AAOS, infotainment, connectivity and OTA."],

@@ -207,13 +207,13 @@ for (const topic of manifest.topics) {
       questions.flatMap(question => question.tracks).filter(track => !declaredTracks.has(track))
     )];
     if (undeclaredTracks.length) fail(`${topic.id}: undeclared tracks: ${undeclaredTracks.join(', ')}`);
-  }
 
-  const knowledgeCheckTitle = content.knowledgeCheckTitle || content.mockTitle;
-  const architectureExercise = content.architectureExercise || content.boardExercise;
-  if (!knowledgeCheckTitle) fail(`${topic.id}: missing knowledge-check title`);
-  if (!architectureExercise?.title || !architectureExercise?.prompt) {
-    fail(`${topic.id}: missing architecture exercise`);
+    const knowledgeCheckTitle = content.knowledgeCheckTitle || content.mockTitle;
+    const architectureExercise = content.architectureExercise || content.boardExercise;
+    if (!knowledgeCheckTitle) fail(`${topic.id}: missing knowledge-check title`);
+    if (!architectureExercise?.title || !architectureExercise?.prompt) {
+      fail(`${topic.id}: missing architecture exercise`);
+    }
   }
 
   validateLearningModel(topic.id, { ...content, questions });

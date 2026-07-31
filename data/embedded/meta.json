@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "embedded",
+  "title": "Embedded Systems & Firmware",
+  "shortTitle": "Embedded",
+  "eyebrow": "EMBEDDED PLATFORM LEARNING",
+  "subtitle": "10 stages · Firmware × RTOS × Linux × Android × AAOS × Platform Leadership",
+  "description": "Concept-first and scenario-driven learning for embedded platform engineering, firmware architecture, technical management and common-feature product ownership.",
+  "methodTitle": "Build the model, challenge it technically, then make the leadership decision",
+  "methodSteps": [
+    "Study the stage concept and sketch the end-to-end system before answering.",
+    "Answer foundation questions precisely, then work through failure and performance scenarios.",
+    "Use technical-management and role scenarios to make scope, quality, roadmap and organization decisions.",
+    "Reveal guidance only after stating assumptions, evidence and trade-offs."
+  ],
+  "caseStudy": {
+    "title": "Connected Multi-Product Embedded Platform",
+    "description": "A shared platform spans MCU firmware, an RTOS control domain, Embedded Linux, Android Automotive, connectivity, OTA and reusable common features across several vehicle or machine products."
+  },
+  "notice": "Employer-neutral learning material. The supplied role descriptions are used only to establish coverage for platform engineering, product ownership and global technical leadership.",
+  "referenceLabel": "Engineering reference map",
+  "matrixTitle": "Embedded Domain ↔ Platform Interface Matrix",
+  "matrixHeaders": [
+    "Engineering domain",
+    "Primary responsibility",
+    "Critical interfaces",
+    "Advanced learning outcome"
+  ],
+  "matrix": [
+    ["Hardware/SoC", "Compute, memory, peripherals, power and protection", "Boot, BSP, DMA, interrupts, thermal", "Select and constrain hardware using timing, lifecycle, safety and security evidence."],
+    ["Firmware/BSP", "Reset, startup, drivers, bootloader and hardware abstraction", "Board, RTOS/Linux, manufacturing, update", "Create resilient bring-up and update architecture with stable ownership boundaries."],
+    ["RTOS", "Deterministic execution, resources and supervision", "ISR, drivers, control software, diagnostics", "Prove timing and containment rather than relying on priority tuning."],
+    ["Embedded Linux", "Kernel, device model, rootfs, services and platform lifecycle", "Bootloader, hardware, applications, OTA", "Operate a maintainable long-life Linux platform with observability and support strategy."],
+    ["Android/AAOS", "Framework services, HAL, Binder, applications and vehicle integration", "Linux, VHAL, infotainment, vehicle networks", "Trace common features end to end while preserving permission, lifecycle and vehicle authority."],
+    ["Connectivity/OTA", "Vehicle-cloud communication, campaigns, updates and recovery", "Gateway, backend, security, service operations", "Design secure rollout, rollback and field learning with controlled blast radius."],
+    ["Platform architecture", "Reuse, variability, API compatibility and product integration", "Products, suppliers, UX, release trains", "Maximize commonality without forcing product forks or lowest-common-denominator behavior."],
+    ["Performance/security/quality", "Budgets, isolation, secure supply chain and evidence", "All layers and release governance", "Make release decisions from measurable system evidence and residual risk."],
+    ["Engineering management", "Technical direction, capability, dependencies and delivery health", "Teams, architecture, suppliers, executives", "Lead global teams without becoming the decision bottleneck."],
+    ["Product ownership", "Vision, roadmap, backlog, customer value and release content", "Business, engineering, UX, customers", "Bridge product value and technical integrity for common embedded features."]
+  ],
+  "focusTitle": "Embedded Systems & Firmware coverage map",
+  "focusHeaders": ["Learning track", "Stages", "Coverage"],
+  "focusMap": [
+    ["Strong fundamentals", "1–4", "Execution models, processor/memory, firmware/BSP, RTOS and timing."],
+    ["Platform internals", "5–7", "Embedded Linux, Android/AAOS, infotainment, connectivity and OTA."],
+    ["Architecture and scale", "8–9", "Reuse, variability, performance, security, quality and release."],
+    ["Technical management", "All stages", "Risk, staffing, suppliers, timing governance, platform health and incident leadership."],
+    ["Product ownership", "All stages", "Customer value, roadmap, prioritization, common features, release content and lifecycle."],
+    ["Role-based scenarios", "All stages", "Engineering-manager and product-owner decisions derived from the supplied role expectations."],
+    ["Tough technical questions", "All stages", "Debugging, failure containment, timing, architecture, security and cross-domain integration."],
+    ["Global leadership", "10", "Matrix organization, executive communication, roadmap and sustainable engineering."]
+  ],
+  "knowledgeCheckTitle": "Embedded platform knowledge check + leadership exercise",
+  "architectureExercise": {
+    "title": "20-minute embedded platform and product exercise",
+    "prompt": "Design and defend a common embedded software platform for three product families using MCU control, Embedded Linux, Android/AAOS, connectivity and OTA.",
+    "structure": [
+      "Clarify customer outcomes, product variants and non-functional constraints.",
+      "Partition hardware, firmware, RTOS, Linux, Android, cloud and product responsibilities.",
+      "Define common services, extension points, APIs and compatibility commitments.",
+      "Explain timing, performance, security, update, rollback and field observability.",
+      "Create roadmap increments, team ownership, supplier contracts and release evidence.",
+      "Make one difficult product or schedule trade-off and state who accepts the residual risk."
+    ],
+    "challenges": [
+      "One product requires a 1 ms control loop while another prioritizes rich HMI.",
+      "A supplier BSP becomes unsupported before end of product life.",
+      "An Android customization blocks the next AOSP migration.",
+      "A shared OTA campaign fails on one hardware variant.",
+      "A commercial launch date conflicts with an unresolved severe defect.",
+      "Two regions demand incompatible common-feature priorities."
+    ]
+  },
+  "days": [
+    {"day": 1, "title": "Embedded Systems Foundations", "focus": "Execution models, constraints, MCU/MPU/SoC selection, hardware/software partitioning and lifecycle.", "deliverable": "Create a boundary and constraint map for a connected embedded controller.", "target": "50–70 min"},
+    {"day": 2, "title": "Processor, Memory and Hardware Interfaces", "focus": "CPU modes, memory hierarchy, MMU/MPU, interrupts, DMA, watchdogs and peripheral buses.", "deliverable": "Produce a memory, interrupt and data-movement design for a sensor gateway.", "target": "50–70 min"},
+    {"day": 3, "title": "Firmware, Boot and BSP Architecture", "focus": "Reset flow, startup code, linker control, bootloaders, BSPs, drivers, updates and recovery.", "deliverable": "Draw a verified-boot and rollback flow from reset vector to application.", "target": "50–70 min"},
+    {"day": 4, "title": "RTOS, Concurrency and Timing", "focus": "Scheduling, synchronization, priority inversion, ISR design, timing analysis and multicore effects.", "deliverable": "Build a task, interrupt and resource model with response-time budgets.", "target": "50–70 min"},
+    {"day": 5, "title": "Embedded Linux Platform Engineering", "focus": "Boot chain, kernel/user space, device model, Device Tree, drivers, build systems, tracing and hardening.", "deliverable": "Diagnose a Linux device bring-up and performance problem end to end.", "target": "50–70 min"},
+    {"day": 6, "title": "Android Platform and Android Automotive", "focus": "Android boot, Binder, HAL/AIDL, system services, permissions, SELinux, AAOS and Vehicle HAL.", "deliverable": "Trace a vehicle signal from HAL to an AAOS application and back.", "target": "50–70 min"},
+    {"day": 7, "title": "Connectivity, Infotainment and OTA", "focus": "Networking, multimedia, telematics, cloud integration, secure OTA, rollback and field operations.", "deliverable": "Design an OTA-capable connected infotainment feature with recovery and observability.", "target": "50–70 min"},
+    {"day": 8, "title": "Reusable Platforms and Product Variability", "focus": "Product-line architecture, commonality, variants, APIs, compatibility, suppliers and platform governance.", "deliverable": "Define a common feature platform for three vehicle or machine families.", "target": "50–70 min"},
+    {"day": 9, "title": "Performance, Security, Quality and Release", "focus": "CPU/memory/latency analysis, secure boot, keys, testing, reliability, release readiness and field monitoring.", "deliverable": "Create a release evidence and risk decision package for a shared embedded platform.", "target": "50–70 min"},
+    {"day": 10, "title": "Engineering and Product Leadership", "focus": "Technical strategy, roadmaps, backlog, matrix leadership, architecture governance and product accountability.", "deliverable": "Present a platform strategy and resolve a quality-versus-schedule conflict.", "target": "50–70 min"}
+  ],
+  "tracks": [
+    {"name": "Foundations", "desc": "Execution models, constraints and architecture fundamentals.", "iso": "Embedded systems body of knowledge"},
+    {"name": "Processor & Memory", "desc": "CPU, privilege, memory hierarchy, MMU/MPU, cache and DMA.", "iso": "Processor architecture and SoC documentation"},
+    {"name": "Firmware & BSP", "desc": "Startup, linker control, bootloader, HAL, BSP and drivers.", "iso": "Vendor reference manuals and firmware architecture"},
+    {"name": "RTOS & Timing", "desc": "Scheduling, concurrency, synchronization, ISR and response-time analysis.", "iso": "RTOS specification and real-time analysis"},
+    {"name": "Embedded Linux", "desc": "Kernel, device model, Device Tree, drivers, build systems and tracing.", "iso": "Linux kernel documentation and Yocto/Buildroot manuals"},
+    {"name": "Android Platform", "desc": "Binder, HAL/AIDL, framework services, permissions, SELinux and boot.", "iso": "Android Open Source Project documentation"},
+    {"name": "AAOS & Infotainment", "desc": "Vehicle HAL, car services, HMI, audio, graphics and vehicle integration.", "iso": "Android Automotive OS documentation"},
+    {"name": "Connectivity & OTA", "desc": "Networking, telematics, cloud interfaces, secure update and rollback.", "iso": "Protocol, cybersecurity and update-system documentation"},
+    {"name": "Platform Architecture", "desc": "Reuse, variability, API governance, compatibility and supplier integration.", "iso": "Software product-line and platform architecture"},
+    {"name": "Performance & Reliability", "desc": "Latency, throughput, memory, boot, power, observability and failure recovery.", "iso": "Performance engineering and reliability practices"},
+    {"name": "Security & Quality", "desc": "Secure boot, isolation, keys, vulnerability management and verification.", "iso": "Cybersecurity engineering and secure development lifecycle"},
+    {"name": "Technical Management", "desc": "Planning, staffing, risks, dependencies, metrics and engineering decisions.", "iso": "Engineering-management practices"},
+    {"name": "Product Ownership", "desc": "Vision, roadmap, backlog, customer value, acceptance and release content.", "iso": "Agile product management and systems engineering"},
+    {"name": "Role Scenarios", "desc": "Engineering-manager and product-owner situations derived from role expectations.", "iso": "Employer-neutral role coverage"}
+  ],
+  "quiz": [
+    {"q": "Which property most strongly separates a hard real-time requirement from a high-performance requirement?", "options": ["Average throughput", "Deadline consequence", "Programming language", "Processor frequency"], "answer": 1, "why": "Hard real-time classification depends on the consequence of missing a deadline, not average speed."},
+    {"q": "What does an MMU primarily add compared with an MPU?", "options": ["Virtual-address translation and process-oriented isolation", "Faster interrupts", "Automatic DMA coherency", "Secure boot"], "answer": 0, "why": "An MMU translates addresses and supports virtual-memory isolation; other controls require separate mechanisms."},
+    {"q": "Which design most reduces risk during interrupted OTA activation?", "options": ["One writable image slot", "A/B or transactional activation with trusted metadata", "Disabling watchdogs", "Compressing the image"], "answer": 1, "why": "Transactional or A/B activation preserves a known-good state and explicit recovery path."},
+    {"q": "What is a common cause of Binder service deadlock?", "options": ["Using AIDL", "Holding locks across synchronous IPC", "SELinux enforcing mode", "Running on Linux"], "answer": 1, "why": "Synchronous call chains combined with lock ownership or callbacks can create cycles and thread starvation."},
+    {"q": "Which is the best platform metric?", "options": ["Number of reusable components", "Lines of shared code", "Product lead-time and quality improvement from adoption", "Number of architecture meetings"], "answer": 2, "why": "A platform exists to improve product outcomes; asset counts alone encourage unhelpful abstraction."},
+    {"q": "Why can low average CPU coexist with deadline misses?", "options": ["CPU metrics are always wrong", "Blocking, interrupts and shared-resource contention create tail latency", "RTOS priorities do not matter", "Caches eliminate jitter"], "answer": 1, "why": "Real-time behavior is driven by worst-case interference and blocking, not only average utilization."},
+    {"q": "What is the final purpose of secure boot?", "options": ["Improve boot speed", "Prevent unauthorized software execution", "Find memory leaks", "Provide cloud connectivity"], "answer": 1, "why": "Secure boot authenticates the execution chain; it does not guarantee vulnerability-free software."},
+    {"q": "What should a common-feature product owner optimize?", "options": ["Largest backlog", "One product's immediate request", "Customer value and technical integrity across the product family", "Maximum customization"], "answer": 2, "why": "The role balances shared value, product variation, architecture and lifecycle commitments."},
+    {"q": "What should happen first during a cross-team field incident?", "options": ["Assign blame", "Create a shared incident lead, impact statement and evidence timeline", "Rewrite the platform", "Wait for every team report"], "answer": 1, "why": "A common command structure and evidence model enable containment and coordinated diagnosis."},
+    {"q": "When is an architecture exception healthy?", "options": ["When undocumented", "When time-bounded, owned, risk-assessed and paired with a migration decision", "Whenever a product date is near", "When it bypasses platform review"], "answer": 1, "why": "Bounded exceptions preserve delivery flexibility without silently becoming permanent architecture."}
+  ],
+  "references": [
+    {"name": "Processor and SoC technical reference manuals", "note": "Use the exact processor revision and errata for memory, interrupt, DMA and protection behavior."},
+    {"name": "RTOS and real-time analysis documentation", "note": "Scheduling and synchronization semantics are implementation-specific; validate against the chosen RTOS."},
+    {"name": "Linux kernel and Yocto Project documentation", "note": "Primary references for kernel, device model, Device Tree and embedded distribution lifecycle."},
+    {"name": "Android Open Source Project and Android Automotive documentation", "note": "Primary references for Binder, HAL/AIDL, framework, SELinux, AAOS and Vehicle HAL."},
+    {"name": "Product-line, platform and secure-development practices", "note": "Used for reuse, variability, compatibility, release and technical-leadership learning."}
+  ]
+}

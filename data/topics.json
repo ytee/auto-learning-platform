@@ -40,11 +40,7 @@
         "data/embedded/day3.json",
         "data/embedded/day4.json",
         "data/embedded/day5.json",
-        "data/embedded/day6.json",
-        "data/embedded/day7.json",
-        "data/embedded/day8.json",
-        "data/embedded/day9.json",
-        "data/embedded/day10.json"
+        "data/embedded/day6-10.json"
       ],
       "concepts": "data/embedded/concepts.json"
     }

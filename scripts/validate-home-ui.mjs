@@ -14,6 +14,8 @@ const requiredHooks = [
   'assets/home.css',
   'assets/home.js',
   'id="view-home"',
+  'id="homePrimaryAction"',
+  'id="homeSecondaryAction"',
   'id="continueLearning"',
   'id="learningPathCards"',
   'id="conceptCards"',
@@ -40,6 +42,12 @@ const manifest = readJson('data/topics.json');
 const catalog = readJson('data/home.json');
 const topicIds = new Set(manifest.topics.map(topic => topic.id));
 const conceptIdsByModule = new Map();
+
+for (const field of ['eyebrow', 'title', 'summary', 'primaryAction', 'secondaryAction']) {
+  if (typeof catalog.hero?.[field] !== 'string' || !catalog.hero[field].trim()) {
+    fail(`data/home.json: hero.${field} must be a non-empty string`);
+  }
+}
 
 for (const topic of manifest.topics) {
   if (!topic.concepts) continue;
@@ -88,13 +96,13 @@ for (const sectionName of sectionNames) {
 const homeScript = readText('assets/home.js');
 for (const behavior of [
   'autoNotesNvM:',
-  'Continue learning',
   'data-home-target',
   'showHome',
   'showWorkspace',
   'simpleTopicSelect',
   'simpleStageSelect',
-  'data-simple-area'
+  'data-simple-area',
+  'catalog.hero.primaryAction'
 ]) {
   if (!homeScript.includes(behavior)) fail(`assets/home.js: missing behavior ${behavior}`);
 }

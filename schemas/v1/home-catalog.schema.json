@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/ytee/auto-learning-platform/main/schemas/v1/home-catalog.schema.json",
+  "title": "AutoLeaP Discovery Home Catalog v1",
+  "description": "Curated home-page discovery shelves and their targets into the existing learning workspace.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "hero",
+    "concepts",
+    "caseStudies",
+    "scenarios",
+    "playbooks",
+    "roadmaps"
+  ],
+  "properties": {
+    "schemaVersion": {"type": "integer", "const": 1},
+    "hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "summary", "primaryAction", "secondaryAction"],
+      "properties": {
+        "eyebrow": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "primaryAction": {"type": "string", "minLength": 1},
+        "secondaryAction": {"type": "string", "minLength": 1}
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/card"},
+      "minItems": 3,
+      "maxItems": 6
+    },
+    "caseStudies": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/card"},
+      "minItems": 3,
+      "maxItems": 6
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/card"},
+      "minItems": 3,
+      "maxItems": 6
+    },
+    "playbooks": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/card"},
+      "minItems": 3,
+      "maxItems": 6
+    },
+    "roadmaps": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/card"},
+      "minItems": 3,
+      "maxItems": 6
+    }
+  },
+  "$defs": {
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "summary", "module", "area", "meta"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "module": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "area": {"type": "string", "enum": ["concepts", "exercises"]},
+        "view": {"type": "string", "enum": ["route", "systems", "interfaces", "coverage", "validation"]},
+        "stage": {"type": "integer", "minimum": 1, "maximum": 10},
+        "concept": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "meta": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

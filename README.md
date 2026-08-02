@@ -30,6 +30,22 @@ Record completion and confidence
 | Probes | Tough follow-up questions and boundary cases |
 | Validation | Quizzes and architecture exercises |
 
+## Editorial discovery home
+
+AutoLeaP now separates content discovery from the focused learning workspace.
+
+The home page provides:
+
+- a **Start Here** orientation;
+- browser-state-aware **Continue Learning**;
+- the three current learning paths;
+- curated Concepts, Case Studies, Engineering Scenarios, Playbooks and Roadmaps;
+- direct transitions into the existing concept and exercise engine.
+
+The design uses the structure of clean technical publications as a reference while replacing magazine metadata with learning metadata such as module, stage, difficulty, estimated time and progress. It does not copy external branding, text or images.
+
+Curated cards are version-controlled in `data/home.json` and validated against `schemas/v1/home-catalog.schema.json`. Design and authoring decisions are documented in [`docs/editorial-discovery-home.md`](docs/editorial-discovery-home.md).
+
 ## Simplified interface
 
 AutoLeaP uses progressive disclosure so the complete curriculum does not crowd one page.
@@ -40,6 +56,7 @@ AutoLeaP uses progressive disclosure so the complete curriculum does not crowd o
 - Only one exercise stage is displayed at a time.
 - Search and diagnostic filters remain collapsed until requested.
 - A floating **Go to Top** button is always available.
+- An always-visible AutoLeaP header returns to the discovery home.
 
 Direct module and concept links remain compatible, and browser-retained completion, confidence and bookmarks are preserved.
 
@@ -101,6 +118,8 @@ auto-learning-platform/
 │   ├── concepts.css
 │   ├── navigation.js
 │   ├── navigation.css
+│   ├── home.js
+│   ├── home.css
 │   ├── styles.css
 │   ├── learning-language.js
 │   └── content.js
@@ -108,6 +127,7 @@ auto-learning-platform/
 │   ├── safety/concepts/functional-safety-management/*.md
 │   └── embedded-systems/concepts/*.json
 ├── data/
+│   ├── home.json
 │   ├── topics.json
 │   ├── safety/concepts.json
 │   ├── autosar/
@@ -118,14 +138,24 @@ auto-learning-platform/
 │       ├── day1.json ... day10.json
 │       └── concepts.json
 ├── schemas/v1/
+│   ├── concept-authoring.schema.json
+│   ├── concept.schema.json
+│   ├── concept-collection.schema.json
+│   ├── exercise.schema.json
+│   ├── exercise-batch.schema.json
+│   ├── exercise-module.schema.json
+│   └── home-catalog.schema.json
 ├── scripts/
 │   ├── assemble-embedded-source.mjs
 │   ├── build-concepts.mjs
 │   ├── render-concept-source.mjs
 │   ├── validate-content.mjs
 │   ├── validate-concepts-ui.mjs
+│   ├── validate-home-ui.mjs
 │   └── validate-schema-contracts.mjs
-├── docs/clean-learning-ui.md
+├── docs/
+│   ├── clean-learning-ui.md
+│   └── editorial-discovery-home.md
 ├── package.json
 └── netlify.toml
 ```
@@ -142,6 +172,7 @@ Machine-readable schemas are stored under `schemas/v1/`:
 - `exercise.schema.json`
 - `exercise-batch.schema.json`
 - `exercise-module.schema.json`
+- `home-catalog.schema.json`
 
 Breaking contract changes require a new version directory such as `schemas/v2/`.
 
@@ -164,6 +195,8 @@ The validation pipeline checks:
 - declared tracks and supported difficulty levels;
 - the Embedded module's foundation, difficult technical, management and role-scenario mix;
 - versioned JSON Schema contracts;
+- discovery-home catalog structure and target resolution;
+- home-to-workspace transitions and retained progress integration;
 - simplified navigation, stage focus and Go-to-top UI hooks;
 - learning-oriented user-facing terminology.
 
@@ -177,7 +210,7 @@ autoNotesNvM:autosar
 autoNotesNvM:embedded
 ```
 
-State is not synchronized across devices.
+State is not synchronized across devices. The discovery home reads these same keys to determine the most relevant Continue Learning destination.
 
 ## Run locally
 

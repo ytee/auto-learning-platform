@@ -130,6 +130,10 @@ validateFile(
   path.join(schemaRoot, 'examples', 'exercise-module.example.json'),
   path.join(schemaRoot, 'exercise-module.schema.json')
 );
+validateFile(
+  path.join(root, 'data', 'home.json'),
+  path.join(schemaRoot, 'home-catalog.schema.json')
+);
 
 for (const moduleId of ['safety', 'embedded']) {
   const conceptRuntime = path.join(root, 'data', moduleId, 'concepts.json');
@@ -165,5 +169,6 @@ validateFile(
 );
 
 console.log(
-  `Schema contracts passed: ${schemaFiles.length} schemas, two concept runtimes, two modular exercise modules and sixteen exercise batches.`
+  `Schema contracts passed: ${schemaFiles.length} schemas, discovery home catalog, two concept runtimes, ` +
+  'two modular exercise modules and sixteen exercise batches.'
 );

@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "eyebrow": "START HERE",
+    "title": "Your map to automotive software engineering",
+    "summary": "Build durable system understanding, practise difficult engineering decisions and connect architecture, implementation, safety and product leadership.",
+    "primaryAction": "Continue learning",
+    "secondaryAction": "Explore learning paths"
+  },
+  "concepts": [
+    {
+      "title": "Functional Safety Management",
+      "summary": "Understand the governance, evidence and decision system that keeps the ISO 26262 lifecycle controlled.",
+      "module": "safety",
+      "area": "concepts",
+      "concept": "fsm-overview",
+      "meta": "Foundation · 12 min"
+    },
+    {
+      "title": "Confirmation Measures",
+      "summary": "Distinguish confirmation reviews, audits and assessments and understand the evidence each one evaluates.",
+      "module": "safety",
+      "area": "concepts",
+      "concept": "fsm-confirmation-measures",
+      "meta": "Intermediate · 15 min"
+    },
+    {
+      "title": "RTOS Concurrency and Timing",
+      "summary": "Reason about priorities, blocking, interference and worst-case response rather than average CPU load.",
+      "module": "embedded",
+      "area": "concepts",
+      "concept": "rtos-concurrency-timing",
+      "meta": "Intermediate · 18 min"
+    },
+    {
+      "title": "Android and Android Automotive",
+      "summary": "Trace features through Binder, services, HALs, permissions, SELinux and the Vehicle HAL boundary.",
+      "module": "embedded",
+      "area": "concepts",
+      "concept": "android-aaos-platform",
+      "meta": "Advanced · 20 min"
+    }
+  ],
+  "caseStudies": [
+    {
+      "title": "Brake and ESC safety architecture",
+      "summary": "Connect vehicle behaviour, safety goals, technical safety requirements, monitoring and release evidence.",
+      "module": "safety",
+      "area": "exercises",
+      "view": "route",
+      "stage": 8,
+      "meta": "Functional Safety · Applied"
+    },
+    {
+      "title": "AAOS vehicle signal flow",
+      "summary": "Follow a signal from the vehicle network through the platform and into an application, then analyse authority and failure boundaries.",
+      "module": "embedded",
+      "area": "exercises",
+      "view": "route",
+      "stage": 6,
+      "meta": "Embedded Systems · Architecture"
+    },
+    {
+      "title": "AUTOSAR communication diagnosis",
+      "summary": "Investigate signal, PDU and network-management behaviour across COM, PduR, CanIf and lower layers.",
+      "module": "autosar",
+      "area": "exercises",
+      "view": "route",
+      "stage": 6,
+      "meta": "AUTOSAR · Troubleshooting"
+    }
+  ],
+  "scenarios": [
+    {
+      "title": "Difficult technical scenarios",
+      "summary": "Work through timing, memory, boot, integration, diagnostics and cross-layer failure investigations.",
+      "module": "embedded",
+      "area": "exercises",
+      "view": "route",
+      "stage": 4,
+      "meta": "Advanced and Expert"
+    },
+    {
+      "title": "Technical management decisions",
+      "summary": "Balance architecture integrity, evidence, staffing, suppliers, schedule and release readiness.",
+      "module": "embedded",
+      "area": "exercises",
+      "view": "route",
+      "stage": 9,
+      "meta": "Management and Release"
+    },
+    {
+      "title": "Product Owner scenarios",
+      "summary": "Prioritise common features, customer value, platform reuse, variability and product-roadmap commitments.",
+      "module": "embedded",
+      "area": "exercises",
+      "view": "route",
+      "stage": 10,
+      "meta": "Product and Platform Leadership"
+    },
+    {
+      "title": "Engineering Manager scenarios",
+      "summary": "Lead globally distributed technical teams through dependencies, capability gaps and high-stakes delivery choices.",
+      "module": "embedded",
+      "area": "exercises",
+      "view": "route",
+      "stage": 10,
+      "meta": "Engineering Leadership"
+    }
+  ],
+  "playbooks": [
+    {
+      "title": "Review a functional-safety plan",
+      "summary": "Check lifecycle scope, ownership, milestones, suppliers, confirmation measures and evidence closure.",
+      "module": "safety",
+      "area": "concepts",
+      "concept": "fsm-safety-plan",
+      "meta": "Review playbook"
+    },
+    {
+      "title": "Investigate an embedded timing failure",
+      "summary": "Move from symptom to task, interrupt, blocking, resource and worst-case timing evidence.",
+      "module": "embedded",
+      "area": "exercises",
+      "view": "route",
+      "stage": 4,
+      "meta": "Debugging playbook"
+    },
+    {
+      "title": "Plan an AUTOSAR integration",
+      "summary": "Connect system design, ECU extract, configuration, generation, BSW ownership and integration gates.",
+      "module": "autosar",
+      "area": "exercises",
+      "view": "route",
+      "stage": 4,
+      "meta": "Integration playbook"
+    },
+    {
+      "title": "Make a release decision",
+      "summary": "Evaluate quality, residual risk, evidence gaps, rollback, field observability and accountable approval.",
+      "module": "embedded",
+      "area": "exercises",
+      "view": "validation",
+      "meta": "Release playbook"
+    }
+  ],
+  "roadmaps": [
+    {
+      "title": "Functional Safety roadmap",
+      "summary": "From lifecycle foundations and HARA through system, hardware, software, validation and safety release.",
+      "module": "safety",
+      "area": "exercises",
+      "view": "route",
+      "stage": 1,
+      "meta": "10 stages · 100 checkpoints"
+    },
+    {
+      "title": "AUTOSAR architecture roadmap",
+      "summary": "From VFB and system design through BSW, communication, OS, RTE and integration troubleshooting.",
+      "module": "autosar",
+      "area": "exercises",
+      "view": "route",
+      "stage": 1,
+      "meta": "10 stages · 100 checkpoints"
+    },
+    {
+      "title": "Embedded platform roadmap",
+      "summary": "From execution fundamentals and firmware through RTOS, Linux, AAOS, OTA, reuse and leadership.",
+      "module": "embedded",
+      "area": "exercises",
+      "view": "route",
+      "stage": 1,
+      "meta": "10 stages · 100 checkpoints"
+    }
+  ]
+}

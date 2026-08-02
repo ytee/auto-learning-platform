@@ -13,6 +13,7 @@ schemas/
     ├── exercise.schema.json
     ├── exercise-batch.schema.json
     ├── exercise-module.schema.json
+    ├── home-catalog.schema.json
     └── examples/
 ```
 
@@ -133,6 +134,38 @@ Preserve technical depth and include answer, probes and refs for every checkpoin
 Do not reuse checkpoint IDs.
 ```
 
+## Discovery home catalog
+
+Curated home-page shelves validate against:
+
+```text
+schemas/v1/home-catalog.schema.json
+```
+
+The version-controlled catalog is:
+
+```text
+data/home.json
+```
+
+Each card targets either:
+
+- a concept using `module`, `area: "concepts"` and `concept`; or
+- an exercise surface using `module`, `area: "exercises"`, `view` and an optional route `stage`.
+
+Schema validation checks the document shape. `scripts/validate-home-ui.mjs` also verifies that module IDs, concept IDs, route stages and workspace views resolve against the current repository content.
+
+### Suggested generation instruction
+
+```text
+Generate JSON only.
+The output must validate against schemas/v1/home-catalog.schema.json.
+Use only module IDs from data/topics.json.
+Concept cards must target existing generated concept IDs.
+Route cards must use a stage from 1 through 10.
+Use concise original summaries and learning metadata rather than publication metadata.
+```
+
 ## Validation
 
 Run all schema checks:
@@ -151,8 +184,9 @@ The schema validator has no external package dependency. It validates:
 
 - all versioned schema files are valid JSON and declare Draft 2020-12;
 - all checked-in examples;
-- the generated Functional Safety concept collection;
-- the AUTOSAR exercise-module metadata;
-- all ten current AUTOSAR exercise batches.
+- the discovery home catalog;
+- generated Functional Safety and Embedded concept collections;
+- AUTOSAR and Embedded exercise-module metadata;
+- current modular exercise batches.
 
-Repository-specific semantic checks—duplicate IDs, linked-question existence, stage counts and learning-language rules—remain in the existing content validators.
+Repository-specific semantic checks—duplicate IDs, linked-question existence, stage counts, home target resolution and learning-language rules—remain in the content and UI validators.

@@ -102,7 +102,8 @@ for (const behavior of [
   'simpleTopicSelect',
   'simpleStageSelect',
   'data-simple-area',
-  'catalog.hero.primaryAction'
+  'homePrimaryAction',
+  'hero.primaryAction'
 ]) {
   if (!homeScript.includes(behavior)) fail(`assets/home.js: missing behavior ${behavior}`);
 }

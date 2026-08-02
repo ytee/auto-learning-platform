@@ -3,13 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A modular automotive engineering learning platform for Functional Safety, AUTOSAR and future vehicle topics.">
+  <meta name="description" content="A modular automotive engineering learning platform for Functional Safety, AUTOSAR, embedded systems and future vehicle topics.">
   <title>AutoLeaP | Automotive Learning Platform</title>
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/concepts.css">
   <link rel="stylesheet" href="assets/navigation.css">
+  <link rel="stylesheet" href="assets/home.css">
 </head>
 <body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <button type="button" class="site-brand" data-open-home aria-label="Open AutoLeaP home">
+      <span class="site-brand-mark">AL</span>
+      <span>AutoLeaP</span>
+    </button>
+    <nav class="site-navigation" aria-label="AutoLeaP discovery navigation">
+      <button type="button" data-open-home>Home</button>
+      <button type="button" data-home-section="learning-paths">Learning Paths</button>
+      <button type="button" data-home-section="concept-library">Concepts</button>
+      <button type="button" data-home-section="engineering-scenarios">Scenarios</button>
+      <button type="button" data-home-section="roadmaps">Roadmaps</button>
+    </nav>
+  </div>
+</header>
+
 <header class="hero">
   <div class="hero-inner">
     <div>
@@ -63,6 +80,91 @@
 </div>
 
 <main>
+  <section id="view-home" class="view home-view" aria-labelledby="homeTitle">
+    <section class="home-hero">
+      <div>
+        <p id="homeEyebrow" class="home-kicker">START HERE</p>
+        <h1 id="homeTitle">Your map to automotive software engineering</h1>
+        <p id="homeSummary" class="home-hero-summary"></p>
+        <div class="home-hero-actions">
+          <button id="homePrimaryAction" type="button" class="home-primary-action">Continue learning</button>
+          <button id="homeSecondaryAction" type="button" class="home-secondary-action">Explore learning paths</button>
+        </div>
+        <p id="homeStatus" class="home-status" role="status" aria-live="polite"></p>
+      </div>
+      <aside class="home-hero-map" aria-label="AutoLeaP learning flow">
+        <span class="map-label">AUTOMOTIVE LEARNING SYSTEM</span>
+        <div class="map-flow">
+          <div class="map-step"><strong>Learn the concept</strong><span>01</span></div>
+          <div class="map-step"><strong>Practise the system</strong><span>02</span></div>
+          <div class="map-step"><strong>Decide in context</strong><span>03</span></div>
+          <div class="map-step"><strong>Review and retain</strong><span>04</span></div>
+        </div>
+        <div class="map-metrics">
+          <div><strong>3</strong><span>learning paths</span></div>
+          <div><strong>300</strong><span>technical checkpoints</span></div>
+          <div><strong>33+</strong><span>published concepts</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="continue-learning" class="home-section">
+      <header class="home-section-head">
+        <div><p class="home-kicker">YOUR LEARNING STATE</p><h2>Continue learning</h2></div>
+        <p>Resume from retained browser progress or begin with the recommended foundation.</p>
+      </header>
+      <div id="continueLearning"></div>
+    </section>
+
+    <section id="learning-paths" class="home-section">
+      <header class="home-section-head">
+        <div><p class="home-kicker">LEARNING PATHS</p><h2>Choose a technical domain</h2></div>
+        <p>Each path combines concepts, difficult technical practice, system scenarios and architecture-level review.</p>
+      </header>
+      <div id="learningPathCards" class="learning-path-grid"></div>
+    </section>
+
+    <section id="concept-library" class="home-section">
+      <header class="home-section-head">
+        <div><p class="home-kicker">CONCEPTS</p><h2>Build the mental model</h2></div>
+        <p>Start with a small set of high-value concepts, then move directly into linked practice.</p>
+      </header>
+      <div id="conceptCards" class="discovery-grid"></div>
+    </section>
+
+    <section id="case-studies" class="home-section">
+      <header class="home-section-head">
+        <div><p class="home-kicker">CASE STUDIES</p><h2>Trace real system behaviour</h2></div>
+        <p>Connect requirements, architecture, interfaces, failure modes and evidence across an end-to-end technical flow.</p>
+      </header>
+      <div id="caseStudyCards" class="discovery-grid"></div>
+    </section>
+
+    <section id="engineering-scenarios" class="home-section">
+      <header class="home-section-head">
+        <div><p class="home-kicker">ENGINEERING SCENARIOS</p><h2>Make difficult decisions</h2></div>
+        <p>Move beyond recall into troubleshooting, technical management, product ownership and engineering leadership.</p>
+      </header>
+      <div id="scenarioCards" class="discovery-grid"></div>
+    </section>
+
+    <section id="playbooks" class="home-section">
+      <header class="home-section-head">
+        <div><p class="home-kicker">PLAYBOOKS</p><h2>Apply a repeatable method</h2></div>
+        <p>Use structured approaches for reviews, debugging, integration planning and release decisions.</p>
+      </header>
+      <div id="playbookCards" class="discovery-grid"></div>
+    </section>
+
+    <section id="roadmaps" class="home-section">
+      <header class="home-section-head">
+        <div><p class="home-kicker">ROADMAPS</p><h2>See the complete route</h2></div>
+        <p>Use the ten-stage routes to move from foundations to architecture, integration and accountable technical leadership.</p>
+      </header>
+      <div id="roadmapCards" class="discovery-grid"></div>
+    </section>
+  </section>
+
   <section id="view-modules" class="view active">
     <header class="section-head">
       <p class="eyebrow">VEHICLE LEARNING GARAGE</p>
@@ -132,11 +234,12 @@
     </article>
   </section>
 </main>
-<footer>Completion, confidence ratings and flags are stored in this browser as retained module state.</footer>
+<footer id="workspaceFooter">Completion, confidence ratings and flags are stored in this browser as retained module state.</footer>
 <script src="assets/content.js"></script>
 <script src="assets/learning-language.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/concepts.js"></script>
 <script src="assets/navigation.js"></script>
+<script src="assets/home.js"></script>
 </body>
 </html>

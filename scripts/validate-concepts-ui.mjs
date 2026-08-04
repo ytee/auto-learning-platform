@@ -110,9 +110,63 @@ for (const behavior of [
 }
 
 const domainLabelsScript = readText('assets/domain-labels.js');
-for (const behavior of ['AEROSPACE EXAMPLE', 'AUTOMOTIVE EXAMPLE', 'aerospace']) {
+for (const behavior of [
+  'AEROSPACE EXAMPLE',
+  'AUTOMOTIVE EXAMPLE',
+  'aerospace',
+  'setTextIfChanged',
+  'scheduleDomainLabels'
+]) {
   if (!domainLabelsScript.includes(behavior)) fail(`assets/domain-labels.js: missing behavior ${behavior}`);
 }
+
+function simulateDomainLabelObserver(moduleId) {
+  let observerCallback = null;
+  let writes = 0;
+  const moduleSelect = { value: moduleId, addEventListener() {} };
+  const detail = { querySelectorAll() { return []; } };
+  const exampleLabel = {
+    current: '',
+    get textContent() { return this.current; },
+    set textContent(value) {
+      this.current = value;
+      writes += 1;
+      if (writes > 5) throw new Error('recursive DOM writes detected');
+      observerCallback?.([]);
+    }
+  };
+
+  const sandbox = {
+    document: {
+      querySelector(selector) {
+        if (selector === '#moduleSelect') return moduleSelect;
+        if (selector === '#conceptDetail') return detail;
+        if (selector === '#conceptDetail .concept-example .eyebrow') return exampleLabel;
+        return null;
+      }
+    },
+    location: { hash: '' },
+    URLSearchParams,
+    requestAnimationFrame(callback) { callback(); },
+    MutationObserver: class {
+      constructor(callback) { observerCallback = callback; }
+      observe() {}
+    }
+  };
+
+  try {
+    vm.runInNewContext(domainLabelsScript, sandbox, { filename: 'assets/domain-labels.js' });
+  } catch (error) {
+    fail(`assets/domain-labels.js: observer is not stable for ${moduleId}: ${error.message}`);
+  }
+
+  if (writes !== 1) {
+    fail(`assets/domain-labels.js: expected one idempotent label write for ${moduleId}; observed ${writes}`);
+  }
+}
+
+simulateDomainLabelObserver('safety');
+simulateDomainLabelObserver('aerospace');
 
 const navigationScript = readText('assets/navigation.js');
 for (const behavior of [
@@ -144,6 +198,6 @@ for (const style of [
 
 console.log(
   `Learning UI validation passed: ${safetyModel.concepts.length} Safety concepts, ` +
-  `${embeddedModel.concepts.length} Embedded concepts, ${aerospaceModel.concepts.length} Aerospace concepts ` +
-  'and simplified progressive navigation.'
+  `${embeddedModel.concepts.length} Embedded concepts, ${aerospaceModel.concepts.length} Aerospace concepts, ` +
+  'stable domain-label observers and simplified progressive navigation.'
 );

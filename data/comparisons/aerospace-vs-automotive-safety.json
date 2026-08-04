@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "id": "aerospace-vs-automotive-safety",
+  "title": "Aerospace and Automotive Safety: Where They Agree and Differ",
+  "eyebrow": "CROSS-DOMAIN COMPARISON",
+  "summary": "Both domains use disciplined, evidence-based engineering to reduce safety risk. They differ mainly in risk classification, approval context, operational assumptions, standards structure and the assurance burden placed on software and certification evidence.",
+  "caution": "This comparison uses approximate conceptual mappings for learning. ASIL and DAL/software levels are not interchangeable, HARA is not the same as FHA, and an ISO 26262 safety argument is not a DO-178C certification package.",
+  "verifiedOn": "2026-08-04",
+  "sharedPrinciples": [
+    {
+      "title": "Safety starts above software",
+      "summary": "Both domains begin from vehicle, aircraft or system behaviour and allocate requirements downward. Software is one implementation element within a wider safety argument."
+    },
+    {
+      "title": "Risk determines rigour",
+      "summary": "The required depth of development and verification depends on the consequence of failure, although each domain classifies that risk differently."
+    },
+    {
+      "title": "Requirements and traceability matter",
+      "summary": "High-level intent must be decomposed, reviewed, traced and verified through architecture, design, implementation and test evidence."
+    },
+    {
+      "title": "Architecture is part of the assurance argument",
+      "summary": "Independence, partitioning, redundancy, monitoring, fault containment and interface control are used to prevent one fault or error from defeating the intended safety behaviour."
+    },
+    {
+      "title": "Verification must be planned and objective",
+      "summary": "Reviews, analysis, testing, coverage and independence are planned lifecycle activities rather than late quality checks."
+    },
+    {
+      "title": "Configuration and change control are essential",
+      "summary": "A claim is meaningful only when the exact requirements, code, models, tools, tests, reports and approved baselines can be identified and reproduced."
+    },
+    {
+      "title": "Evidence is part of the product",
+      "summary": "Plans, analyses, traceability, review records, test results, coverage data, problem reports and approval records are deliverables, not administrative leftovers."
+    },
+    {
+      "title": "Changes require impact analysis",
+      "summary": "A small code change can reopen requirements, architecture, safety analysis, verification, configuration and approval activities in both domains."
+    }
+  ],
+  "differences": [
+    {
+      "dimension": "Approval context",
+      "automotive": "ISO 26262 is commonly applied through OEM, supplier, assessor and organisational safety processes to demonstrate that the applicable functional-safety lifecycle has been fulfilled.",
+      "aerospace": "DO-178C software evidence supports compliance within an aircraft, engine, equipment or TSO certification programme reviewed through certification-authority or authorised-representative processes.",
+      "practicalEffect": "Aerospace teams prepare objective certification evidence and authority-facing review readiness from the beginning; automotive teams prepare lifecycle evidence for product, organisational and assessment decisions."
+    },
+    {
+      "dimension": "Risk classification",
+      "automotive": "HARA assigns QM or ASIL A-D using severity, exposure and controllability for hazardous events in road-vehicle operating situations.",
+      "aerospace": "Aircraft and system failure conditions are classified by aircraft-level effects; development-assurance and software levels are allocated through system development and safety-assessment processes.",
+      "practicalEffect": "ASIL D is not equivalent to DAL A. The inputs, assumptions, objectives and approval consequences differ even when both indicate high criticality."
+    },
+    {
+      "dimension": "Human controllability",
+      "automotive": "Driver or road-user controllability is an explicit HARA input and can influence the assigned ASIL.",
+      "aerospace": "Crew response, annunciation, workload, flight phase and operational procedures are considered within aircraft-level failure-condition assessment rather than an automotive S-E-C formula.",
+      "practicalEffect": "A mitigation that relies on a trained crew, dispatch limitation or operating procedure cannot be translated directly into a driver-controllability argument."
+    },
+    {
+      "dimension": "Standards architecture",
+      "automotive": "ISO 26262 is an integrated series covering management, concept, system, hardware, software, production, supporting processes and safety analyses.",
+      "aerospace": "Aircraft and system development, safety assessment, software, airborne electronic hardware, tool qualification, model-based development and related assurance topics are distributed across coordinated standards such as ARP4754B, ARP4761A, DO-178C, DO-254, DO-330 and DO-331.",
+      "practicalEffect": "Aerospace assurance boundaries must be coordinated across several standards and approval plans; automotive teams work within one broader functional-safety series plus complementary standards."
+    },
+    {
+      "dimension": "Software assurance emphasis",
+      "automotive": "ISO 26262-6 places software inside the complete E/E functional-safety lifecycle and connects it to safety requirements, architecture, hardware metrics, safety mechanisms and vehicle-level validation.",
+      "aerospace": "DO-178C is specifically focused on airborne software lifecycle objectives and certification evidence, with supplements for model-based development, object-oriented technology, formal methods and tools.",
+      "practicalEffect": "Aerospace typically demands more explicit objective-by-objective software evidence; automotive places comparatively greater emphasis on the complete E/E safety architecture and vehicle-level risk reduction."
+    },
+    {
+      "dimension": "Structural coverage",
+      "automotive": "Coverage methods are selected as part of software verification according to ASIL, method recommendations and project strategy.",
+      "aerospace": "Structural coverage analysis is closely tied to software level and is used to identify missing requirements-based tests, unintended functionality, deactivated code and source-to-object concerns where applicable.",
+      "practicalEffect": "A statement such as '100% coverage' is insufficient by itself in either domain and does not establish DO-178C compliance without the required requirements-based and structural analysis context."
+    },
+    {
+      "dimension": "Hardware and system safety",
+      "automotive": "ISO 26262 explicitly addresses systematic failures and random hardware failures, including hardware architectural metrics, probabilistic evaluation, dependent failures and safety analyses.",
+      "aerospace": "Aircraft and system safety assessments use qualitative and quantitative analyses under ARP4761A, while software development assurance primarily addresses systematic development errors rather than assigning software a random failure rate like a physical component.",
+      "practicalEffect": "The software assurance case must be connected to system architecture and hardware safety, but the analytical treatment and allocation mechanisms differ."
+    },
+    {
+      "dimension": "Product and operational context",
+      "automotive": "Very high production volume, platform reuse, cost pressure, supplier chains, vehicle variants, uncontrolled road environments and OTA updates strongly influence the safety process.",
+      "aerospace": "Lower production volume, long certified service life, tightly controlled configurations, trained crews, dispatch rules, maintenance organisations and formal modification approval shape the assurance process.",
+      "practicalEffect": "Automotive emphasises scalable lifecycle execution and variant management; aerospace emphasises controlled approved baselines, certification records and modification discipline."
+    }
+  ],
+  "mappings": [
+    {
+      "automotive": "Item definition",
+      "aerospace": "Aircraft/system function definition and operational context",
+      "note": "Both establish scope and boundaries, but the artefacts, hierarchy and certification context differ."
+    },
+    {
+      "automotive": "Hazard analysis and risk assessment (HARA)",
+      "aerospace": "Aircraft/System Functional Hazard Assessment (FHA)",
+      "note": "Both identify hazardous outcomes, but HARA uses severity, exposure and controllability while FHA classifies failure conditions by aircraft-level effect."
+    },
+    {
+      "automotive": "Hazardous event",
+      "aerospace": "Failure condition in an operational context",
+      "note": "The concepts are useful analogies, not interchangeable terms."
+    },
+    {
+      "automotive": "Safety goal",
+      "aerospace": "Aircraft/system safety objective or allocated safety requirement",
+      "note": "Both express required safety outcomes, but allocation and approval flows differ."
+    },
+    {
+      "automotive": "ASIL",
+      "aerospace": "FDAL/IDAL and software level",
+      "note": "No one-to-one conversion exists. Do not equate ASIL D with DAL A."
+    },
+    {
+      "automotive": "Functional and technical safety concepts",
+      "aerospace": "Functional architecture, implementation architecture and allocated safety requirements",
+      "note": "Both connect safety intent to architecture, but the lifecycle artefacts and terminology are different."
+    },
+    {
+      "automotive": "Safety mechanisms and freedom from interference",
+      "aerospace": "Monitoring, redundancy, partitioning, independence and fault containment",
+      "note": "The engineering patterns may look similar while their assurance objectives and credit differ."
+    },
+    {
+      "automotive": "Confirmation reviews, audits and assessments",
+      "aerospace": "Independent lifecycle reviews, quality assurance, certification reviews and compliance findings",
+      "note": "Both use independent evidence review, but authority involvement and approval consequences are different."
+    },
+    {
+      "automotive": "Safety release",
+      "aerospace": "Approved or certified software/system baseline",
+      "note": "Both require controlled evidence and residual-risk decisions; aerospace approval is embedded in the certification context."
+    }
+  ],
+  "engineControlExample": {
+    "automotive": {
+      "title": "Automotive engine controller",
+      "hazardContext": "A representative hazardous event is unintended engine torque at a defined vehicle speed and road-operating situation.",
+      "assessment": "The team evaluates severity, exposure and driver controllability, assigns an ASIL, creates safety goals and allocates system, hardware and software safety requirements.",
+      "assuranceFocus": "The implementation may use torque arbitration, monitoring, diagnostics and degraded operation, supported by ISO 26262 lifecycle evidence and vehicle-level validation."
+    },
+    "aerospace": {
+      "title": "Aircraft engine controller",
+      "hazardContext": "Representative failure conditions include loss of commanded thrust, erroneous high thrust, uncommanded shutdown, misleading indication or combined propulsion effects at aircraft level.",
+      "assessment": "Aircraft and engine safety processes assess the operational effects, crew response, remaining capability and architecture, then allocate development-assurance and software levels.",
+      "assuranceFocus": "The software fulfils the applicable DO-178C lifecycle objectives and produces certification evidence for the controlled approved configuration, including requirements, design, code, target verification, coverage and problem closure."
+    },
+    "lesson": "The control algorithms, models, target processors and buses may look technically familiar. The risk argument, lifecycle allocation, authority interaction and approval evidence are not the same."
+  },
+  "transfer": {
+    "shared": [
+      "Requirements decomposition, bidirectional traceability and rationale for derived behaviour",
+      "Architecture reviews focused on independence, fault containment and interface assumptions",
+      "Requirements-based verification, target testing, coverage analysis and problem reporting",
+      "Configuration management, reproducible baselines and disciplined change impact analysis",
+      "Root-cause analysis, corrective action, quality assurance and evidence-based release decisions",
+      "Technical leadership, review discipline, mentoring and programme risk visibility"
+    ],
+    "automotiveSpecific": [
+      "HARA using severity, exposure and controllability",
+      "ASIL decomposition, coexistence and dependent-failure analysis under ISO 26262",
+      "Random-hardware failure metrics and probabilistic hardware evaluation",
+      "Functional and technical safety concepts, confirmation measures and safety release",
+      "Series-production variability, supplier integration and vehicle-level operational context"
+    ],
+    "aerospaceSpecific": [
+      "Aircraft/system FHA, PSSA/SSA and development-assurance allocation",
+      "DO-178C objective compliance, certification plans and software lifecycle data",
+      "Structural coverage closure with source-to-object considerations where applicable",
+      "SOI and certification-authority readiness, findings and approved baseline control",
+      "Operational assumptions involving crew, dispatch, maintenance and continued airworthiness"
+    ]
+  },
+  "learningRoute": {
+    "sharedFoundation": [
+      "Requirements and traceability",
+      "Architecture and decomposition",
+      "Verification and validation",
+      "Configuration and change control",
+      "Problem reporting, root cause and corrective action",
+      "Tool, model and generated-code assurance",
+      "Technical leadership and evidence-based decisions"
+    ],
+    "automotiveBranch": [
+      "Item definition, HARA and ASIL",
+      "Safety goals and functional safety concept",
+      "System, hardware and software development under ISO 26262",
+      "Hardware metrics, safety mechanisms and dependent failures",
+      "Confirmation measures and safety release"
+    ],
+    "aerospaceBranch": [
+      "Aircraft/system development and safety assessment",
+      "Development-assurance and software-level allocation",
+      "DO-178C lifecycle objectives and derived requirements",
+      "Structural coverage, certification data and tool/model supplements",
+      "SOI readiness, findings and approved configuration baselines"
+    ]
+  },
+  "references": [
+    {
+      "title": "AC 20-115D — Airborne Software Development Assurance Using ED-12( ) and DO-178( )",
+      "organization": "Federal Aviation Administration",
+      "url": "https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/20-115D",
+      "note": "Active FAA advisory circular recognising DO-178C and related supplements as an acceptable means of compliance for airborne software."
+    },
+    {
+      "title": "ARP4754B — Guidelines for Development of Civil Aircraft and Systems",
+      "organization": "SAE International",
+      "url": "https://saemobilus.sae.org/standards/arp4754b-guidelines-development-civil-aircraft-systems",
+      "note": "Aircraft and system development guidance that refers detailed software assurance to DO-178C and safety assessment to ARP4761A."
+    },
+    {
+      "title": "ARP4761A — Guidelines for Conducting the Safety Assessment Process",
+      "organization": "SAE International",
+      "url": "https://saemobilus.sae.org/standards/arp4761a-guidelines-conducting-safety-assessment-process-civil-aircraft-systems-equipment",
+      "note": "Civil-aircraft, system and equipment safety-assessment guidance, including failure-condition and architecture assessment processes."
+    },
+    {
+      "title": "ISO 26262 road vehicles functional safety package",
+      "organization": "International Organization for Standardization",
+      "url": "https://www.iso.org/publication/PUB200262.html",
+      "note": "Official overview of the ISO 26262:2018 series covering management, concept, system, hardware, software, production, supporting processes and safety analyses."
+    },
+    {
+      "title": "ISO 26262-3:2018 — Concept phase",
+      "organization": "International Organization for Standardization",
+      "url": "https://www.iso.org/standard/68385.html",
+      "note": "Official ISO overview of item definition, hazard analysis and risk assessment, and the functional safety concept."
+    },
+    {
+      "title": "ISO 26262-8:2018 — Supporting processes",
+      "organization": "International Organization for Standardization",
+      "url": "https://www.iso.org/standard/68390.html",
+      "note": "Official ISO overview of distributed development, requirements, configuration, change, verification, documentation and tool-confidence processes."
+    }
+  ]
+}

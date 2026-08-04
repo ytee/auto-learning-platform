@@ -1,0 +1,245 @@
+.comparison-view {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 5rem;
+}
+
+.comparison-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.comparison-toolbar button {
+  width: auto;
+}
+
+.comparison-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr);
+  gap: 2rem;
+  align-items: stretch;
+  padding: 2.25rem;
+  border: 1px solid var(--line, #d8dee8);
+  border-radius: 24px;
+  background: #fff;
+}
+
+.comparison-hero h1 {
+  max-width: 18ch;
+  margin: .45rem 0 1rem;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.02;
+}
+
+.comparison-summary {
+  max-width: 72ch;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.comparison-caution {
+  align-self: stretch;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: #f7f4ed;
+  border: 1px solid #e5dcc8;
+}
+
+.comparison-caution strong,
+.comparison-caution span {
+  display: block;
+}
+
+.comparison-caution span {
+  margin-top: .75rem;
+  line-height: 1.65;
+}
+
+.comparison-section {
+  margin-top: 3rem;
+}
+
+.comparison-section-head {
+  max-width: 760px;
+  margin-bottom: 1.25rem;
+}
+
+.comparison-section-head h2 {
+  margin: .35rem 0 .5rem;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.comparison-card {
+  padding: 1.35rem;
+  border: 1px solid var(--line, #d8dee8);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.comparison-card h3 {
+  margin: 0 0 .65rem;
+}
+
+.comparison-card p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.comparison-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line, #d8dee8);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.comparison-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--line, #d8dee8);
+  vertical-align: top;
+  text-align: left;
+  line-height: 1.55;
+}
+
+.comparison-table th {
+  background: #f6f8fb;
+  font-size: .86rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.mapping-note {
+  font-weight: 600;
+}
+
+.domain-example-grid,
+.transfer-grid,
+.learning-route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.domain-example,
+.transfer-column,
+.learning-route-column {
+  padding: 1.5rem;
+  border: 1px solid var(--line, #d8dee8);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.domain-example h3,
+.transfer-column h3,
+.learning-route-column h3 {
+  margin-top: 0;
+}
+
+.domain-example dl {
+  margin: 0;
+}
+
+.domain-example dt {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.domain-example dd {
+  margin: .35rem 0 0;
+  line-height: 1.65;
+}
+
+.comparison-lesson {
+  margin-top: 1rem;
+  padding: 1.35rem;
+  border-left: 4px solid #2f5f74;
+  border-radius: 12px;
+  background: #eef5f7;
+  line-height: 1.65;
+}
+
+.transfer-column ul,
+.learning-route-column ul,
+.comparison-references {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.transfer-column li,
+.learning-route-column li,
+.comparison-references li {
+  margin: .65rem 0;
+  line-height: 1.55;
+}
+
+.transfer-shared,
+.learning-route-shared {
+  grid-column: 1 / -1;
+}
+
+.reference-card {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line, #d8dee8);
+}
+
+.reference-card:last-child {
+  border-bottom: 0;
+}
+
+.reference-card a {
+  font-weight: 700;
+}
+
+.reference-card p {
+  margin: .35rem 0 0;
+  line-height: 1.55;
+}
+
+.comparison-verified {
+  margin-top: 1.5rem;
+  color: #596474;
+  font-size: .92rem;
+}
+
+@media (max-width: 780px) {
+  .comparison-hero,
+  .comparison-grid,
+  .domain-example-grid,
+  .transfer-grid,
+  .learning-route-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transfer-shared,
+  .learning-route-shared {
+    grid-column: auto;
+  }
+
+  .comparison-hero {
+    padding: 1.4rem;
+  }
+
+  .comparison-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

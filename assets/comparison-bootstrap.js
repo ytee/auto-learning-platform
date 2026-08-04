@@ -42,7 +42,8 @@
     return rendererPromise;
   }
 
-  function openComparison() {
+  function openComparison(event) {
+    event?.stopPropagation();
     ensureComparisonShell();
     loadRenderer()
       .then(api => api.show(comparisonId))

@@ -34,10 +34,19 @@
     });
   }
 
+  function loadComparisonExtension() {
+    if (document.querySelector('script[src="assets/comparison-bootstrap.js"]')) return;
+    const script = document.createElement('script');
+    script.src = 'assets/comparison-bootstrap.js';
+    script.async = true;
+    document.body.append(script);
+  }
+
   const detail = $('#conceptDetail');
   if (detail) {
     new MutationObserver(scheduleDomainLabels).observe(detail, { childList: true, subtree: true });
   }
   $('#moduleSelect')?.addEventListener('change', scheduleDomainLabels);
   applyDomainLabels();
+  loadComparisonExtension();
 })();

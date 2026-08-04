@@ -134,6 +134,10 @@ validateFile(
   path.join(root, 'data', 'home.json'),
   path.join(schemaRoot, 'home-catalog.schema.json')
 );
+validateFile(
+  path.join(root, 'data', 'comparisons', 'aerospace-vs-automotive-safety.json'),
+  path.join(schemaRoot, 'safety-domain-comparison.schema.json')
+);
 
 for (const moduleId of ['safety', 'embedded', 'aerospace']) {
   const conceptRuntime = path.join(root, 'data', moduleId, 'concepts.json');
@@ -173,6 +177,6 @@ validateFile(
 );
 
 console.log(
-  `Schema contracts passed: ${schemaFiles.length} schemas, discovery home catalog, three concept runtimes, ` +
-  'three modular exercise modules and seventeen exercise batches.'
+  `Schema contracts passed: ${schemaFiles.length} schemas, discovery home catalog, safety-domain comparison, ` +
+  'three concept runtimes, three modular exercise modules and seventeen exercise batches.'
 );

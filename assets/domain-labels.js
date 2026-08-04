@@ -35,6 +35,7 @@
   }
 
   function loadComparisonExtension() {
+    if (!document.createElement || !document.body?.append) return;
     if (document.querySelector('script[src="assets/comparison-bootstrap.js"]')) return;
     const script = document.createElement('script');
     script.src = 'assets/comparison-bootstrap.js';

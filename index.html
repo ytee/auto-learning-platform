@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A modular automotive engineering learning platform for Functional Safety, AUTOSAR, embedded systems and future vehicle topics.">
+  <meta name="description" content="A modular safety-critical embedded software learning platform for Functional Safety, AUTOSAR, embedded systems and aerospace software assurance.">
   <title>AutoLeaP | Automotive Learning Platform</title>
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/concepts.css">
@@ -30,10 +30,10 @@
 <header class="hero">
   <div class="hero-inner">
     <div>
-      <p id="eyebrow" class="eyebrow light">AUTOMOTIVE LEARNING COCKPIT</p>
+      <p id="eyebrow" class="eyebrow light">SAFETY-CRITICAL SOFTWARE LEARNING</p>
       <h1>Automotive Learning Platform (AutoLeaP)</h1>
-      <p><strong id="moduleTitle">Select an automotive learning module</strong></p>
-      <p id="moduleSubtitle">Choose a vehicle subsystem to begin learning.</p>
+      <p><strong id="moduleTitle">Select a technical learning module</strong></p>
+      <p id="moduleSubtitle">Choose an engineering domain to begin learning.</p>
     </div>
     <div class="hero-actions instrument-cluster">
       <select id="moduleSelect" class="internal-module-select" aria-hidden="true" tabindex="-1"></select>
@@ -75,7 +75,7 @@
 </nav>
 
 <div class="legacy-view-triggers" aria-hidden="true">
-  <button class="tab" data-view="modules" tabindex="-1">Garage</button>
+  <button class="tab" data-view="modules" tabindex="-1">Library</button>
   <button class="tab" data-view="concepts" tabindex="-1">Concepts</button>
 </div>
 
@@ -84,7 +84,7 @@
     <section class="home-hero">
       <div>
         <p id="homeEyebrow" class="home-kicker">START HERE</p>
-        <h1 id="homeTitle">Your map to automotive software engineering</h1>
+        <h1 id="homeTitle">Your map to automotive and safety-critical embedded software engineering</h1>
         <p id="homeSummary" class="home-hero-summary"></p>
         <div class="home-hero-actions">
           <button id="homePrimaryAction" type="button" class="home-primary-action">Continue learning</button>
@@ -93,7 +93,7 @@
         <p id="homeStatus" class="home-status" role="status" aria-live="polite"></p>
       </div>
       <aside class="home-hero-map" aria-label="AutoLeaP learning flow">
-        <span class="map-label">AUTOMOTIVE LEARNING SYSTEM</span>
+        <span class="map-label">SAFETY-CRITICAL SOFTWARE LEARNING SYSTEM</span>
         <div class="map-flow">
           <div class="map-step"><strong>Learn the concept</strong><span>01</span></div>
           <div class="map-step"><strong>Practise the system</strong><span>02</span></div>
@@ -101,9 +101,9 @@
           <div class="map-step"><strong>Review and retain</strong><span>04</span></div>
         </div>
         <div class="map-metrics">
-          <div><strong>3</strong><span>learning paths</span></div>
-          <div><strong>300</strong><span>technical checkpoints</span></div>
-          <div><strong>33+</strong><span>published concepts</span></div>
+          <div><strong>4</strong><span>learning paths</span></div>
+          <div><strong>400</strong><span>technical checkpoints</span></div>
+          <div><strong>43+</strong><span>published concepts</span></div>
         </div>
       </aside>
     </section>
@@ -143,7 +143,7 @@
     <section id="engineering-scenarios" class="home-section">
       <header class="home-section-head">
         <div><p class="home-kicker">ENGINEERING SCENARIOS</p><h2>Make difficult decisions</h2></div>
-        <p>Move beyond recall into troubleshooting, technical management, product ownership and engineering leadership.</p>
+        <p>Move beyond recall into troubleshooting, technical management, product ownership, certification and engineering leadership.</p>
       </header>
       <div id="scenarioCards" class="discovery-grid"></div>
     </section>
@@ -151,7 +151,7 @@
     <section id="playbooks" class="home-section">
       <header class="home-section-head">
         <div><p class="home-kicker">PLAYBOOKS</p><h2>Apply a repeatable method</h2></div>
-        <p>Use structured approaches for reviews, debugging, integration planning and release decisions.</p>
+        <p>Use structured approaches for reviews, debugging, integration planning, coverage closure and release decisions.</p>
       </header>
       <div id="playbookCards" class="discovery-grid"></div>
     </section>
@@ -159,7 +159,7 @@
     <section id="roadmaps" class="home-section">
       <header class="home-section-head">
         <div><p class="home-kicker">ROADMAPS</p><h2>See the complete route</h2></div>
-        <p>Use the ten-stage routes to move from foundations to architecture, integration and accountable technical leadership.</p>
+        <p>Use the ten-stage routes to move from foundations to architecture, integration, assurance and accountable technical leadership.</p>
       </header>
       <div id="roadmapCards" class="discovery-grid"></div>
     </section>
@@ -167,9 +167,9 @@
 
   <section id="view-modules" class="view active">
     <header class="section-head">
-      <p class="eyebrow">VEHICLE LEARNING GARAGE</p>
-      <h2>Select an automotive learning module</h2>
-      <p>Each subsystem is an independent technical learning module running on the same platform.</p>
+      <p class="eyebrow">TECHNICAL LEARNING LIBRARY</p>
+      <h2>Select a learning module</h2>
+      <p>Each domain is an independent technical learning module running on the same platform.</p>
     </header>
     <div id="moduleCards" class="topic-grid"></div>
   </section>
@@ -198,20 +198,20 @@
   <section id="view-route" class="view">
     <div class="intro-grid">
       <article class="panel accent"><p class="eyebrow">LEARNING MODE</p><h2 id="learningMethodTitle"></h2><ol id="learningMethodSteps"></ol></article>
-      <article class="panel"><p class="eyebrow">REFERENCE VEHICLE</p><h2 id="caseTitle"></h2><p id="caseDescription"></p><p id="notice" class="notice"></p></article>
+      <article class="panel"><p class="eyebrow">REFERENCE SYSTEM</p><h2 id="caseTitle"></h2><p id="caseDescription"></p><p id="notice" class="notice"></p></article>
     </div>
     <div id="routeNav" class="day-nav"></div>
     <div id="routeStages"></div>
   </section>
 
   <section id="view-systems" class="view">
-    <header class="section-head"><p class="eyebrow">SYSTEM-WISE REVISION</p><h2>Study by automotive system</h2></header>
+    <header class="section-head"><p class="eyebrow">SYSTEM-WISE REVISION</p><h2>Study by engineering system</h2></header>
     <div id="systemCards" class="track-grid"></div>
     <div id="systemCheckpointResults"></div>
   </section>
 
   <section id="view-interfaces" class="view">
-    <header class="section-head"><p class="eyebrow">VEHICLE INTERFACES</p><h2 id="interfaceMapTitle"></h2></header>
+    <header class="section-head"><p class="eyebrow">SYSTEM INTERFACES</p><h2 id="interfaceMapTitle"></h2></header>
     <div class="table-wrap"><table><thead><tr id="interfaceMapHeaders"></tr></thead><tbody id="interfaceMapBody"></tbody></table></div>
   </section>
 
@@ -239,6 +239,7 @@
 <script src="assets/learning-language.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/concepts.js"></script>
+<script src="assets/domain-labels.js"></script>
 <script src="assets/navigation.js"></script>
 <script src="assets/home.js"></script>
 </body>

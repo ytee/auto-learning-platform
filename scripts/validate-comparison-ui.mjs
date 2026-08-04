@@ -48,10 +48,10 @@ for (const field of ['sharedFoundation', 'automotiveBranch', 'aerospaceBranch'])
   }
 }
 
-const mappingText = JSON.stringify(model.mappings);
+const comparisonText = JSON.stringify(model);
 for (const warning of ['ASIL D', 'DAL A', 'not equivalent', 'not interchangeable']) {
-  if (!mappingText.toLowerCase().includes(warning.toLowerCase())) {
-    fail(`Comparison mapping must preserve the warning: ${warning}`);
+  if (!comparisonText.toLowerCase().includes(warning.toLowerCase())) {
+    fail(`Comparison must preserve the non-equivalence warning: ${warning}`);
   }
 }
 

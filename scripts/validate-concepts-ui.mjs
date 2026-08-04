@@ -8,6 +8,7 @@ const readJson = file => JSON.parse(readText(file));
 const fail = message => { throw new Error(message); };
 
 new vm.Script(readText('assets/concepts.js'), { filename: 'assets/concepts.js' });
+new vm.Script(readText('assets/domain-labels.js'), { filename: 'assets/domain-labels.js' });
 new vm.Script(readText('assets/navigation.js'), { filename: 'assets/navigation.js' });
 
 const indexHtml = readText('index.html');
@@ -22,6 +23,7 @@ for (const hook of [
   'id="systemCards"',
   'id="knowledgeCheck"',
   'assets/concepts.js',
+  'assets/domain-labels.js',
   'assets/navigation.js'
 ]) {
   if (!indexHtml.includes(hook)) fail(`index.html: missing learning UI hook ${hook}`);
@@ -29,16 +31,20 @@ for (const hook of [
 
 const appScriptPosition = indexHtml.indexOf('assets/app.js');
 const conceptsScriptPosition = indexHtml.indexOf('assets/concepts.js');
+const domainLabelsPosition = indexHtml.indexOf('assets/domain-labels.js');
 const navigationScriptPosition = indexHtml.indexOf('assets/navigation.js');
 if (appScriptPosition === -1 || conceptsScriptPosition < appScriptPosition) {
   fail('index.html: concepts.js must load after app.js');
 }
-if (navigationScriptPosition < conceptsScriptPosition) {
-  fail('index.html: navigation.js must load after concepts.js');
+if (domainLabelsPosition < conceptsScriptPosition) {
+  fail('index.html: domain-labels.js must load after concepts.js');
+}
+if (navigationScriptPosition < domainLabelsPosition) {
+  fail('index.html: navigation.js must load after domain-labels.js');
 }
 
 const manifest = readJson('data/topics.json');
-const expectedModules = new Set(['safety', 'autosar', 'embedded']);
+const expectedModules = new Set(['safety', 'autosar', 'embedded', 'aerospace']);
 for (const moduleId of expectedModules) {
   if (!manifest.topics?.some(module => module.id === moduleId)) {
     fail(`data/topics.json: missing ${moduleId} module`);
@@ -88,11 +94,9 @@ const safetyModel = validateConceptCollection('safety', 23, new Map([
   [1, 5], [2, 2], [3, 2], [4, 2], [5, 2],
   [6, 2], [7, 2], [8, 2], [9, 2], [10, 2]
 ]));
-const embeddedModel = validateConceptCollection(
-  'embedded',
-  10,
-  new Map(Array.from({ length: 10 }, (_, index) => [index + 1, 1]))
-);
+const oneConceptPerStage = new Map(Array.from({ length: 10 }, (_, index) => [index + 1, 1]));
+const embeddedModel = validateConceptCollection('embedded', 10, oneConceptPerStage);
+const aerospaceModel = validateConceptCollection('aerospace', 10, oneConceptPerStage);
 
 const conceptsScript = readText('assets/concepts.js');
 for (const behavior of [
@@ -103,6 +107,11 @@ for (const behavior of [
   'data-clear-concept-practice'
 ]) {
   if (!conceptsScript.includes(behavior)) fail(`assets/concepts.js: missing behavior ${behavior}`);
+}
+
+const domainLabelsScript = readText('assets/domain-labels.js');
+for (const behavior of ['AEROSPACE EXAMPLE', 'AUTOMOTIVE EXAMPLE', 'aerospace']) {
+  if (!domainLabelsScript.includes(behavior)) fail(`assets/domain-labels.js: missing behavior ${behavior}`);
 }
 
 const navigationScript = readText('assets/navigation.js');
@@ -135,5 +144,6 @@ for (const style of [
 
 console.log(
   `Learning UI validation passed: ${safetyModel.concepts.length} Safety concepts, ` +
-  `${embeddedModel.concepts.length} Embedded concepts and simplified progressive navigation.`
+  `${embeddedModel.concepts.length} Embedded concepts, ${aerospaceModel.concepts.length} Aerospace concepts ` +
+  'and simplified progressive navigation.'
 );

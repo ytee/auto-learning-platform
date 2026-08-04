@@ -47,6 +47,17 @@
         "data/embedded/day10.json"
       ],
       "concepts": "data/embedded/concepts.json"
+    },
+    {
+      "id": "aerospace",
+      "title": "Safety-Critical Aerospace Software",
+      "subtitle": "DO-178B/C × Embedded Control × Verification × Certification Leadership",
+      "description": "Lifecycle assurance, requirements, model-based development, target implementation, HIL, structural coverage, certification readiness and technical leadership for airborne embedded software.",
+      "content": "data/aerospace/meta.json",
+      "questionFiles": [
+        "data/aerospace/exercises.json"
+      ],
+      "concepts": "data/aerospace/concepts.json"
     }
   ]
 }

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "hero": {
     "eyebrow": "START HERE",
-    "title": "Your map to automotive software engineering",
-    "summary": "Build durable system understanding, practise difficult engineering decisions and connect architecture, implementation, safety and product leadership.",
+    "title": "Your map to automotive and safety-critical embedded software engineering",
+    "summary": "Build durable system understanding, practise difficult engineering decisions and connect architecture, implementation, assurance, verification, certification and technical leadership.",
     "primaryAction": "Continue learning",
     "secondaryAction": "Explore learning paths"
   },
@@ -39,6 +39,22 @@
       "area": "concepts",
       "concept": "android-aaos-platform",
       "meta": "Advanced · 20 min"
+    },
+    {
+      "title": "Airborne Software Lifecycle Assurance",
+      "summary": "Connect planning, independence, evidence, programme tracking and certification readiness across the airborne software lifecycle.",
+      "module": "aerospace",
+      "area": "concepts",
+      "concept": "aero-lifecycle-assurance-planning",
+      "meta": "Foundation · 18 min"
+    },
+    {
+      "title": "Model-Based Aerospace Software",
+      "summary": "Define the assurance boundary for Simulink, Stateflow, generated code, tool use and target verification.",
+      "module": "aerospace",
+      "area": "concepts",
+      "concept": "aero-model-based-development",
+      "meta": "Advanced · 22 min"
     }
   ],
   "caseStudies": [
@@ -68,6 +84,15 @@
       "view": "route",
       "stage": 6,
       "meta": "AUTOSAR · Troubleshooting"
+    },
+    {
+      "title": "Airborne engine-control evidence chain",
+      "summary": "Trace a safety-critical control change through requirements, Stateflow design, generated code, target/HIL verification, coverage and certification data.",
+      "module": "aerospace",
+      "area": "exercises",
+      "view": "route",
+      "stage": 7,
+      "meta": "Aerospace · Assurance case"
     }
   ],
   "scenarios": [
@@ -106,6 +131,15 @@
       "view": "route",
       "stage": 10,
       "meta": "Engineering Leadership"
+    },
+    {
+      "title": "Certification, audit and aerospace lead scenarios",
+      "summary": "Resolve derived-requirement gaps, failed tests, structural coverage findings, SOI readiness issues and high-pressure programme decisions.",
+      "module": "aerospace",
+      "area": "exercises",
+      "view": "route",
+      "stage": 10,
+      "meta": "Certification and Technical Leadership"
     }
   ],
   "playbooks": [
@@ -142,6 +176,14 @@
       "area": "exercises",
       "view": "validation",
       "meta": "Release playbook"
+    },
+    {
+      "title": "Close a structural-coverage gap",
+      "summary": "Classify uncovered code, connect it to approved intent, select additional verification or correction, and preserve problem and certification evidence.",
+      "module": "aerospace",
+      "area": "concepts",
+      "concept": "aero-coverage-problem-closure",
+      "meta": "Aerospace verification playbook"
     }
   ],
   "roadmaps": [
@@ -167,6 +209,15 @@
       "title": "Embedded platform roadmap",
       "summary": "From execution fundamentals and firmware through RTOS, Linux, AAOS, OTA, reuse and leadership.",
       "module": "embedded",
+      "area": "exercises",
+      "view": "route",
+      "stage": 1,
+      "meta": "10 stages · 100 checkpoints"
+    },
+    {
+      "title": "Safety-Critical Aerospace Software roadmap",
+      "summary": "From DO-178 lifecycle planning and requirements through model-based development, target verification, structural coverage, SOI and technical leadership.",
+      "module": "aerospace",
       "area": "exercises",
       "view": "route",
       "stage": 1,

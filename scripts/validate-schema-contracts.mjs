@@ -135,7 +135,7 @@ validateFile(
   path.join(schemaRoot, 'home-catalog.schema.json')
 );
 
-for (const moduleId of ['safety', 'embedded']) {
+for (const moduleId of ['safety', 'embedded', 'aerospace']) {
   const conceptRuntime = path.join(root, 'data', moduleId, 'concepts.json');
   if (!fs.existsSync(conceptRuntime)) {
     fail(`Generated data/${moduleId}/concepts.json is missing; run npm run build:concepts`);
@@ -143,7 +143,7 @@ for (const moduleId of ['safety', 'embedded']) {
   validateFile(conceptRuntime, path.join(schemaRoot, 'concept-collection.schema.json'));
 }
 
-for (const moduleId of ['autosar', 'embedded']) {
+for (const moduleId of ['autosar', 'embedded', 'aerospace']) {
   validateFile(
     path.join(root, 'data', moduleId, 'meta.json'),
     path.join(schemaRoot, 'exercise-module.schema.json')
@@ -167,8 +167,12 @@ validateFile(
   path.join(root, 'data', 'embedded', 'day6-10.json'),
   path.join(schemaRoot, 'exercise-batch.schema.json')
 );
+validateFile(
+  path.join(root, 'data', 'aerospace', 'exercises.json'),
+  path.join(schemaRoot, 'exercise-batch.schema.json')
+);
 
 console.log(
-  `Schema contracts passed: ${schemaFiles.length} schemas, discovery home catalog, two concept runtimes, ` +
-  'two modular exercise modules and sixteen exercise batches.'
+  `Schema contracts passed: ${schemaFiles.length} schemas, discovery home catalog, three concept runtimes, ` +
+  'three modular exercise modules and seventeen exercise batches.'
 );

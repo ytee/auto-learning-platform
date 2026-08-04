@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/ytee/auto-learning-platform/main/schemas/v1/concept.schema.json",
   "title": "AutoLeaP Runtime Concept v1",
-  "description": "Normalized concept record generated from canonical Markdown.",
+  "description": "Normalized concept record generated from canonical source content.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -42,7 +42,7 @@
       "properties": {
         "family": {"type": "string", "minLength": 1},
         "edition": {"type": "string", "minLength": 1},
-        "parts": {"type": "array", "items": {"type": "string", "pattern": "^[0-9]+$"}, "minItems": 1, "uniqueItems": true},
+        "parts": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
         "clauseRefs": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}
       }
     },

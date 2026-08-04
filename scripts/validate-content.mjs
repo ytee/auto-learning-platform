@@ -82,6 +82,51 @@ function validateEmbeddedMix(questions) {
   console.log('embedded: strong foundation, tough technical and role/management mix passed');
 }
 
+function validateAerospaceMix(questions) {
+  const requiredKinds = new Set([
+    'Technical management',
+    'Certification scenario',
+    'Quality audit scenario',
+    'Engineering lead scenario'
+  ]);
+
+  for (let stage = 1; stage <= 10; stage += 1) {
+    const items = questions.filter(question => question.day === stage);
+    const foundationCount = items.filter(question => question.tier === 'Foundation').length;
+    const toughCount = items.filter(question => ['Advanced', 'Expert'].includes(question.tier)).length;
+    if (foundationCount < 2) fail(`aerospace: stage ${stage} needs at least two foundation exercises`);
+    if (toughCount < 7) fail(`aerospace: stage ${stage} needs at least seven advanced/expert exercises`);
+
+    for (const kind of requiredKinds) {
+      if (!items.some(question => question.kind === kind)) {
+        fail(`aerospace: stage ${stage} is missing ${kind}`);
+      }
+    }
+  }
+
+  const roleTrackCount = questions.filter(question => question.tracks.includes('Role Scenarios')).length;
+  if (roleTrackCount < 40) fail('aerospace: expected at least 40 role-based exercises');
+
+  const requiredCoverage = [
+    'DO-178 Assurance',
+    'Requirements & Traceability',
+    'Model-Based Development',
+    'Embedded C/C++ & Target',
+    'Avionics Communications',
+    'Engine Control & Diagnostics',
+    'Verification, HIL & Coverage',
+    'Configuration, Quality & Certification',
+    'Program Metrics & CAPA',
+    'Technical Leadership'
+  ];
+  const representedTracks = new Set(questions.flatMap(question => question.tracks));
+  for (const track of requiredCoverage) {
+    if (!representedTracks.has(track)) fail(`aerospace: required coverage track is missing: ${track}`);
+  }
+
+  console.log('aerospace: foundation, difficult technical, certification, audit and leadership mix passed');
+}
+
 function validateLearningModel(topicId, content) {
   const normalized = learningLanguage.normalize(content);
   const findings = learningLanguage.findProhibited(normalized);
@@ -174,8 +219,8 @@ for (const requiredScript of [
 }
 
 const manifest = readJson('data/topics.json');
-if (!Array.isArray(manifest.topics) || manifest.topics.length < 3) {
-  fail('Vehicle learning manifest must contain Safety, AUTOSAR and Embedded Systems');
+if (!Array.isArray(manifest.topics) || manifest.topics.length < 4) {
+  fail('Learning manifest must contain Functional Safety, AUTOSAR, Embedded Systems and Aerospace Software');
 }
 validateLearningModel('manifest', manifest);
 
@@ -200,6 +245,7 @@ for (const topic of manifest.topics) {
 
   validateQuestions(topic.id, content.days, content.tracks, questions);
   if (topic.id === 'embedded') validateEmbeddedMix(questions);
+  if (topic.id === 'aerospace') validateAerospaceMix(questions);
 
   if (!topic.legacyGlobal) {
     const declaredTracks = new Set(content.tracks.map(track => track.name));
@@ -219,7 +265,8 @@ for (const topic of manifest.topics) {
   validateLearningModel(topic.id, { ...content, questions });
 
   if (topic.concepts) {
-    const expectedCount = topic.id === 'safety' ? 23 : topic.id === 'embedded' ? 10 : null;
+    const expectedCounts = { safety: 23, embedded: 10, aerospace: 10 };
+    const expectedCount = expectedCounts[topic.id];
     if (!expectedCount) fail(`${topic.id}: concept count expectation is not configured`);
     validateConceptRuntime(
       topic.concepts,
@@ -230,8 +277,8 @@ for (const topic of manifest.topics) {
   }
 }
 
-for (const requiredTopic of ['safety', 'autosar', 'embedded']) {
+for (const requiredTopic of ['safety', 'autosar', 'embedded', 'aerospace']) {
   if (!topicIds.has(requiredTopic)) fail(`Manifest is missing ${requiredTopic}`);
 }
 
-console.log('Vehicle learning content validation passed.');
+console.log('AutoLeaP content validation passed.');

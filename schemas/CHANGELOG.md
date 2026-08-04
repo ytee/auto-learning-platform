@@ -1,5 +1,21 @@
 # Content schema changelog
 
+## 1.2.0 — 2026-08-04
+
+Generalized concept standard metadata for non-ISO learning domains while retaining v1 compatibility.
+
+Changed:
+
+- `standard.parts` now accepts any non-empty string rather than numeric ISO part identifiers only;
+- numeric values such as `"2"` and `"8"` remain valid;
+- named divisions such as `"Lifecycle planning"`, `"Model-based development"` and `"Structural coverage"` are now supported.
+
+Compatibility notes:
+
+- all existing Functional Safety and Embedded concept records remain valid without modification;
+- no required fields were added, removed or renamed;
+- the field continues to represent the standard parts, supplements, sections or learning divisions relevant to a concept.
+
 ## 1.1.0 — 2026-08-02
 
 Added a compatible discovery-home contract under the existing v1 compatibility boundary.

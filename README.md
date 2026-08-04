@@ -1,12 +1,13 @@
 # Automotive Learning Platform (AutoLeaP)
 
-**AutoLeaP** is a modular static web application for learning automotive software, vehicle platforms and embedded engineering.
+**AutoLeaP** is a modular static web application for learning automotive software, embedded platforms and adjacent safety-critical software engineering domains.
 
 Current modules:
 
 - **Functional Safety** — 23 Functional Safety Management concepts and 100 practice checkpoints.
 - **AUTOSAR Classic Platform** — 100 architecture, configuration, stack and integration exercises.
 - **Embedded Systems & Firmware** — 10 core concepts and 100 exercises spanning firmware, RTOS, Linux, Android/AAOS, platform architecture and technical leadership.
+- **Safety-Critical Aerospace Software** — 10 concepts and 100 exercises spanning DO-178B/C assurance, requirements, model-based development, target implementation, HIL, structural coverage, certification and technical leadership.
 
 ## Learning model
 
@@ -32,13 +33,13 @@ Record completion and confidence
 
 ## Editorial discovery home
 
-AutoLeaP now separates content discovery from the focused learning workspace.
+AutoLeaP separates content discovery from the focused learning workspace.
 
 The home page provides:
 
 - a **Start Here** orientation;
 - browser-state-aware **Continue Learning**;
-- the three current learning paths;
+- the four current learning paths;
 - curated Concepts, Case Studies, Engineering Scenarios, Playbooks and Roadmaps;
 - direct transitions into the existing concept and exercise engine.
 
@@ -61,6 +62,45 @@ AutoLeaP uses progressive disclosure so the complete curriculum does not crowd o
 Direct module and concept links remain compatible, and browser-retained completion, confidence and bookmarks are preserved.
 
 The design rationale and comparison with Bengali Sadhana are documented in [`docs/clean-learning-ui.md`](docs/clean-learning-ui.md).
+
+## Safety-Critical Aerospace Software
+
+The aerospace path is employer-neutral. The supplied role description is used only as a coverage input for airborne software assurance, embedded control development, verification, certification support, programme execution and technical leadership.
+
+### Ten-stage route
+
+1. Lifecycle assurance and planning
+2. Requirements, derived behaviour and traceability
+3. Software architecture and low-level design
+4. Model-based development and code generation
+5. Embedded implementation and target debugging
+6. Avionics communications, engine control and diagnostics
+7. Verification strategy and HIL
+8. Structural coverage and problem closure
+9. Configuration, quality, certification and SOI readiness
+10. Programme metrics, CAPA and technical leadership
+
+Each stage contains exactly ten exercises, including:
+
+- at least two strong foundation questions;
+- at least seven advanced or expert technical questions;
+- one technical-management scenario;
+- one certification scenario;
+- one software-quality audit scenario;
+- one engineering-lead scenario.
+
+The complete module provides:
+
+- 10 concept records, one per stage;
+- 100 exercises;
+- direct concept-to-exercise mappings;
+- MATLAB/Simulink/Stateflow and generated-code scenarios;
+- C/C++/assembly, target-processor and Python-tool questions;
+- ARINC 429, CAN, Ethernet, engine-control and diagnostic scenarios;
+- HIL, structural-coverage, configuration, certification and SOI exercises;
+- root-cause, CAPA, programme metrics, mentoring and global-team leadership decisions.
+
+AutoLeaP provides original learning explanations and reference pointers. Licensed DO-178C/DO-178B, DO-331, DO-330 and programme-approved plans remain authoritative.
 
 ## Embedded Systems & Firmware
 
@@ -99,7 +139,7 @@ Each concept provides:
 - learning objectives;
 - original explanation;
 - inputs, activities, outputs and evidence;
-- an automotive example;
+- an engineering example;
 - common mistakes;
 - related concepts;
 - linked practice checkpoints;
@@ -116,6 +156,7 @@ auto-learning-platform/
 │   ├── app.js
 │   ├── concepts.js
 │   ├── concepts.css
+│   ├── domain-labels.js
 │   ├── navigation.js
 │   ├── navigation.css
 │   ├── home.js
@@ -125,7 +166,8 @@ auto-learning-platform/
 │   └── content.js
 ├── content-source/
 │   ├── safety/concepts/functional-safety-management/*.md
-│   └── embedded-systems/concepts/*.json
+│   ├── embedded-systems/concepts/*.json
+│   └── aerospace/concepts.json
 ├── data/
 │   ├── home.json
 │   ├── topics.json
@@ -133,9 +175,13 @@ auto-learning-platform/
 │   ├── autosar/
 │   │   ├── meta.json
 │   │   └── day1.json ... day10.json
-│   └── embedded/
+│   ├── embedded/
+│   │   ├── meta.json
+│   │   ├── day1.json ... day10.json
+│   │   └── concepts.json
+│   └── aerospace/
 │       ├── meta.json
-│       ├── day1.json ... day10.json
+│       ├── exercises.json
 │       └── concepts.json
 ├── schemas/v1/
 │   ├── concept-authoring.schema.json
@@ -148,6 +194,7 @@ auto-learning-platform/
 ├── scripts/
 │   ├── assemble-embedded-source.mjs
 │   ├── build-concepts.mjs
+│   ├── build-aerospace-concepts.mjs
 │   ├── render-concept-source.mjs
 │   ├── validate-content.mjs
 │   ├── validate-concepts-ui.mjs
@@ -160,7 +207,7 @@ auto-learning-platform/
 └── netlify.toml
 ```
 
-Functional Safety concepts use Markdown as their canonical source. Embedded Systems concepts use the versioned JSON concept records under `content-source/embedded-systems/concepts/`. The build assembles both forms into deterministic runtime JSON for the site.
+Functional Safety concepts use Markdown as their canonical source. Embedded Systems concepts use versioned JSON concept records under `content-source/embedded-systems/concepts/`. Aerospace concepts use the version-controlled collection at `content-source/aerospace/concepts.json`. Builds assemble these forms into deterministic runtime JSON for the site.
 
 ## Versioned generation contracts
 
@@ -194,10 +241,12 @@ The validation pipeline checks:
 - exactly ten exercises per stage;
 - declared tracks and supported difficulty levels;
 - the Embedded module's foundation, difficult technical, management and role-scenario mix;
+- the Aerospace module's foundation, difficult technical, certification, audit and leadership mix;
 - versioned JSON Schema contracts;
 - discovery-home catalog structure and target resolution;
 - home-to-workspace transitions and retained progress integration;
 - simplified navigation, stage focus and Go-to-top UI hooks;
+- domain-appropriate concept labels;
 - learning-oriented user-facing terminology.
 
 ## Retained browser state
@@ -208,6 +257,7 @@ Progress is stored per module in the current browser profile:
 autoNotesNvM:safety
 autoNotesNvM:autosar
 autoNotesNvM:embedded
+autoNotesNvM:aerospace
 ```
 
 State is not synchronized across devices. The discovery home reads these same keys to determine the most relevant Continue Learning destination.
@@ -231,8 +281,9 @@ The static site is deployed through Netlify. Both GitHub Actions and Netlify run
 
 - Teach strong foundations before difficult applications.
 - Preserve technical depth and system context.
-- Include debugging, architecture, technical-management and product decisions.
+- Include debugging, architecture, technical-management, certification and product decisions.
 - Keep role-derived coverage employer-neutral.
-- Connect software behavior to hardware, timing, interfaces, security, quality and release evidence.
+- Connect software behavior to hardware, timing, interfaces, safety, quality, assurance and release evidence.
 - Use original explanations and project-appropriate reference pointers.
-- Verify release-specific implementation details against authoritative platform and vendor documentation.
+- Do not reproduce proprietary or normative standards content.
+- Verify release-specific implementation details against authoritative platform, programme and vendor documentation.

@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "module": "aerospace",
+  "collection": {
+    "id": "aerospace-safety-critical-software",
+    "title": "Safety-Critical Aerospace Software"
+  },
+  "standardBaseline": {
+    "family": "DO-178B/C airborne software assurance",
+    "edition": "DO-178C with DO-178B legacy context",
+    "status": "learning-baseline"
+  },
+  "generatedFrom": "content-source/aerospace/concepts.json",
+  "concepts": [
+    {
+      "id": "aero-lifecycle-assurance-planning",
+      "title": "Lifecycle Assurance and Planning",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 1,
+      "standard": {
+        "family": "DO-178B/C airborne software assurance",
+        "edition": "DO-178C with DO-178B legacy context",
+        "parts": ["Lifecycle planning", "Assurance strategy"],
+        "clauseRefs": ["Software planning process", "Lifecycle processes and data", "Independence and review strategy"]
+      },
+      "difficulty": "Foundation",
+      "stage": 1,
+      "systems": ["DO-178 Assurance", "Planning & Lifecycle", "Technical Leadership"],
+      "summary": "Airborne software assurance begins by defining an executable lifecycle: what will be developed, which standards govern it, who performs and independently reviews each activity, what evidence is produced, and how readiness is measured.",
+      "learningObjectives": [
+        "Explain why planning is part of the assurance argument rather than an administrative preface.",
+        "Connect software level, lifecycle activities, independence and evidence expectations.",
+        "Build estimates and milestones around reviewable lifecycle data instead of code completion alone."
+      ],
+      "explanation": [
+        "Airborne software assurance begins by defining an executable lifecycle: what will be developed, which standards govern it, who performs and independently reviews each activity, what evidence is produced, and how readiness is measured. A plan is credible only when responsibilities, inputs, outputs, entry criteria, exit criteria and configuration baselines can be applied by the actual team.",
+        "Software level affects the rigor and independence expected from lifecycle activities, but the level is not a substitute for engineering judgment. The programme must still explain how requirements, design, code, verification, configuration management, quality assurance and certification data form one controlled evidence chain. Supplier boundaries, reused assets, generated code and qualified or unqualified tools must be visible in that chain.",
+        "Estimation and tracking should therefore measure more than implementation progress. Mature tracking includes requirements maturity, review closure, verification procedure readiness, target and HIL availability, coverage status, problem-report ageing, baseline reproducibility, audit findings and certification-data completeness. These indicators expose assurance debt before it becomes a late programme crisis."
+      ],
+      "whyItMatters": [
+        "A weak plan allows gaps in independence, evidence ownership or baseline control to remain hidden until formal reviews.",
+        "Lifecycle-based tracking gives programme management an honest view of completion and residual risk."
+      ],
+      "inputs": ["System safety and software-level context", "Programme schedule and product scope", "Organizational processes and standards", "Supplier and tool strategy", "Certification and customer review expectations"],
+      "activities": ["Define lifecycle processes and data", "Allocate roles and independence", "Plan reviews, audits and baselines", "Estimate verification and certification work", "Establish objective progress and readiness measures"],
+      "outputs": ["Approved software plans and standards", "Lifecycle responsibility map", "Evidence and review schedule", "Resource and tool plan", "Readiness dashboard and escalation thresholds"],
+      "automotiveExample": "An engine-control change appears small in source-code size, but affects a generated control model, target timing, HIL procedures, structural coverage and certification records. The software lead plans these linked activities and baselines before approving the implementation schedule.",
+      "commonMistakes": ["Treating code complete as software complete", "Planning independence without naming competent reviewers", "Ignoring supplier or tool evidence until integration", "Tracking document count instead of lifecycle maturity", "Allowing schedule pressure to silently remove planned assurance activities"],
+      "relatedConcepts": ["aero-requirements-traceability", "aero-configuration-certification", "aero-program-leadership-capa"],
+      "linkedQuestions": ["A01-01", "A01-02", "A01-03", "A01-04", "A01-05", "A01-06", "A01-07", "A01-08", "A01-09", "A01-10"],
+      "references": ["RTCA DO-178C / EUROCAE ED-12C", "Applicable programme software plans and standards"],
+      "source": "content-source/aerospace/concepts.json#aero-lifecycle-assurance-planning"
+    },
+    {
+      "id": "aero-requirements-traceability",
+      "title": "Requirements, Derived Behaviour and Traceability",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 2,
+      "standard": {
+        "family": "DO-178B/C airborne software assurance",
+        "edition": "DO-178C with DO-178B legacy context",
+        "parts": ["Requirements development", "Traceability"],
+        "clauseRefs": ["High-level requirements", "Derived requirements", "Requirements verification and trace data"]
+      },
+      "difficulty": "Intermediate",
+      "stage": 2,
+      "systems": ["Requirements & Traceability", "DO-178 Assurance", "Engine Control & Diagnostics"],
+      "summary": "Software requirements translate system intent into precise, verifiable behaviour while exposing every assumption, boundary condition and derived requirement that the software introduces.",
+      "learningObjectives": ["Decompose system and customer needs into verifiable software requirements.", "Identify and control derived requirements and design assumptions.", "Use bidirectional traceability to reason about completeness, change impact and verification coverage."],
+      "explanation": [
+        "Software requirements translate system intent into precise, verifiable behaviour while exposing every assumption, boundary condition and derived requirement that the software introduces. A requirement must state externally observable behaviour, conditions, timing, accuracy, modes, invalid-data handling and failure response with enough precision for design and verification.",
+        "Derived requirements arise when software decisions introduce behaviour or constraints not directly stated by the parent system requirement. Examples include initialization sequences, data-age limits, scheduling assumptions, range checks or degraded-mode transitions. Derived requirements are not defects, but they must be identified, justified, traced and communicated to the appropriate system and safety stakeholders.",
+        "Traceability is an engineering control, not a hyperlink exercise. Forward traceability helps show that every approved requirement is implemented and verified. Reverse traceability helps show that every design element, code path and test has authorized intent. During change analysis, trace data identifies affected requirements, interfaces, models, code, tests, coverage results and certification records."
+      ],
+      "whyItMatters": ["Ambiguous or hidden behaviour propagates into design, code and tests, where it becomes expensive and difficult to justify.", "Traceability is the backbone of completeness, impact analysis and defensible problem closure."],
+      "inputs": ["System and customer requirements", "System safety assumptions", "Interface-control data", "Control-law and diagnostic intent", "Operational modes and environmental constraints"],
+      "activities": ["Decompose and clarify behaviour", "Identify derived requirements", "Define acceptance and robustness criteria", "Conduct requirements reviews", "Maintain bidirectional lifecycle traceability"],
+      "outputs": ["Reviewed high-level software requirements", "Derived-requirement register and rationale", "Requirements trace matrix", "Review findings and closure evidence", "Verification-case allocation"],
+      "automotiveExample": "A system requirement commands fuel scheduling from corrected shaft speed. Software design reveals that stale sensor data must force a controlled fallback after a bounded interval. The fallback threshold and transition are captured as derived requirements, communicated to system safety, traced to Stateflow logic and verified on HIL.",
+      "commonMistakes": ["Writing requirements as implementation statements", "Hiding derived behaviour in models or code", "Using vague words such as quickly or normally", "Tracing only parent-to-child and not child-to-parent", "Closing review findings without updating affected verification cases"],
+      "relatedConcepts": ["aero-lifecycle-assurance-planning", "aero-architecture-low-level-design", "aero-verification-hil", "aero-coverage-problem-closure"],
+      "linkedQuestions": ["A02-01", "A02-02", "A02-03", "A02-04", "A02-05", "A02-06", "A02-07", "A02-08", "A02-09", "A02-10"],
+      "references": ["RTCA DO-178C / EUROCAE ED-12C", "System requirements, safety analyses and interface-control documents"],
+      "source": "content-source/aerospace/concepts.json#aero-requirements-traceability"
+    },
+    {
+      "id": "aero-architecture-low-level-design",
+      "title": "Software Architecture and Low-Level Design",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 3,
+      "standard": {
+        "family": "DO-178B/C airborne software assurance",
+        "edition": "DO-178C with DO-178B legacy context",
+        "parts": ["Software architecture", "Low-level design"],
+        "clauseRefs": ["Design development", "Data and control coupling", "Design verification"]
+      },
+      "difficulty": "Intermediate",
+      "stage": 3,
+      "systems": ["Architecture & Design", "Embedded C/C++ & Target", "Engine Control & Diagnostics"],
+      "summary": "Software architecture allocates requirements to components, execution contexts and interfaces, while low-level design defines the detailed behaviour needed for implementation and verification.",
+      "learningObjectives": ["Partition control, monitoring, communication and diagnostic responsibilities.", "Define interfaces, states, data ownership, timing and resource constraints.", "Review design for completeness, verifiability, coupling and unintended behaviour."],
+      "explanation": [
+        "Software architecture allocates requirements to components, execution contexts and interfaces, while low-level design defines the detailed behaviour needed for implementation and verification. Architecture should make control authority, monitoring, data ownership, initialization, error containment, scheduling and external interfaces understandable before code obscures those relationships.",
+        "Low-level design describes algorithms, state transitions, ranges, precision, order of operations, resource use and failure handling. For model-based components the model may carry part of the detailed design, but supporting textual constraints, interface definitions and generated-code assumptions may still be required. For handwritten C or assembly, detailed design must expose target-specific and compiler-sensitive decisions.",
+        "Design reviews should examine more than stylistic consistency. Reviewers need to test the architecture against requirements, timing and memory budgets, data/control coupling, initialization, concurrency, diagnostics, partitioning, communication loss and change impact. Every design element should have authorized intent and a credible verification method."
+      ],
+      "whyItMatters": ["Architecture is where safety, timing, hardware and maintainability constraints become an implementable system.", "A design that cannot be reviewed or verified will create late target failures and certification gaps."],
+      "inputs": ["Reviewed high-level requirements", "Processor and hardware constraints", "Communication and I/O interfaces", "Timing and memory budgets", "Reuse and tool strategy"],
+      "activities": ["Allocate requirements to components", "Define execution and interface architecture", "Develop low-level algorithms and state behaviour", "Analyse coupling and resource use", "Conduct architecture and detailed-design reviews"],
+      "outputs": ["Software architecture description", "Low-level design or verified model", "Interface and data dictionaries", "Timing and resource allocations", "Design review records and traceability"],
+      "automotiveExample": "An engine-control application separates sensor acquisition, plausibility monitoring, control-law computation, actuator command and maintenance diagnostics. The design defines which component owns each status, how stale data propagates, when fallback authority transfers and how the sequence is verified on the target.",
+      "commonMistakes": ["Using block diagrams that omit timing and ownership", "Mixing control authority with diagnostic presentation", "Leaving initialization and shutdown implicit", "Treating generated code as the architecture", "Reviewing components without analysing their data and control coupling"],
+      "relatedConcepts": ["aero-requirements-traceability", "aero-model-based-development", "aero-target-implementation-debugging", "aero-avionics-comms-engine-control"],
+      "linkedQuestions": ["A03-01", "A03-02", "A03-03", "A03-04", "A03-05", "A03-06", "A03-07", "A03-08", "A03-09", "A03-10"],
+      "references": ["RTCA DO-178C / EUROCAE ED-12C", "Programme architecture, design and coding standards"],
+      "source": "content-source/aerospace/concepts.json#aero-architecture-low-level-design"
+    },
+    {
+      "id": "aero-model-based-development",
+      "title": "Model-Based Development and Code Generation",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 4,
+      "standard": {
+        "family": "DO-178B/C airborne software assurance",
+        "edition": "DO-178C with DO-331 reference context",
+        "parts": ["Model-based development", "Generated code"],
+        "clauseRefs": ["Model lifecycle data", "Model verification", "Code-generation and tool considerations"]
+      },
+      "difficulty": "Advanced",
+      "stage": 4,
+      "systems": ["Model-Based Development", "Architecture & Design", "Verification, HIL & Coverage"],
+      "summary": "Model-based development can make control and state behaviour executable early, but assurance depends on clear model purpose, disciplined modelling standards, verification and controlled treatment of generated code and tools.",
+      "learningObjectives": ["Distinguish specification, design, simulation and implementation roles of models.", "Define verification for Simulink and Stateflow behaviour, interfaces and generated code.", "Explain when tool qualification or additional verification may be needed for claimed tool credit."],
+      "explanation": [
+        "Model-based development can make control and state behaviour executable early, but assurance depends on clear model purpose, disciplined modelling standards, verification and controlled treatment of generated code and tools. A model may represent requirements, architecture, detailed design or implementation; the programme must state which role it plays because the verification obligations differ.",
+        "Simulation demonstrates selected behaviour but does not by itself establish completeness or absence of unintended behaviour. Reviews and analysis must address states, transitions, priorities, data types, saturation, numerical precision, initialization, temporal logic, unreachable logic and interface assumptions. Test cases should be requirements-based and should include robustness and boundary conditions.",
+        "Generated code does not remove the need to understand implementation. The assurance strategy must account for code-generator settings, model-to-code traceability, handwritten integration code, compiler effects, target behaviour and structural coverage. When tool output replaces an otherwise necessary verification activity, the programme must evaluate whether tool qualification or compensating verification is required."
+      ],
+      "whyItMatters": ["Executable models accelerate iteration but can also hide derived behaviour and tool-dependent assumptions.", "A clear model and tool assurance boundary prevents gaps between simulated behaviour and target software."],
+      "inputs": ["Software requirements and architecture", "Modelling and code-generation standards", "Data-type and scaling strategy", "Toolchain versions and settings", "Target and verification constraints"],
+      "activities": ["Define model purpose and lifecycle role", "Apply modelling standards and reviews", "Verify states, algorithms and numerical behaviour", "Generate and inspect code", "Establish model-code-target verification and tool-credit strategy"],
+      "outputs": ["Controlled model baseline", "Model review and verification results", "Generated-code configuration record", "Model-code traceability", "Tool assessment and target verification evidence"],
+      "automotiveExample": "A Stateflow model controls engine start sequencing. Review discovers a transition that occurs only when two faults arrive in the same cycle. The team records the behaviour as a requirement, verifies transition priority and temporal semantics, examines generated code, and reproduces the case on the target HIL bench.",
+      "commonMistakes": ["Treating simulation success as complete verification", "Allowing model settings to change outside configuration control", "Ignoring data-type and numerical differences on target", "Assuming generated code is correct because the generator is widely used", "Failing to trace handwritten wrapper behaviour"],
+      "relatedConcepts": ["aero-architecture-low-level-design", "aero-target-implementation-debugging", "aero-verification-hil", "aero-coverage-problem-closure"],
+      "linkedQuestions": ["A04-01", "A04-02", "A04-03", "A04-04", "A04-05", "A04-06", "A04-07", "A04-08", "A04-09", "A04-10"],
+      "references": ["RTCA DO-331 reference context", "RTCA DO-330 reference context", "Programme model and code-generation standards"],
+      "source": "content-source/aerospace/concepts.json#aero-model-based-development"
+    },
+    {
+      "id": "aero-target-implementation-debugging",
+      "title": "Embedded Implementation and Target Debugging",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 5,
+      "standard": {
+        "family": "DO-178B/C airborne software assurance",
+        "edition": "DO-178C with DO-178B legacy context",
+        "parts": ["Source code", "Executable object code"],
+        "clauseRefs": ["Coding standards", "Compiler and linker effects", "Target verification and troubleshooting"]
+      },
+      "difficulty": "Advanced",
+      "stage": 5,
+      "systems": ["Embedded C/C++ & Target", "Architecture & Design", "Verification, HIL & Coverage"],
+      "summary": "Safety-critical embedded implementation must preserve approved design intent while remaining understandable at the processor, compiler, linker, memory and timing levels where target-only defects occur.",
+      "learningObjectives": ["Explain target-specific failure mechanisms in C, C++ and assembly.", "Use map files, traces, disassembly and instrumentation to isolate target-only faults.", "Control Python and other support tools that create or transform verification data."],
+      "explanation": [
+        "Safety-critical embedded implementation must preserve approved design intent while remaining understandable at the processor, compiler, linker, memory and timing levels where target-only defects occur. Coding standards constrain ambiguous language features, undefined behaviour, data representation, concurrency, initialization and error handling so that code remains analysable and verifiable.",
+        "Target troubleshooting connects software evidence to actual execution. Engineers may need compiler listings, linker maps, disassembly, stack and heap measurements, interrupt traces, bus captures and hardware instrumentation. A host test that passes can still fail on target because of alignment, endianness, volatile access, optimizer behaviour, timing, memory protection, cache, interrupt interference or hardware startup state.",
+        "Python and other support scripts can accelerate log analysis, test generation and evidence consolidation, but their outputs must be controlled according to how they are used. A script that merely assists an engineer differs from a tool whose output replaces manual verification. Version, inputs, outputs, reviews and reproducibility should match the assurance reliance placed on the tool."
+      ],
+      "whyItMatters": ["Many critical defects appear only in the target execution environment.", "A disciplined debug record turns a one-time fix into reusable assurance and prevention evidence."],
+      "inputs": ["Approved low-level design", "Coding and compiler standards", "Processor and memory architecture", "Build and linker configuration", "Target test observations and logs"],
+      "activities": ["Implement and review source code", "Analyse compiler and linker output", "Measure stack, memory and timing", "Reproduce and isolate target failures", "Document root cause, change impact and verification closure"],
+      "outputs": ["Reviewed source and assembly code", "Reproducible build and map data", "Target debug evidence", "Resource-usage results", "Problem report and verified correction"],
+      "automotiveExample": "A control output is intermittently corrupted only in the optimized target build. The team traces an incorrectly qualified memory-mapped register access, confirms the generated assembly, updates the low-level design and coding guidance, reruns target and HIL verification, and records preventive action.",
+      "commonMistakes": ["Debugging only at source level", "Changing optimization without analysing object-code impact", "Using intrusive logging that changes timing", "Treating Python-generated results as self-validating", "Fixing the symptom without updating requirements, design or verification"],
+      "relatedConcepts": ["aero-architecture-low-level-design", "aero-model-based-development", "aero-avionics-comms-engine-control", "aero-coverage-problem-closure"],
+      "linkedQuestions": ["A05-01", "A05-02", "A05-03", "A05-04", "A05-05", "A05-06", "A05-07", "A05-08", "A05-09", "A05-10"],
+      "references": ["RTCA DO-178C / EUROCAE ED-12C", "Processor, compiler and linker documentation", "Programme coding and build standards"],
+      "source": "content-source/aerospace/concepts.json#aero-target-implementation-debugging"
+    },
+    {
+      "id": "aero-avionics-comms-engine-control",
+      "title": "Avionics Communications, Engine Control and Diagnostics",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 6,
+      "standard": {
+        "family": "Airborne embedded control learning baseline",
+        "edition": "2026",
+        "parts": ["ARINC 429", "CAN and Ethernet", "Engine control and diagnostics"],
+        "clauseRefs": ["Interface-control data", "Data validity and timing", "Control and diagnostic failure handling"]
+      },
+      "difficulty": "Advanced",
+      "stage": 6,
+      "systems": ["Avionics Communications", "Engine Control & Diagnostics", "Embedded C/C++ & Target"],
+      "summary": "Communication software converts physical or network data into control-relevant information, so protocol correctness must be combined with freshness, validity, timing, range and failure-response semantics.",
+      "learningObjectives": ["Explain key integration concerns for ARINC 429, CAN and Ethernet data paths.", "Connect communication validity to control-law and diagnostic behaviour.", "Design failure handling that preserves bounded and observable system behaviour."],
+      "explanation": [
+        "Communication software converts physical or network data into control-relevant information, so protocol correctness must be combined with freshness, validity, timing, range and failure-response semantics. A correctly decoded word can still be unsafe if it is stale, from the wrong source, updated at an unexpected rate or accepted in an invalid operational mode.",
+        "ARINC 429 integration requires disciplined treatment of labels, source/destination context, bit encoding, sign/status information, parity, update rate and timeout. CAN integration adds arbitration, identifiers, bus load, error states and network recovery. Ethernet adds addressing, buffering, concurrency, packet loss, ordering, throughput and cybersecurity boundaries. The software architecture should normalize these differences into explicit application-level validity contracts.",
+        "Engine-control software must also preserve clear authority between sensing, estimation, control, monitoring, actuator output and diagnostics. Diagnostic reporting should explain faults without silently changing control behaviour unless an approved requirement defines that response. Mode transitions, fallback values, cross-channel comparison and maintenance data all require explicit requirements and verification."
+      ],
+      "whyItMatters": ["Communication faults can become control faults when freshness and validity are not modelled end to end.", "Clear authority and diagnostic semantics prevent hidden coupling between maintenance functions and safety-critical control."],
+      "inputs": ["Interface-control documents", "Network and timing budgets", "Control-law requirements", "Sensor and actuator validity definitions", "Diagnostic and maintenance requirements"],
+      "activities": ["Define message and signal contracts", "Implement decoding, validation and timeout handling", "Analyse latency and failure propagation", "Integrate control and diagnostic modes", "Verify normal, robustness and recovery behaviour"],
+      "outputs": ["Communication software requirements", "Interface and validity design", "Control/diagnostic integration model", "Bus and timing analysis", "HIL and target verification evidence"],
+      "automotiveExample": "An ARINC 429 temperature input remains electrically present but stops updating. The interface layer marks it stale after the approved timeout, the estimator selects a bounded fallback, the control law transitions without a discontinuity, and diagnostics record the source and duration for maintenance.",
+      "commonMistakes": ["Equating successful decode with valid data", "Failing to specify stale-data behaviour", "Allowing diagnostic code to alter control state implicitly", "Ignoring network recovery and burst load", "Testing each interface without the end-to-end control consequence"],
+      "relatedConcepts": ["aero-requirements-traceability", "aero-architecture-low-level-design", "aero-target-implementation-debugging", "aero-verification-hil"],
+      "linkedQuestions": ["A06-01", "A06-02", "A06-03", "A06-04", "A06-05", "A06-06", "A06-07", "A06-08", "A06-09", "A06-10"],
+      "references": ["Applicable ARINC 429 interface-control data", "CAN and Ethernet protocol and platform documentation", "Engine-control system requirements"],
+      "source": "content-source/aerospace/concepts.json#aero-avionics-comms-engine-control"
+    },
+    {
+      "id": "aero-verification-hil",
+      "title": "Verification Strategy and Hardware-in-the-Loop",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 7,
+      "standard": {
+        "family": "DO-178B/C airborne software assurance",
+        "edition": "DO-178C with DO-178B legacy context",
+        "parts": ["Reviews and analysis", "Requirements-based testing", "Target and HIL verification"],
+        "clauseRefs": ["Verification process", "Independence", "Normal and robustness testing"]
+      },
+      "difficulty": "Advanced",
+      "stage": 7,
+      "systems": ["Verification, HIL & Coverage", "DO-178 Assurance", "Engine Control & Diagnostics"],
+      "summary": "Verification combines reviews, analyses and requirements-based tests to demonstrate that lifecycle data are correct, complete and consistent and that the executable software satisfies approved requirements on representative hardware.",
+      "learningObjectives": ["Build a layered verification strategy from requirements reviews to target and HIL tests.", "Distinguish normal-range, boundary, robustness and failure-injection objectives.", "Design benches and procedures that produce controlled, repeatable and reviewable evidence."],
+      "explanation": [
+        "Verification combines reviews, analyses and requirements-based tests to demonstrate that lifecycle data are correct, complete and consistent and that the executable software satisfies approved requirements on representative hardware. Reviews can detect ambiguity and inconsistency before execution. Analysis can address properties such as data/control coupling, resource use or unreachable logic. Tests demonstrate behaviour under controlled inputs and expected results.",
+        "Requirements-based testing starts from approved behaviour, not from code structure. Normal-range tests demonstrate intended operation. Boundary and robustness tests challenge invalid, extreme, mistimed or missing inputs and resource conditions. Target testing is needed when host execution cannot represent processor, compiler, I/O, scheduling or hardware behaviour.",
+        "A HIL bench closes the loop around real target software and representative I/O, plant and fault models. Bench assurance includes configuration identification, calibration, stimulus accuracy, timing fidelity, observability, repeatability and independent review of procedures and results. A sophisticated bench can still produce weak evidence if its assumptions and limitations are undocumented."
+      ],
+      "whyItMatters": ["Verification quality determines whether the programme has evidence of correct behaviour or only confidence based on development success.", "HIL enables difficult dynamic and fault scenarios but must itself be controlled and understood."],
+      "inputs": ["Reviewed requirements and design", "Verification plans and standards", "Target and bench architecture", "Expected results and tolerances", "Independence and review assignments"],
+      "activities": ["Develop verification cases and procedures", "Review lifecycle data", "Perform analysis and host tests", "Execute target and HIL tests", "Record results, anomalies and traceability"],
+      "outputs": ["Reviewed verification cases and procedures", "Analysis and test results", "HIL configuration and calibration evidence", "Requirements coverage status", "Problem reports and closure records"],
+      "automotiveExample": "A HIL campaign verifies engine acceleration control under sensor drift, message dropout, actuator lag and power-cycle recovery. Each case traces to approved requirements, identifies bench limitations, records target build and calibration, and creates problem reports for every unexpected result.",
+      "commonMistakes": ["Deriving tests from code instead of requirements", "Using nominal tests to claim robustness", "Ignoring bench configuration and calibration", "Accepting a failed test as a bench issue without evidence", "Combining developer debugging logs with formal verification results"],
+      "relatedConcepts": ["aero-requirements-traceability", "aero-model-based-development", "aero-avionics-comms-engine-control", "aero-coverage-problem-closure"],
+      "linkedQuestions": ["A07-01", "A07-02", "A07-03", "A07-04", "A07-05", "A07-06", "A07-07", "A07-08", "A07-09", "A07-10"],
+      "references": ["RTCA DO-178C / EUROCAE ED-12C", "Programme verification plans and standards", "HIL bench configuration and calibration records"],
+      "source": "content-source/aerospace/concepts.json#aero-verification-hil"
+    },
+    {
+      "id": "aero-coverage-problem-closure",
+      "title": "Structural Coverage and Problem Closure",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 8,
+      "standard": {
+        "family": "DO-178B/C airborne software assurance",
+        "edition": "DO-178C with DO-178B legacy context",
+        "parts": ["Structural coverage", "Problem reporting"],
+        "clauseRefs": ["Requirements coverage analysis", "Structural coverage analysis", "Gap disposition and corrective action"]
+      },
+      "difficulty": "Expert",
+      "stage": 8,
+      "systems": ["Verification, HIL & Coverage", "Program Metrics & CAPA", "Configuration, Quality & Certification"],
+      "summary": "Structural coverage analysis examines which executable structures were exercised by requirements-based verification and uses uncovered structure to reveal missing tests, missing requirements or unintended code.",
+      "learningObjectives": ["Explain the purpose and limits of structural coverage analysis.", "Classify uncovered code and select justified closure actions.", "Connect failed tests and coverage gaps to controlled problem reports, impact analysis and regression evidence."],
+      "explanation": [
+        "Structural coverage analysis examines which executable structures were exercised by requirements-based verification and uses uncovered structure to reveal missing tests, missing requirements or unintended code. It is a feedback mechanism on the completeness of requirements and tests; it is not a replacement for requirements-based verification.",
+        "An uncovered item may indicate an inadequate test, an unstated requirement, defensive behaviour, unreachable or dead code, deactivated code, configuration-specific logic or instrumentation effects. Closure begins with classification and traceable rationale. The correct action may be a new or corrected requirement, additional test, code removal, design change, analysis or approved deactivation rationale.",
+        "Every failed test and significant gap should enter a controlled problem-reporting process. The report captures configuration, reproduction, expected and actual results, severity, root cause, affected lifecycle data, corrective action, regression scope and closure authority. Trend analysis across reports can expose systemic weaknesses in requirements, modelling, coding, benches or reviews."
+      ],
+      "whyItMatters": ["Coverage gaps often expose unintended functionality or missing requirements that normal test completion metrics hide.", "Disciplined problem closure protects the integrity of the evidence baseline and enables effective prevention."],
+      "inputs": ["Requirements-based test results", "Executable object code and source mapping", "Coverage reports and exclusions", "Problem reports and change records", "Configuration and regression baselines"],
+      "activities": ["Analyse requirements and structural coverage", "Classify uncovered structure", "Create and investigate problem reports", "Perform impact and root-cause analysis", "Verify corrective action and regression closure"],
+      "outputs": ["Coverage analysis and gap log", "Approved gap dispositions", "Problem reports with root cause", "Updated requirements/design/code/tests", "Regression and closure evidence"],
+      "automotiveExample": "Coverage analysis finds a defensive branch generated for an impossible enumeration value. The team confirms whether the value can arise from memory corruption or interface conversion, checks for an approved robustness requirement, and either adds requirement-based verification or removes unjustified code instead of simply excluding the branch.",
+      "commonMistakes": ["Adding tests only to execute code without a requirement", "Labelling code defensive without analysing reachability", "Closing a failed test by editing expected results", "Treating coverage exclusions as administrative", "Performing local regression without lifecycle impact analysis"],
+      "relatedConcepts": ["aero-verification-hil", "aero-target-implementation-debugging", "aero-configuration-certification", "aero-program-leadership-capa"],
+      "linkedQuestions": ["A08-01", "A08-02", "A08-03", "A08-04", "A08-05", "A08-06", "A08-07", "A08-08", "A08-09", "A08-10"],
+      "references": ["RTCA DO-178C / EUROCAE ED-12C", "Programme structural-coverage and problem-reporting procedures"],
+      "source": "content-source/aerospace/concepts.json#aero-coverage-problem-closure"
+    },
+    {
+      "id": "aero-configuration-certification",
+      "title": "Configuration, Quality, Certification and SOI Readiness",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 9,
+      "standard": {
+        "family": "DO-178B/C airborne software assurance",
+        "edition": "DO-178C with DO-178B legacy context",
+        "parts": ["Configuration management", "Quality assurance", "Certification liaison"],
+        "clauseRefs": ["Baselines and change control", "Software conformity and audits", "Certification data and SOI readiness"]
+      },
+      "difficulty": "Expert",
+      "stage": 9,
+      "systems": ["Configuration, Quality & Certification", "DO-178 Assurance", "Planning & Lifecycle"],
+      "summary": "Configuration management establishes exactly which lifecycle data and executable items form each baseline, quality assurance checks that approved processes are followed, and certification readiness demonstrates that the evidence is coherent, reproducible and complete.",
+      "learningObjectives": ["Define configuration identification, baselines, change control and reproducible build evidence.", "Explain the complementary roles of software quality assurance and engineering verification.", "Prepare an evidence-based SOI readiness position with transparent findings and closure status."],
+      "explanation": [
+        "Configuration management establishes exactly which lifecycle data and executable items form each baseline, quality assurance checks that approved processes are followed, and certification readiness demonstrates that the evidence is coherent, reproducible and complete. These are not end-of-project documentation activities; they control every lifecycle transition and change.",
+        "A reproducible baseline identifies requirements, design, models, source, generated code, tools and versions, build scripts, compiler/linker settings, test procedures, results, coverage, problem reports and release records. Change control evaluates technical and certification impact before implementation and confirms that affected evidence is updated and reverified.",
+        "SOI and customer reviews should be prepared as evidence reviews rather than presentations. The team needs an indexed data set, objective status, trace samples, configuration records, review and audit results, open findings, responsible owners and realistic closure dates. A software lead should know both the technical argument and the exact evidence that supports it."
+      ],
+      "whyItMatters": ["Uncontrolled or irreproducible evidence cannot support a dependable certification conclusion.", "Early audit and SOI readiness exposes systemic gaps while the team can still correct them efficiently."],
+      "inputs": ["Approved lifecycle plans and standards", "Configuration item list and repository data", "Change requests and problem reports", "QA audit criteria and results", "Certification-data and SOI expectations"],
+      "activities": ["Identify and baseline lifecycle data", "Control and audit changes", "Perform process and product audits", "Assemble certification records", "Conduct readiness reviews and close findings"],
+      "outputs": ["Controlled software baselines", "Reproducible build and release records", "QA audit reports", "Certification-data index", "SOI readiness status and finding-closure plan"],
+      "automotiveExample": "Before an SOI review, the team selects a representative engine-control requirement and demonstrates its trace through model, generated code, target test, structural coverage and problem status. The exact toolchain, calibration and released object are reproduced from the controlled baseline.",
+      "commonMistakes": ["Baselining source but not tools and build settings", "Treating QA as document formatting", "Changing tests without formal impact analysis", "Preparing SOI material only after an audit request", "Reporting findings as closed before objective evidence is approved"],
+      "relatedConcepts": ["aero-lifecycle-assurance-planning", "aero-coverage-problem-closure", "aero-program-leadership-capa"],
+      "linkedQuestions": ["A09-01", "A09-02", "A09-03", "A09-04", "A09-05", "A09-06", "A09-07", "A09-08", "A09-09", "A09-10"],
+      "references": ["RTCA DO-178C / EUROCAE ED-12C", "Programme configuration-management and quality-assurance plans", "Certification review and customer data expectations"],
+      "source": "content-source/aerospace/concepts.json#aero-configuration-certification"
+    },
+    {
+      "id": "aero-program-leadership-capa",
+      "title": "Programme Metrics, CAPA and Technical Leadership",
+      "module": "aerospace",
+      "collection": "aerospace-safety-critical-software",
+      "order": 10,
+      "standard": {
+        "family": "Safety-critical engineering leadership baseline",
+        "edition": "2026",
+        "parts": ["Programme control", "Corrective and preventive action", "Technical leadership"],
+        "clauseRefs": ["Planning and status", "Root-cause and escape prevention", "Mentoring and cross-discipline leadership"]
+      },
+      "difficulty": "Expert",
+      "stage": 10,
+      "systems": ["Program Metrics & CAPA", "Technical Leadership", "Role Scenarios"],
+      "summary": "Senior technical leadership connects engineering evidence, programme commitments and team capability so that schedule pressure is addressed through transparent decisions rather than hidden assurance debt.",
+      "learningObjectives": ["Create metrics that expose lifecycle maturity, quality and certification risk.", "Lead root-cause analysis and corrective/preventive action for escapes and repeated turnbacks.", "Mentor a small engineering team while preserving accountability, review independence and cross-discipline communication."],
+      "explanation": [
+        "Senior technical leadership connects engineering evidence, programme commitments and team capability so that schedule pressure is addressed through transparent decisions rather than hidden assurance debt. The leader must translate technical status into programme impact without reducing complex assurance gaps to a single green or red indicator.",
+        "Useful metrics include requirements and review maturity, verification readiness and pass rate, problem-report severity and ageing, structural-coverage closure, change volatility, baseline reproducibility, audit findings, SOI action status and rework trends. Metrics should trigger investigation and decisions; they should not reward teams for suppressing findings or inflating completion.",
+        "Root-cause analysis distinguishes the immediate technical fault from the conditions that allowed it to escape. Corrective action fixes the affected product and evidence. Preventive action improves requirements, standards, reviews, tools, tests, training or organizational interfaces. Effective leaders assign ownership, verify effectiveness, communicate across disciplines and use mentoring to increase team judgment rather than centralize every decision."
+      ],
+      "whyItMatters": ["A safety-critical programme can appear on schedule while accumulating unreviewed changes, weak tests and unresolved findings.", "Technical leadership determines whether defects become one-time fixes or lasting organizational learning."],
+      "inputs": ["Lifecycle and programme status", "Problem, audit and review trends", "Resource and capability assessment", "Customer and certification commitments", "Risk and dependency register"],
+      "activities": ["Define and review meaningful metrics", "Lead technical status and risk reviews", "Conduct root-cause and CAPA", "Prioritize work and resolve cross-discipline conflicts", "Mentor engineers and improve processes and tools"],
+      "outputs": ["Evidence-based programme dashboard", "Recovery and risk-mitigation plan", "Root-cause and CAPA records", "Management and customer status", "Capability and process-improvement actions"],
+      "automotiveExample": "Repeated HIL turnbacks are initially blamed on test execution. Trend analysis shows late requirement changes, weak impact analysis and inconsistent bench baselines. The lead establishes change-entry criteria, trace-based impact reviews, baseline checks and focused mentoring, then measures whether repeat defects decline.",
+      "commonMistakes": ["Reporting percentage complete without evidence maturity", "Using metrics to punish problem reporting", "Stopping root cause at individual error", "Mentoring by taking over difficult work", "Promising dates before identifying verification and certification dependencies"],
+      "relatedConcepts": ["aero-lifecycle-assurance-planning", "aero-coverage-problem-closure", "aero-configuration-certification"],
+      "linkedQuestions": ["A10-01", "A10-02", "A10-03", "A10-04", "A10-05", "A10-06", "A10-07", "A10-08", "A10-09", "A10-10"],
+      "references": ["Programme plans and status criteria", "Quality and corrective-action procedures", "Organizational technical-leadership practices"],
+      "source": "content-source/aerospace/concepts.json#aero-program-leadership-capa"
+    }
+  ]
+}

@@ -126,7 +126,24 @@
       button.addEventListener('click', () => stepStage(Number(button.dataset.stageStep)));
     });
 
-    $('#simpleConceptSelect').addEventListener('change', event => clickConcept(Number(event.target.value)));
+    $('#simpleConceptSelect').addEventListener('change', event => {
+      const select = event.currentTarget;
+      const conceptId = select.value;
+
+      // A native select can remain open if its options are changed during the
+      // same selection gesture. Close it first, then render on the next frame.
+      select.blur();
+      select.disabled = true;
+      select.dataset.selectionSettling = 'true';
+
+      requestAnimationFrame(() => {
+        clickConceptById(conceptId);
+        requestAnimationFrame(() => {
+          select.disabled = false;
+          delete select.dataset.selectionSettling;
+        });
+      });
+    });
     controls.querySelectorAll('[data-concept-step]').forEach(button => {
       button.addEventListener('click', () => clickConcept(state.conceptIndex + Number(button.dataset.conceptStep)));
     });
@@ -291,31 +308,76 @@
     return $$('#conceptNav [data-concept-id]');
   }
 
+  function conceptSelectorRecords(buttons) {
+    return buttons.map(button => ({
+      id: button.dataset.conceptId,
+      title: button.querySelector('strong')?.textContent || button.dataset.conceptId,
+      meta: button.querySelector('small')?.textContent || ''
+    }));
+  }
+
+  function conceptSelectorSignature(records) {
+    return records.map(record => `${record.id}\u001f${record.title}\u001f${record.meta}`).join('\u001e');
+  }
+
+  function rebuildConceptOptions(select, records) {
+    const signature = conceptSelectorSignature(records);
+    if (select.dataset.optionSignature === signature) return false;
+
+    const options = records.map(record => {
+      const option = document.createElement('option');
+      option.value = record.id;
+      option.textContent = `${record.title}${record.meta ? ` · ${record.meta}` : ''}`;
+      return option;
+    });
+    select.replaceChildren(...options);
+    select.dataset.optionSignature = signature;
+    return true;
+  }
+
   function syncConceptSelector() {
     const buttons = conceptButtons();
-    if (!buttons.length) {
+    const select = $('#simpleConceptSelect');
+    if (!buttons.length || !select) {
       $('#simpleConceptControls').hidden = true;
       return;
     }
+
+    const records = conceptSelectorRecords(buttons);
     const activeIndex = Math.max(0, buttons.findIndex(button => button.classList.contains('active')));
+    const activeId = records[activeIndex]?.id || records[0].id;
     state.conceptIndex = activeIndex;
-    $('#simpleConceptSelect').innerHTML = buttons.map((button, index) => {
-      const title = button.querySelector('strong')?.textContent || button.dataset.conceptId;
-      const meta = button.querySelector('small')?.textContent || '';
-      return `<option value="${index}">${escapeMarkup(title)}${meta ? ` · ${escapeMarkup(meta)}` : ''}</option>`;
-    }).join('');
-    $('#simpleConceptSelect').value = String(activeIndex);
+
+    // Concept navigation is re-rendered for every selection. Rebuilding a
+    // native select with the same options can reopen its browser popup, so
+    // rebuild only when the concept collection itself has changed.
+    rebuildConceptOptions(select, records);
+    if (select.value !== activeId) select.value = activeId;
+
     $('#conceptNav')?.classList.add('simple-original-nav-hidden');
     if (state.area === 'concepts') $('#simpleConceptControls').hidden = false;
+  }
+
+  function clickConceptById(conceptId, scroll = true) {
+    const buttons = conceptButtons();
+    if (!buttons.length) return;
+    const index = buttons.findIndex(button => button.dataset.conceptId === conceptId);
+    if (index < 0) return;
+
+    state.conceptIndex = index;
+    buttons[index].click();
+    if (scroll) {
+      requestAnimationFrame(() => {
+        document.querySelector('main')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   }
 
   function clickConcept(index) {
     const buttons = conceptButtons();
     if (!buttons.length) return;
     const bounded = Math.min(buttons.length - 1, Math.max(0, index));
-    state.conceptIndex = bounded;
-    buttons[bounded].click();
-    document.querySelector('main')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clickConceptById(buttons[bounded].dataset.conceptId);
   }
 
   function queueSystemSync() {
@@ -370,7 +432,11 @@
 
   function bindObservers() {
     new MutationObserver(() => { queueRouteSync(); rewritePracticeBanner(); }).observe($('#view-route'), { childList: true, subtree: true });
-    new MutationObserver(queueConceptSync).observe($('#conceptNav'), { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+
+    // selectConcept() replaces the concept-navigation children. Watching
+    // class attributes as well creates redundant selector synchronisations.
+    new MutationObserver(queueConceptSync).observe($('#conceptNav'), { childList: true, subtree: true });
+
     new MutationObserver(queueSystemSync).observe($('#systemCards'), { childList: true, subtree: true });
     new MutationObserver(queueQuizSync).observe($('#knowledgeCheck'), { childList: true, subtree: true });
 

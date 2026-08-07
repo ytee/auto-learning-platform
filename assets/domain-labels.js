@@ -34,13 +34,32 @@
     });
   }
 
-  function loadComparisonExtension() {
+  function appendScript(source, onload = null) {
     if (!document.createElement || !document.body?.append) return;
-    if (document.querySelector('script[src="assets/comparison-bootstrap.js"]')) return;
+    const existing = document.querySelector(`script[src="${source}"]`);
+    if (existing) {
+      if (onload) {
+        if (existing.dataset.loaded === 'true') onload();
+        else existing.addEventListener('load', onload, { once: true });
+      }
+      return;
+    }
     const script = document.createElement('script');
-    script.src = 'assets/comparison-bootstrap.js';
-    script.async = true;
+    script.src = source;
+    script.async = false;
+    script.onload = () => {
+      script.dataset.loaded = 'true';
+      onload?.();
+    };
+    script.onerror = () => console.error(`Cannot load ${source}`);
     document.body.append(script);
+  }
+
+  function loadExtensions() {
+    appendScript('assets/comparison-bootstrap.js');
+    appendScript('assets/firmware-deep-dive-model.js', () => {
+      appendScript('assets/firmware-deep-dive.js');
+    });
   }
 
   const detail = $('#conceptDetail');
@@ -49,5 +68,5 @@
   }
   $('#moduleSelect')?.addEventListener('change', scheduleDomainLabels);
   applyDomainLabels();
-  loadComparisonExtension();
+  loadExtensions();
 })();

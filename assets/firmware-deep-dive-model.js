@@ -65,13 +65,15 @@
   ];
 
   const mcal = [
-    ['Mcu','PLL, clocks, RAM, reset and modes','Divider/lock/fallback and derivative mismatch','Clock measurement, status and mode tests'],
-    ['Port/Dio','Pads, pin mux and digital I/O','Conflicting ownership and unsafe startup','Schematic trace, register readback and waveform'],
-    ['Gpt/Icu','Timers, capture and interrupts','Shared resource, tick, rollover and edge errors','Known source, wrap and latency tests'],
-    ['Adc','Converters, groups, queues and triggers','Settling, mapping, trigger and buffer ownership','Stimulus sweep and trigger correlation'],
-    ['Pwm','Periods, duty, complementary output and shadow update','Polarity, dead-time, unsafe startup and asynchronous update','Scope timing and safe-state tests'],
-    ['Spi','Channels, jobs, sequences, CS, FIFO/DMA','Mode, CS timing, sequence and DMA mismatch','Logic/scope capture and abort recovery'],
-    ['Can','Controllers, HRH/HTH, message RAM and interrupts','Bit timing, object allocation, bus-off and variant mapping','Bus analyzer, error injection and recovery']
+    ['Mcu','PLL, clocks, RAM, reset and operating modes','Divider, lock, fallback, RAM-section or derivative mismatch','Clock measurement, status readback, reset and mode-transition tests'],
+    ['Port','Pad mode, direction, mux, pull, drive and initial level','Wrong alternate function, unsafe startup level or package-pin mismatch','Schematic-to-pin trace, register readback and pin waveform'],
+    ['Dio','Logical channels, channel groups and digital read/write access','Port-channel mapping or mask mismatch; unintended read-modify-write interaction','Channel/group tests and register-to-pin correlation'],
+    ['Gpt','General-purpose timer channels, modes, periods and notifications','Tick conversion, rollover, shared timer or notification-priority error','Known-time-source measurement, wrap and notification latency tests'],
+    ['Icu','Edge detection, timestamp, signal measurement and wakeup','Wrong edge, prescaler, overflow, filter or resource assignment','Stimulus capture, rollover and timestamp-correlation tests'],
+    ['Adc','Converters, channel groups, queues, triggers and result buffers','Settling, channel mapping, trigger, queue or buffer ownership error','Stimulus sweep, trigger correlation, calibration and freshness tests'],
+    ['Pwm','Periods, duty, polarity, complementary outputs and shadow update','Polarity, dead-time, unsafe startup or asynchronous update','Oscilloscope timing, shadow-transfer and safe-state tests'],
+    ['Spi','Channels, jobs, sequences, chip select, FIFO and DMA','Mode, chip-select timing, sequence ordering or DMA mismatch','Logic/scope capture, sequence stress and abort recovery'],
+    ['Can','Controllers, HRH/HTH, message RAM, bit timing and interrupts','Object allocation, bit timing, bus-off or variant mapping error','Bus analyzer, register readback, error injection and recovery']
   ];
 
   const questionTypes = [

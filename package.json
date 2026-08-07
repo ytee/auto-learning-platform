@@ -1,6 +1,6 @@
 {
   "name": "auto-learning-platform",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,6 +9,6 @@
     "check:concepts": "npm run assemble:embedded && node scripts/build-concepts.mjs --check && node scripts/build-aerospace-concepts.mjs --check",
     "render:concept": "node scripts/render-concept-source.mjs",
     "validate:schemas": "node scripts/validate-schema-contracts.mjs",
-    "validate": "npm run build:concepts && node scripts/validate-content.mjs && node scripts/validate-concepts-ui.mjs && node scripts/validate-concept-selector.mjs && node scripts/validate-home-ui.mjs && node scripts/validate-comparison-ui.mjs && npm run validate:schemas"
+    "validate": "npm run build:concepts && node scripts/validate-content.mjs && node scripts/validate-concepts-ui.mjs && node scripts/validate-concept-selector.mjs && node scripts/validate-home-ui.mjs && node scripts/validate-comparison-ui.mjs && node scripts/validate-firmware-deep-dive.mjs && npm run validate:schemas"
   }
 }

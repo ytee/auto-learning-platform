@@ -26,7 +26,38 @@
     "Your evidence",
     "Priority"
   ],
-  "matrix": [],
+  "matrix": [
+    [
+      "Functional Safety",
+      "HARA, FSC/TSC, ASIL decomposition, FFI, safety case",
+      "Software FSM + Architect roles at Continental/AUMOVIO",
+      "Very high"
+    ],
+    [
+      "Software Architecture",
+      "Architecture governance, interfaces, reuse, decision making",
+      "150% EBS architecture, Architecture CoE, AUTOSAR",
+      "Very high"
+    ],
+    [
+      "Cybersecurity",
+      "TARA, CS goals/requirements, security architecture",
+      "ISO/SAE 21434 awareness; developing depth",
+      "Very high"
+    ],
+    [
+      "AURIX / MCU",
+      "TriCore architecture, safety/security mechanisms, HSM",
+      "AURIX TriCore listed in resume",
+      "High"
+    ],
+    [
+      "Principal leadership",
+      "Methodology, technical decisions, customer interface, audits, capability building",
+      "20-member team, CoE, global stakeholders",
+      "Very high"
+    ]
+  ],
   "focusTitle": "10-hour plan",
   "focusHeaders": [
     "Block",
@@ -228,5 +259,29 @@
     "ISO/SAE 21434:2021",
     "Infineon AURIX TriCore public product information",
     "Infineon AURIX security solutions public product information"
-  ]
+  ],
+  "aurixQuickTraining": {
+    "title": "AURIX / TriCore and Security - 45-minute interview crash course",
+    "sourceNote": "Use public Infineon product information for current device-specific details; this route teaches the architecture-level concepts needed for the interview.",
+    "triCore": [
+      "TriCore is Infineon's 32-bit unified multi-core MCU/DSP architecture family, optimized for real-time embedded systems.",
+      "AURIX families include TC2x, TC3x and TC4x; TC3x/TC4x software ecosystems include AUTOSAR MCAL and safety-oriented software.",
+      "Interview mental model: CPU/execution + memory + peripherals + safety management + security domain + automotive software stack."
+    ],
+    "safety": [
+      "Typical safety discussion: ECC and memory protection; watchdogs; execution monitoring/lockstep where applicable; error collection/management; diagnostic reporting.",
+      "Always connect mechanism -> fault class -> detection -> reaction -> evidence. MCU safety features do not by themselves establish vehicle-level functional safety.",
+      "Your bridge: AURIX/TriCore + AUTOSAR + EBS/braking architecture lets you explain how MCU mechanisms become system/software safety evidence."
+    ],
+    "security": [
+      "AURIX security includes an embedded HSM security domain with protected key storage and hardware-assisted cryptography.",
+      "Public Infineon material describes features such as TRNG, AES acceleration, MAC-related capabilities and secure-boot support; exact feature sets vary by device/family.",
+      "Security mental model: root of trust -> secure boot -> protected keys/HSM -> secure communication/diagnostics -> secure update."
+    ],
+    "drawingExercise": "Draw a block diagram from memory: TriCore CPUs, memory, peripherals, safety/error management, and an HSM trust boundary. Then trace one fault and one security event from detection to software reaction.",
+    "officialReferences": [
+      "https://www.infineon.com/products/microcontroller/32-bit-tricore",
+      "https://www.infineon.com/product-information/aurix-security-solutions"
+    ]
+  }
 }

@@ -518,8 +518,7 @@
     "tier": "Advanced",
     "kind": "Principal",
     "tracks": [
-      "Principal Leadership",
-      "Customer"
+      "Principal Leadership"
     ],
     "minutes": 15,
     "question": "How would you prepare a cross-functional team for a customer safety/security assessment?",
@@ -591,6 +590,1788 @@
       "ISO 26262:2018",
       "ISO/SAE 21434:2021",
       "Role JD"
+    ]
+  },
+  {
+    "id": "IP26",
+    "day": 1,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you define mandatory versus tailorable FS practices across a software portfolio?",
+    "answer": [
+      "Define a minimum common baseline, clear tailoring rules and reusable evidence.",
+      "Use objective metrics and assessment feedback to refine the method."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP27",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you know whether an FS process is actually improving engineering outcomes?",
+    "answer": [
+      "Define a minimum common baseline, clear tailoring rules and reusable evidence.",
+      "Use objective metrics and assessment feedback to refine the method."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP28",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you introduce an architecture review gate without slowing every project?",
+    "answer": [
+      "Define a minimum common baseline, clear tailoring rules and reusable evidence.",
+      "Use objective metrics and assessment feedback to refine the method."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP29",
+    "day": 1,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you handle a project that claims a customer requirement is not applicable?",
+    "answer": [
+      "Define a minimum common baseline, clear tailoring rules and reusable evidence.",
+      "Use objective metrics and assessment feedback to refine the method."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP30",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "What is the role of technical governance in preventing late safety surprises?",
+    "answer": [
+      "Define a minimum common baseline, clear tailoring rules and reusable evidence.",
+      "Use objective metrics and assessment feedback to refine the method."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP31",
+    "day": 1,
+    "tier": "Advanced",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you create a reusable checklist for safety architecture reviews?",
+    "answer": [
+      "Define a minimum common baseline, clear tailoring rules and reusable evidence.",
+      "Use objective metrics and assessment feedback to refine the method."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP32",
+    "day": 1,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you turn lessons from one safety project into portfolio-level guidance?",
+    "answer": [
+      "Define a minimum common baseline, clear tailoring rules and reusable evidence.",
+      "Use objective metrics and assessment feedback to refine the method."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP33",
+    "day": 1,
+    "tier": "Expert",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 20,
+    "question": "What would you expect from an FS methodology owner at Principal level?",
+    "answer": [
+      "Define a minimum common baseline, clear tailoring rules and reusable evidence.",
+      "Use objective metrics and assessment feedback to refine the method."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP34",
+    "day": 2,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How would you challenge an incomplete item definition?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP35",
+    "day": 2,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How do operational assumptions affect HARA results?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP36",
+    "day": 2,
+    "tier": "Advanced",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How would you explain Severity, Exposure and Controllability to a software architect?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP37",
+    "day": 2,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How do you handle a hazardous event that occurs only in a rare operating condition?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP38",
+    "day": 2,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How can a braking-system HARA expose missing architectural requirements?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP39",
+    "day": 2,
+    "tier": "Advanced",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How do you keep HARA reasoning consistent between OEM and Tier-1 teams?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP40",
+    "day": 2,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "When would you revisit HARA after architecture changes?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP41",
+    "day": 2,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How would you review safety goals for completeness and independence?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP42",
+    "day": 2,
+    "tier": "Expert",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 20,
+    "question": "How would you explain why HARA is not a software failure analysis?",
+    "answer": [
+      "Start from item, malfunctioning behavior and operational context before judging S/E/C.",
+      "Maintain explicit assumptions and traceability into safety goals."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP43",
+    "day": 3,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 15,
+    "question": "How would you allocate a functional safety requirement across hardware and software?",
+    "answer": [
+      "Trace functional intent through technical allocation, interfaces and mechanisms.",
+      "Verify independence, timing, interference and target behavior with evidence."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 4-6",
+      "AUTOSAR"
+    ]
+  },
+  {
+    "id": "IP44",
+    "day": 3,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 15,
+    "question": "What evidence shows that a technical safety requirement is correctly implemented?",
+    "answer": [
+      "Trace functional intent through technical allocation, interfaces and mechanisms.",
+      "Verify independence, timing, interference and target behavior with evidence."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 4-6",
+      "AUTOSAR"
+    ]
+  },
+  {
+    "id": "IP45",
+    "day": 3,
+    "tier": "Expert",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 20,
+    "question": "How would you review ASIL decomposition for hidden common-cause dependencies?",
+    "answer": [
+      "Trace functional intent through technical allocation, interfaces and mechanisms.",
+      "Verify independence, timing, interference and target behavior with evidence."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 4-6",
+      "AUTOSAR"
+    ]
+  },
+  {
+    "id": "IP46",
+    "day": 3,
+    "tier": "Expert",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 20,
+    "question": "How do you reason about shared memory in a mixed-ASIL multicore design?",
+    "answer": [
+      "Trace functional intent through technical allocation, interfaces and mechanisms.",
+      "Verify independence, timing, interference and target behavior with evidence."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 4-6",
+      "AUTOSAR"
+    ]
+  },
+  {
+    "id": "IP47",
+    "day": 3,
+    "tier": "Expert",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 20,
+    "question": "How can scheduling create freedom-from-interference problems?",
+    "answer": [
+      "Trace functional intent through technical allocation, interfaces and mechanisms.",
+      "Verify independence, timing, interference and target behavior with evidence."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 4-6",
+      "AUTOSAR"
+    ]
+  },
+  {
+    "id": "IP48",
+    "day": 3,
+    "tier": "Expert",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 20,
+    "question": "How would you verify an AUTOSAR safety mechanism at target level?",
+    "answer": [
+      "Trace functional intent through technical allocation, interfaces and mechanisms.",
+      "Verify independence, timing, interference and target behavior with evidence."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 4-6",
+      "AUTOSAR"
+    ]
+  },
+  {
+    "id": "IP49",
+    "day": 3,
+    "tier": "Expert",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 20,
+    "question": "How do you determine whether a diagnostic mechanism has sufficient coverage?",
+    "answer": [
+      "Trace functional intent through technical allocation, interfaces and mechanisms.",
+      "Verify independence, timing, interference and target behavior with evidence."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 4-6",
+      "AUTOSAR"
+    ]
+  },
+  {
+    "id": "IP50",
+    "day": 3,
+    "tier": "Expert",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 20,
+    "question": "How do you connect MCU diagnostics to the software safety reaction?",
+    "answer": [
+      "Trace functional intent through technical allocation, interfaces and mechanisms.",
+      "Verify independence, timing, interference and target behavior with evidence."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 4-6",
+      "AUTOSAR"
+    ]
+  },
+  {
+    "id": "IP51",
+    "day": 4,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "What is the minimum structure of a convincing safety argument?",
+    "answer": [
+      "Use claim-argument-evidence thinking with configuration-correct traceability.",
+      "Separate genuine engineering gaps from evidence or interpretation gaps."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Customer assessment"
+    ]
+  },
+  {
+    "id": "IP52",
+    "day": 4,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you prepare a safety evidence index for a customer assessment?",
+    "answer": [
+      "Use claim-argument-evidence thinking with configuration-correct traceability.",
+      "Separate genuine engineering gaps from evidence or interpretation gaps."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Customer assessment"
+    ]
+  },
+  {
+    "id": "IP53",
+    "day": 4,
+    "tier": "Advanced",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you control evidence after a software baseline changes?",
+    "answer": [
+      "Use claim-argument-evidence thinking with configuration-correct traceability.",
+      "Separate genuine engineering gaps from evidence or interpretation gaps."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Customer assessment"
+    ]
+  },
+  {
+    "id": "IP54",
+    "day": 4,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "What makes an assessment finding actionable?",
+    "answer": [
+      "Use claim-argument-evidence thinking with configuration-correct traceability.",
+      "Separate genuine engineering gaps from evidence or interpretation gaps."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Customer assessment"
+    ]
+  },
+  {
+    "id": "IP55",
+    "day": 4,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you handle an assessor requesting evidence that does not exist?",
+    "answer": [
+      "Use claim-argument-evidence thinking with configuration-correct traceability.",
+      "Separate genuine engineering gaps from evidence or interpretation gaps."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Customer assessment"
+    ]
+  },
+  {
+    "id": "IP56",
+    "day": 4,
+    "tier": "Advanced",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you distinguish a technical disagreement from an audit finding?",
+    "answer": [
+      "Use claim-argument-evidence thinking with configuration-correct traceability.",
+      "Separate genuine engineering gaps from evidence or interpretation gaps."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Customer assessment"
+    ]
+  },
+  {
+    "id": "IP57",
+    "day": 4,
+    "tier": "Intermediate",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you rehearse a cross-functional FS assessment?",
+    "answer": [
+      "Use claim-argument-evidence thinking with configuration-correct traceability.",
+      "Separate genuine engineering gaps from evidence or interpretation gaps."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Customer assessment"
+    ]
+  },
+  {
+    "id": "IP58",
+    "day": 4,
+    "tier": "Expert",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 20,
+    "question": "How do you ensure supplier evidence remains configuration-correct?",
+    "answer": [
+      "Use claim-argument-evidence thinking with configuration-correct traceability.",
+      "Separate genuine engineering gaps from evidence or interpretation gaps."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Customer assessment"
+    ]
+  },
+  {
+    "id": "IP59",
+    "day": 5,
+    "tier": "Intermediate",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 15,
+    "question": "How do assets differ from safety functions in a cybersecurity analysis?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP60",
+    "day": 5,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 15,
+    "question": "How would you identify attack surfaces on an automotive ECU?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP61",
+    "day": 5,
+    "tier": "Expert",
+    "kind": "Architecture",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 20,
+    "question": "How does attack feasibility influence cybersecurity risk?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP62",
+    "day": 5,
+    "tier": "Intermediate",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 15,
+    "question": "How would you derive cybersecurity goals from a TARA?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP63",
+    "day": 5,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 15,
+    "question": "How would you review a supplier TARA for completeness?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP64",
+    "day": 5,
+    "tier": "Expert",
+    "kind": "Architecture",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 20,
+    "question": "How does vehicle context change an ECU TARA?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP65",
+    "day": 5,
+    "tier": "Intermediate",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 15,
+    "question": "What is the role of cybersecurity assumptions of use?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP66",
+    "day": 5,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 15,
+    "question": "How would you handle two threat scenarios leading to the same damage?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP67",
+    "day": 5,
+    "tier": "Expert",
+    "kind": "Architecture",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 20,
+    "question": "How would you explain residual cybersecurity risk to a customer?",
+    "answer": [
+      "Identify assets, damage, threats, attack paths and feasibility before deriving controls.",
+      "Keep assumptions and residual risk explicit and traceable."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP68",
+    "day": 6,
+    "tier": "Intermediate",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How does secure boot establish a chain of trust?",
+    "answer": [
+      "Protect the trust chain, sensitive keys and privileged security operations.",
+      "Treat the HSM/security domain as a defined architectural trust boundary."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021",
+      "AURIX Security Solutions"
+    ]
+  },
+  {
+    "id": "IP69",
+    "day": 6,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "What is the relationship between secure boot and software update?",
+    "answer": [
+      "Protect the trust chain, sensitive keys and privileged security operations.",
+      "Treat the HSM/security domain as a defined architectural trust boundary."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021",
+      "AURIX Security Solutions"
+    ]
+  },
+  {
+    "id": "IP70",
+    "day": 6,
+    "tier": "Expert",
+    "kind": "Architecture",
+    "tracks": [
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 20,
+    "question": "Why should private keys remain inside a protected security domain?",
+    "answer": [
+      "Protect the trust chain, sensitive keys and privileged security operations.",
+      "Treat the HSM/security domain as a defined architectural trust boundary."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021",
+      "AURIX Security Solutions"
+    ]
+  },
+  {
+    "id": "IP71",
+    "day": 6,
+    "tier": "Intermediate",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How would you explain HSM isolation to an AUTOSAR engineer?",
+    "answer": [
+      "Protect the trust chain, sensitive keys and privileged security operations.",
+      "Treat the HSM/security domain as a defined architectural trust boundary."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021",
+      "AURIX Security Solutions"
+    ]
+  },
+  {
+    "id": "IP72",
+    "day": 6,
+    "tier": "Expert",
+    "kind": "Scenario",
+    "tracks": [
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 20,
+    "question": "How would you secure privileged diagnostic operations?",
+    "answer": [
+      "Protect the trust chain, sensitive keys and privileged security operations.",
+      "Treat the HSM/security domain as a defined architectural trust boundary."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021",
+      "AURIX Security Solutions"
+    ]
+  },
+  {
+    "id": "IP73",
+    "day": 7,
+    "tier": "Intermediate",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How can spoofed sensor data become a safety violation?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP74",
+    "day": 7,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How should a safety ECU react to authenticated but stale data?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP75",
+    "day": 7,
+    "tier": "Expert",
+    "kind": "Architecture",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 20,
+    "question": "How do cybersecurity controls interact with safety timing budgets?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP76",
+    "day": 7,
+    "tier": "Intermediate",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How would you analyze a denial-of-service attack on a braking communication path?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP77",
+    "day": 7,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How can secure update mechanisms introduce safety availability risks?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP78",
+    "day": 7,
+    "tier": "Expert",
+    "kind": "Architecture",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 20,
+    "question": "How would you test cyber-induced safety reactions?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP79",
+    "day": 7,
+    "tier": "Intermediate",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How do you keep FS and CS arguments separate but connected?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP80",
+    "day": 7,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How would you resolve an FS-versus-CS architectural trade-off?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP81",
+    "day": 7,
+    "tier": "Expert",
+    "kind": "Architecture",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 20,
+    "question": "Which safety mechanisms are useful when a cyber control is bypassed?",
+    "answer": [
+      "Keep HARA and TARA distinct while tracing cyber-induced malfunction into safety.",
+      "Verify both security properties and the resulting safety/degraded reaction."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP82",
+    "day": 8,
+    "tier": "Intermediate",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How would you explain TriCore to someone who knows ARM Cortex-R but not AURIX?",
+    "answer": [
+      "Connect MCU capabilities to actual software architecture, diagnostics and safety reactions.",
+      "Avoid claiming device-specific behavior without checking the exact AURIX variant."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Infineon AURIX public information",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP83",
+    "day": 8,
+    "tier": "Advanced",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "What is the architectural significance of multicore execution in AURIX?",
+    "answer": [
+      "Connect MCU capabilities to actual software architecture, diagnostics and safety reactions.",
+      "Avoid claiming device-specific behavior without checking the exact AURIX variant."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Infineon AURIX public information",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP84",
+    "day": 8,
+    "tier": "Expert",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Functional Safety"
+    ],
+    "minutes": 20,
+    "question": "How should an AUTOSAR architect think about AURIX memory protection?",
+    "answer": [
+      "Connect MCU capabilities to actual software architecture, diagnostics and safety reactions.",
+      "Avoid claiming device-specific behavior without checking the exact AURIX variant."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Infineon AURIX public information",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP85",
+    "day": 8,
+    "tier": "Intermediate",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "How do ECC errors propagate into software behavior?",
+    "answer": [
+      "Connect MCU capabilities to actual software architecture, diagnostics and safety reactions.",
+      "Avoid claiming device-specific behavior without checking the exact AURIX variant."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Infineon AURIX public information",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP86",
+    "day": 8,
+    "tier": "Advanced",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "What is the role of watchdog and execution supervision in an MCU safety concept?",
+    "answer": [
+      "Connect MCU capabilities to actual software architecture, diagnostics and safety reactions.",
+      "Avoid claiming device-specific behavior without checking the exact AURIX variant."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Infineon AURIX public information",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP87",
+    "day": 8,
+    "tier": "Expert",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Functional Safety"
+    ],
+    "minutes": 20,
+    "question": "How would you investigate an AURIX error-management event?",
+    "answer": [
+      "Connect MCU capabilities to actual software architecture, diagnostics and safety reactions.",
+      "Avoid claiming device-specific behavior without checking the exact AURIX variant."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Infineon AURIX public information",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP88",
+    "day": 8,
+    "tier": "Expert",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Functional Safety"
+    ],
+    "minutes": 20,
+    "question": "How does an AURIX HSM affect trust boundaries?",
+    "answer": [
+      "Connect MCU capabilities to actual software architecture, diagnostics and safety reactions.",
+      "Avoid claiming device-specific behavior without checking the exact AURIX variant."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Infineon AURIX public information",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP89",
+    "day": 9,
+    "tier": "Intermediate",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you influence a project lead who disagrees with your architecture recommendation?",
+    "answer": [
+      "Make decision criteria explicit and separate facts, assumptions and preferences.",
+      "Use evidence, alternatives and documented decisions to influence without authority."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "Candidate experience"
+    ]
+  },
+  {
+    "id": "IP90",
+    "day": 9,
+    "tier": "Advanced",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you make technical decisions auditable?",
+    "answer": [
+      "Make decision criteria explicit and separate facts, assumptions and preferences.",
+      "Use evidence, alternatives and documented decisions to influence without authority."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "Candidate experience"
+    ]
+  },
+  {
+    "id": "IP91",
+    "day": 9,
+    "tier": "Expert",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 20,
+    "question": "How would you compare two competing architecture proposals objectively?",
+    "answer": [
+      "Make decision criteria explicit and separate facts, assumptions and preferences.",
+      "Use evidence, alternatives and documented decisions to influence without authority."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "Candidate experience"
+    ]
+  },
+  {
+    "id": "IP92",
+    "day": 9,
+    "tier": "Intermediate",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you run a feasibility study when stakeholders want an immediate decision?",
+    "answer": [
+      "Make decision criteria explicit and separate facts, assumptions and preferences.",
+      "Use evidence, alternatives and documented decisions to influence without authority."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "Candidate experience"
+    ]
+  },
+  {
+    "id": "IP93",
+    "day": 9,
+    "tier": "Expert",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 20,
+    "question": "How would you build an internal FS/CS community of practice?",
+    "answer": [
+      "Make decision criteria explicit and separate facts, assumptions and preferences.",
+      "Use evidence, alternatives and documented decisions to influence without authority."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "Candidate experience"
+    ]
+  },
+  {
+    "id": "IP94",
+    "day": 10,
+    "tier": "Intermediate",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you establish common FS/CS architecture principles for multiple Tier-1 customers?",
+    "answer": [
+      "Create reusable platform rules with controlled tailoring and explicit assumptions.",
+      "Integrate FS/CS evidence, customer needs and release governance into one coherent decision process."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP95",
+    "day": 10,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you define SEooC assumptions for a reusable MCU software platform?",
+    "answer": [
+      "Create reusable platform rules with controlled tailoring and explicit assumptions.",
+      "Integrate FS/CS evidence, customer needs and release governance into one coherent decision process."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP96",
+    "day": 10,
+    "tier": "Expert",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Principal Leadership"
+    ],
+    "minutes": 20,
+    "question": "How do you manage customer-specific safety/security tailoring without fragmenting the platform?",
+    "answer": [
+      "Create reusable platform rules with controlled tailoring and explicit assumptions.",
+      "Integrate FS/CS evidence, customer needs and release governance into one coherent decision process."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP97",
+    "day": 10,
+    "tier": "Intermediate",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you build a release gate combining FS, CS and software quality evidence?",
+    "answer": [
+      "Create reusable platform rules with controlled tailoring and explicit assumptions.",
+      "Integrate FS/CS evidence, customer needs and release governance into one coherent decision process."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP98",
+    "day": 10,
+    "tier": "Advanced",
+    "kind": "Capstone",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you prioritize technical debt in a safety/security platform?",
+    "answer": [
+      "Create reusable platform rules with controlled tailoring and explicit assumptions.",
+      "Integrate FS/CS evidence, customer needs and release governance into one coherent decision process."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP99",
+    "day": 10,
+    "tier": "Expert",
+    "kind": "Capstone",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Principal Leadership"
+    ],
+    "minutes": 20,
+    "question": "How would you handle a late customer security requirement that affects safety architecture?",
+    "answer": [
+      "Create reusable platform rules with controlled tailoring and explicit assumptions.",
+      "Integrate FS/CS evidence, customer needs and release governance into one coherent decision process."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP100",
+    "day": 10,
+    "tier": "Expert",
+    "kind": "Capstone",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Principal Leadership"
+    ],
+    "minutes": 20,
+    "question": "How would you explain your first-year value proposition to the hiring manager?",
+    "answer": [
+      "Create reusable platform rules with controlled tailoring and explicit assumptions.",
+      "Integrate FS/CS evidence, customer needs and release governance into one coherent decision process."
+    ],
+    "probes": [
+      "What evidence would you use to support the decision?",
+      "What could invalidate this approach?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
     ]
   }
 ]

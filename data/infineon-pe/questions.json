@@ -1,0 +1,596 @@
+[
+  {
+    "id": "IP01",
+    "day": 1,
+    "tier": "Foundation",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you define Functional Safety leadership at Principal Engineer level?",
+    "answer": [
+      "Translate ISO 26262 and customer expectations into repeatable engineering methods.",
+      "Provide technical governance, challenge unsafe or weak architectural decisions, and ensure objective evidence exists.",
+      "Use your Software Chief Architect + Software Requirements Manager + Software Functional Safety Manager experience and AUMOVIO Architecture CoE leadership as evidence."
+    ],
+    "probes": [
+      "What would you standardize across projects?",
+      "How do you know a methodology is working?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP02",
+    "day": 1,
+    "tier": "Foundation",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "Explain HARA in a way that connects to your braking/ESC experience.",
+    "answer": [
+      "Start from item and malfunctioning behavior, combine with operational situations, identify hazardous events and assess Severity, Exposure and Controllability to derive ASIL and safety goals.",
+      "Use unintended braking, loss of braking support and incorrect ESC intervention as concrete examples."
+    ],
+    "probes": [
+      "Why is HARA not FMEA?",
+      "How would you challenge an incomplete HARA?"
+    ],
+    "refs": [
+      "ISO 26262 Part 3"
+    ]
+  },
+  {
+    "id": "IP03",
+    "day": 2,
+    "tier": "Foundation",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety"
+    ],
+    "minutes": 15,
+    "question": "Explain FSC versus TSC and how you would use the distinction in architecture reviews.",
+    "answer": [
+      "FSC expresses functional safety measures and requirements derived from safety goals.",
+      "TSC allocates those requirements to the technical architecture and defines technical realization.",
+      "Use your EBS architecture work to show traceability from safety intent to software, hardware and interfaces."
+    ],
+    "probes": [
+      "What if the TSC cannot satisfy an FSR?",
+      "Where do safety mechanisms enter the allocation?"
+    ],
+    "refs": [
+      "ISO 26262 Parts 3-4"
+    ]
+  },
+  {
+    "id": "IP04",
+    "day": 3,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 15,
+    "question": "How would you handle ASIL decomposition for an EBS function?",
+    "answer": [
+      "Treat decomposition as an architectural decision, not arithmetic.",
+      "Establish independence assumptions, perform dependent-failure analysis, analyze interference and verify the resulting evidence chain.",
+      "Relate the answer to reusable architecture and interface partitioning."
+    ],
+    "probes": [
+      "Can two nominally independent channels share power?",
+      "How do you demonstrate independence?"
+    ],
+    "refs": [
+      "ISO 26262 Part 9"
+    ]
+  },
+  {
+    "id": "IP05",
+    "day": 3,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Software Architecture"
+    ],
+    "minutes": 15,
+    "question": "How do you demonstrate freedom from interference between ASIL and QM software in AUTOSAR?",
+    "answer": [
+      "Analyze memory, timing, data and control-flow interference.",
+      "Use architecture mechanisms such as MPU/memory protection, scheduling/time protection, protected interfaces, E2E/CRC and execution supervision as appropriate.",
+      "Show verification evidence for the claims."
+    ],
+    "probes": [
+      "How can a QM logger create temporal interference?",
+      "What changes in multicore?"
+    ],
+    "refs": [
+      "ISO 26262 Part 6",
+      "AUTOSAR safety interfaces"
+    ]
+  },
+  {
+    "id": "IP06",
+    "day": 4,
+    "tier": "Advanced",
+    "kind": "Audit",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you defend functional-safety practices in a customer audit?",
+    "answer": [
+      "Map the finding to requirement, process, work product and objective evidence.",
+      "Distinguish product/process gaps, evidence gaps and interpretation differences.",
+      "Use your customer-facing and assessment-support experience and emphasize traceability and closure."
+    ],
+    "probes": [
+      "What if you disagree with the assessor?",
+      "What evidence would you show first?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP07",
+    "day": 4,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "Describe the safety case you would build for an EBS/ESC platform.",
+    "answer": [
+      "Claim -> argument -> evidence: HARA/safety goals, FSC/TSC, architecture, analyses, timing, safety mechanisms, requirements, verification/validation, supplier assumptions and configuration.",
+      "Explain that the case must be configuration-correct and navigable."
+    ],
+    "probes": [
+      "What evidence becomes invalid after an architecture change?",
+      "How do you handle residual anomalies?"
+    ],
+    "refs": [
+      "ISO 26262 Part 2"
+    ]
+  },
+  {
+    "id": "IP08",
+    "day": 5,
+    "tier": "Foundation",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Cybersecurity"
+    ],
+    "minutes": 20,
+    "question": "What is TARA and how would you perform a mini TARA for an automotive ECU?",
+    "answer": [
+      "Define item and assets, identify damage and threat scenarios, identify attack paths and assess attack feasibility/risk, then derive cybersecurity goals and requirements.",
+      "Use a safety-relevant CAN/brake ECU communication example."
+    ],
+    "probes": [
+      "What is the difference between a threat scenario and an attack path?",
+      "How would TARA influence architecture?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP09",
+    "day": 6,
+    "tier": "Foundation",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 20,
+    "question": "How does cybersecurity change software architecture?",
+    "answer": [
+      "Security requirements introduce trust boundaries and influence diagnostics, communications, boot, update, authorization, key management and secure interfaces.",
+      "Use your architecture background to explain allocation and traceability rather than claiming specialist pentesting expertise."
+    ],
+    "probes": [
+      "Where would you place a trust boundary?",
+      "Which interfaces become security-critical?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP10",
+    "day": 6,
+    "tier": "Foundation",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "Explain secure boot to an automotive software architect.",
+    "answer": [
+      "Secure boot establishes a trusted execution chain so unauthorized or modified software is not executed.",
+      "Focus on authenticity/integrity of executable software and the root of trust; encryption is not the primary purpose."
+    ],
+    "probes": [
+      "Where is the root of trust?",
+      "What happens if signature verification fails?"
+    ],
+    "refs": [
+      "Infineon AURIX Security Solutions"
+    ]
+  },
+  {
+    "id": "IP11",
+    "day": 6,
+    "tier": "Foundation",
+    "kind": "Cybersecurity",
+    "tracks": [
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "What is an HSM and why is it important at MCU level?",
+    "answer": [
+      "A hardware security module provides an isolated security domain for sensitive keys and cryptographic operations.",
+      "Infineon describes AURIX HSM capabilities including protected key storage, TRNG, AES acceleration, MAC functionality and secure-boot support."
+    ],
+    "probes": [
+      "Why not keep keys in ordinary application memory?",
+      "How does isolation help if host software is compromised?"
+    ],
+    "refs": [
+      "Infineon AURIX Security Solutions"
+    ]
+  },
+  {
+    "id": "IP12",
+    "day": 6,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How would you secure automotive diagnostics on an ECU?",
+    "answer": [
+      "Treat diagnostics as a security boundary; classify security-sensitive services and require appropriate authentication/authorization before access.",
+      "Leverage your UDS/KWP2000 background and add security controls."
+    ],
+    "probes": [
+      "Which diagnostic services are most sensitive?",
+      "How would you limit programming access?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021",
+      "Automotive diagnostic security practice"
+    ]
+  },
+  {
+    "id": "IP13",
+    "day": 6,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 15,
+    "question": "How would you secure an OTA update?",
+    "answer": [
+      "Use authenticated and integrity-protected software images, authorization, version/anti-rollback policy, secure installation and recovery, followed by secure-boot verification.",
+      "Consider the safety impact of update failure or inconsistent software state."
+    ],
+    "probes": [
+      "What if power fails during installation?",
+      "How do you protect against rollback?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021",
+      "Automotive secure-update practice"
+    ]
+  },
+  {
+    "id": "IP14",
+    "day": 7,
+    "tier": "Advanced",
+    "kind": "Scenario",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "Security Architecture"
+    ],
+    "minutes": 20,
+    "question": "An attacker injects a false wheel-speed or brake-related CAN message. How do FS and CS interact?",
+    "answer": [
+      "Cybersecurity should detect/reject unauthenticated or stale data using authenticity/integrity/freshness mechanisms where appropriate.",
+      "Functional-safety monitoring can provide plausibility/timeout checks and a defined degraded or safe reaction.",
+      "Keep HARA and TARA conceptually distinct but connect them where the cyber compromise can create a safety-relevant malfunction."
+    ],
+    "probes": [
+      "What if the MAC passes but the physical signal is implausible?",
+      "What evidence belongs in each case?"
+    ],
+    "refs": [
+      "ISO/SAE 21434:2021",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP15",
+    "day": 8,
+    "tier": "Foundation",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore"
+    ],
+    "minutes": 15,
+    "question": "What do you know about Infineon AURIX TriCore?",
+    "answer": [
+      "AURIX is Infineon's 32-bit TriCore MCU family, positioned for real-time automotive embedded systems.",
+      "Infineon describes TriCore as a unified multi-core 32-bit MCU/DSP architecture and offers TC2x, TC3x and TC4x families; the ecosystem includes AUTOSAR MCAL and safety software."
+    ],
+    "probes": [
+      "How is an MCU supplier context different from Tier-1 ECU development?",
+      "Which AURIX mechanisms matter to safety?"
+    ],
+    "refs": [
+      "Infineon AURIX TriCore public product information"
+    ]
+  },
+  {
+    "id": "IP16",
+    "day": 8,
+    "tier": "Advanced",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Functional Safety"
+    ],
+    "minutes": 20,
+    "question": "At MCU level, what safety mechanisms would you expect and how would you integrate them into a system safety case?",
+    "answer": [
+      "Consider memory protection, ECC, watchdogs, execution monitoring/lockstep where applicable and error management.",
+      "The architect must connect MCU diagnostics to software handling, timing, safe/degraded behavior and evidence; MCU features do not by themselves prove vehicle-level safety."
+    ],
+    "probes": [
+      "Why is ECC relevant to safety?",
+      "What does a watchdog not detect?"
+    ],
+    "refs": [
+      "Infineon AURIX TriCore public product information",
+      "ISO 26262:2018"
+    ]
+  },
+  {
+    "id": "IP17",
+    "day": 8,
+    "tier": "Advanced",
+    "kind": "MCU",
+    "tracks": [
+      "AURIX / TriCore",
+      "Security Architecture"
+    ],
+    "minutes": 20,
+    "question": "Describe AURIX security architecture at a level appropriate for this interview.",
+    "answer": [
+      "Explain the HSM as a protected security domain separated from normal MCU software, with protected key storage and hardware-assisted security functions.",
+      "Infineon publicly describes AES, TRNG, MAC-related functions and secure boot support; use these as examples, not as a claim of implementation ownership."
+    ],
+    "probes": [
+      "What security functions should remain inside the HSM domain?",
+      "How would AUTOSAR software access HSM functionality?"
+    ],
+    "refs": [
+      "Infineon AURIX Security Solutions"
+    ]
+  },
+  {
+    "id": "IP18",
+    "day": 9,
+    "tier": "Advanced",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "Tell me about a difficult technical decision you made.",
+    "answer": [
+      "Use the MemStack integration story: define the problem, constraints, alternatives, criteria, decision and evidence.",
+      "Emphasize the result: 0% industrial-engineering change and 100% Classic AUTOSAR compliance."
+    ],
+    "probes": [
+      "What alternative did you reject and why?",
+      "What would you do differently now?"
+    ],
+    "refs": [
+      "Candidate resume evidence"
+    ]
+  },
+  {
+    "id": "IP19",
+    "day": 9,
+    "tier": "Advanced",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you establish FS/CS methodology across a portfolio of projects?",
+    "answer": [
+      "Define a common baseline, distinguish mandatory versus tailorable practices, create reusable templates/checklists/review gates, pilot them, train teams and use assessment findings and engineering metrics for improvement.",
+      "Use your AUMOVIO Architecture CoE experience as evidence of scaling practices."
+    ],
+    "probes": [
+      "Which activities are mandatory?",
+      "How do you prevent process bureaucracy?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP20",
+    "day": 9,
+    "tier": "Advanced",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How do you influence engineers and stakeholders without formal authority?",
+    "answer": [
+      "Make decision criteria explicit, use objective evidence, present alternatives and run focused feasibility work when necessary.",
+      "Document the decision and consequences so the organization can move forward consistently."
+    ],
+    "probes": [
+      "Tell me about a conflict you resolved.",
+      "When do you escalate?"
+    ],
+    "refs": [
+      "Role JD",
+      "Candidate resume evidence"
+    ]
+  },
+  {
+    "id": "IP21",
+    "day": 9,
+    "tier": "Advanced",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How does your Tier-1 experience help in an Infineon MCU role?",
+    "answer": [
+      "You understand OEM/Tier-1 expectations around safety, architecture, diagnostics, communication and customer assessment.",
+      "Translate that customer/application perspective into reusable MCU/software platform practices and customer-facing evidence."
+    ],
+    "probes": [
+      "What do you need to learn moving from Tier-1 to semiconductor?",
+      "What would you not assume?"
+    ],
+    "refs": [
+      "Candidate resume evidence"
+    ]
+  },
+  {
+    "id": "IP22",
+    "day": 9,
+    "tier": "Advanced",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "How would you handle a conflict between a safety requirement and a cybersecurity requirement?",
+    "answer": [
+      "Clarify both objectives and assumptions first, identify whether the conflict is real or implementation-specific, evaluate architectural alternatives and involve the responsible safety/security authorities when trade-offs remain.",
+      "Document the rationale and verification impact."
+    ],
+    "probes": [
+      "Give a secure-boot example.",
+      "Who makes the final decision?"
+    ],
+    "refs": [
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP23",
+    "day": 10,
+    "tier": "Advanced",
+    "kind": "Principal",
+    "tracks": [
+      "Principal Leadership",
+      "Customer"
+    ],
+    "minutes": 15,
+    "question": "How would you prepare a cross-functional team for a customer safety/security assessment?",
+    "answer": [
+      "Consolidate evidence into a navigable package, check configuration and traceability, rehearse cross-domain explanations and identify ownership for open findings.",
+      "Present one coherent argument while tailoring detail for engineers, safety/security experts and program managers."
+    ],
+    "probes": [
+      "What if evidence exists but is scattered?",
+      "How do you handle an unresolved finding?"
+    ],
+    "refs": [
+      "Role JD",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021"
+    ]
+  },
+  {
+    "id": "IP24",
+    "day": 10,
+    "tier": "Advanced",
+    "kind": "Interview",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "AURIX / TriCore",
+      "Principal Leadership"
+    ],
+    "minutes": 15,
+    "question": "Why should we hire you for this role when cybersecurity is not your strongest area?",
+    "answer": [
+      "State the truth: deep automotive software architecture and Functional Safety are the strongest areas; cybersecurity depth is developing.",
+      "Emphasize the transferable ability to lead technical methodology, architecture, customer interfaces and cross-domain integration while partnering with cybersecurity specialists.",
+      "Show active preparation in TARA and MCU security architecture."
+    ],
+    "probes": [
+      "What would you need from the team in your first 90 days?",
+      "How would you close the remaining CS gap?"
+    ],
+    "refs": [
+      "Candidate resume evidence",
+      "Role JD"
+    ]
+  },
+  {
+    "id": "IP25",
+    "day": 10,
+    "tier": "Expert",
+    "kind": "Capstone",
+    "tracks": [
+      "Functional Safety",
+      "Cybersecurity",
+      "AURIX / TriCore",
+      "Principal Leadership"
+    ],
+    "minutes": 25,
+    "question": "Capstone: lead FS/CS engineering for a reusable AURIX-based MCU software platform used by multiple Tier-1 customers.",
+    "answer": [
+      "Start with common methodology, applicability and roles; define safety and security boundaries; connect HARA/TARA outputs to architecture; allocate safety/security mechanisms; govern SEooC/AoU assumptions; establish verification and evidence; prepare customer assessments; manage portfolio trade-offs and technical decisions.",
+      "Use the distinction between item-level vehicle responsibility and reusable MCU/platform responsibility."
+    ],
+    "probes": [
+      "What would you standardize globally?",
+      "Which mechanisms sit at the FS/CS seam?",
+      "How would you react to a late customer-specific deviation?"
+    ],
+    "refs": [
+      "Infineon AURIX public information",
+      "ISO 26262:2018",
+      "ISO/SAE 21434:2021",
+      "Role JD"
+    ]
+  }
+]

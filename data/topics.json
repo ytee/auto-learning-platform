@@ -69,6 +69,16 @@
         "data/semiconductor/exercises.json"
       ],
       "concepts": "data/semiconductor/concepts.json"
+    },
+    {
+      "id": "infineon-pe",
+      "title": "Infineon Principal Engineer Interview",
+      "subtitle": "Functional Safety x Cybersecurity x AURIX x Technical Leadership",
+      "description": "10-hour interview preparation for Principal Engineer SW, Functional Safety: ISO 26262, ISO/SAE 21434, TARA, AURIX/TriCore, security architecture and Principal-level scenarios.",
+      "content": "data/infineon-pe/meta.json",
+      "questionFiles": [
+        "data/infineon-pe/questions.json"
+      ]
     }
   ]
 }

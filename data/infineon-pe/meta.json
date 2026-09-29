@@ -216,6 +216,11 @@
       "name": "Principal Leadership",
       "desc": "Methodology, technical decisions, customer interface, audits and capability building",
       "iso": "Role-focused engineering practice"
+    },
+    {
+      "name": "Software Architecture",
+      "desc": "Architecture governance, safety/security interfaces, reuse and technical decisions",
+      "iso": "ISO 26262 / ISO/SAE 21434 engineering practice"
     }
   ],
   "focusMap2": [],

@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "id": "infineon-pe",
+  "title": "Infineon Principal Engineer Interview Preparation",
+  "shortTitle": "Infineon PE",
+  "eyebrow": "10-HOUR INTERVIEW PREP",
+  "subtitle": "ISO 26262 × ISO/SAE 21434 × AURIX/TriCore × Software Architecture × Technical Leadership",
+  "description": "Focused interview route for the Principal Engineer SW, Functional Safety role, tailored to the candidate's automotive software-architecture, AUTOSAR and functional-safety background. Cybersecurity and AURIX topics are taught only to interview-relevant depth.",
+  "methodTitle": "Learn the engineering model, connect it to your experience, then answer aloud",
+  "methodSteps": [
+    "Read the compact model.",
+    "Anchor it to your real experience.",
+    "Answer aloud in 2-3 minutes.",
+    "Use the follow-up to test reasoning beyond memorized definitions."
+  ],
+  "caseStudy": {
+    "title": "AURIX-based safety-critical automotive software platform",
+    "description": "A semiconductor MCU platform is integrated into safety-critical Tier-1 automotive software; the engineer connects ISO 26262, ISO/SAE 21434, AUTOSAR, MCU safety/security mechanisms, supplier assumptions and customer assessment evidence."
+  },
+  "notice": "Interview-preparation material based on public standards/product information and the candidate's provided resume. It does not reproduce normative standards or proprietary Infineon material.",
+  "referenceLabel": "Reference map",
+  "matrixTitle": "Interview capability map",
+  "matrixHeaders": [
+    "Area",
+    "What to demonstrate",
+    "Your evidence",
+    "Priority"
+  ],
+  "matrix": [],
+  "focusTitle": "10-hour plan",
+  "focusHeaders": [
+    "Block",
+    "Focus",
+    "Suggested time"
+  ],
+  "focusMap": [
+    [
+      "1",
+      "FS core revision + principal framing",
+      "2 h"
+    ],
+    [
+      "2",
+      "ISO/SAE 21434 + TARA",
+      "2 h"
+    ],
+    [
+      "3",
+      "Security architecture",
+      "1.5 h"
+    ],
+    [
+      "4",
+      "FS-CS interaction",
+      "1 h"
+    ],
+    [
+      "5",
+      "Five experience stories",
+      "1.5 h"
+    ],
+    [
+      "6",
+      "AURIX / MCU short course",
+      "1 h"
+    ],
+    [
+      "7",
+      "Rapid-fire mock interview",
+      "1 h"
+    ]
+  ],
+  "focusNote": "Spend more time speaking answers than reading. The goal is interview fluency, not broad certification training.",
+  "knowledgeCheckTitle": "Rapid interview check",
+  "architectureExercise": {
+    "title": "20-minute capstone",
+    "prompt": "Explain how you would lead FS/CS engineering for a reusable MCU software portfolio serving multiple Tier-1 customers.",
+    "structure": [
+      "Define common methodology and tailoring rules.",
+      "Connect HARA/TARA outputs to architecture.",
+      "Define reusable safety/security patterns.",
+      "Govern customer-specific assumptions and evidence.",
+      "Prepare for assessment with a traceable evidence chain."
+    ],
+    "challenges": [
+      "A customer requests security evidence outside the published assumptions.",
+      "A secure-boot change affects both safety and security.",
+      "A release schedule compresses an assessment gate."
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "title": "FS Leadership",
+      "focus": "Translate ISO 26262 into project methodology and engineering governance.",
+      "deliverable": "2-minute FS leadership answer.",
+      "target": "20-25 min"
+    },
+    {
+      "day": 2,
+      "title": "HARA / FSC / TSC",
+      "focus": "Safety reasoning from hazard to architecture.",
+      "deliverable": "HARA-to-TSC chain.",
+      "target": "20-25 min"
+    },
+    {
+      "day": 3,
+      "title": "ASIL / FFI / Safety Mechanisms",
+      "focus": "Architecture and interference reasoning.",
+      "deliverable": "ASIL-D/QM interaction explanation.",
+      "target": "20-25 min"
+    },
+    {
+      "day": 4,
+      "title": "Safety Case / Audit",
+      "focus": "Evidence, customer assessments and closure.",
+      "deliverable": "Audit response narrative.",
+      "target": "20 min"
+    },
+    {
+      "day": 5,
+      "title": "TARA",
+      "focus": "Automotive cybersecurity mental model.",
+      "deliverable": "Mini TARA for ECU communication.",
+      "target": "30 min"
+    },
+    {
+      "day": 6,
+      "title": "Security Architecture",
+      "focus": "Secure boot, HSM, diagnostics, OTA, secure communication.",
+      "deliverable": "Draw security architecture from memory.",
+      "target": "30 min"
+    },
+    {
+      "day": 7,
+      "title": "FS-CS Interaction",
+      "focus": "Joint safety/security reasoning.",
+      "deliverable": "Attack-to-safety scenario answer.",
+      "target": "20 min"
+    },
+    {
+      "day": 8,
+      "title": "AURIX / MCU",
+      "focus": "TriCore, MCU safety mechanisms and security domain.",
+      "deliverable": "5-minute AURIX explanation.",
+      "target": "30 min"
+    },
+    {
+      "day": 9,
+      "title": "Principal stories",
+      "focus": "Your five strongest evidence stories.",
+      "deliverable": "Five 2-3 minute STAR narratives.",
+      "target": "30 min"
+    },
+    {
+      "day": 10,
+      "title": "Mock interview",
+      "focus": "Rapid-fire technical and leadership questions.",
+      "deliverable": "20-question rehearsal.",
+      "target": "30-45 min"
+    }
+  ],
+  "tracks": [
+    {
+      "name": "Functional Safety",
+      "desc": "ISO 26262, HARA, FSC/TSC, FFI, safety case, audits",
+      "iso": "ISO 26262:2018"
+    },
+    {
+      "name": "Cybersecurity",
+      "desc": "ISO/SAE 21434, TARA and security requirements",
+      "iso": "ISO/SAE 21434:2021"
+    },
+    {
+      "name": "Security Architecture",
+      "desc": "Secure boot, HSM, diagnostics, OTA, secure communication",
+      "iso": "Public automotive security architecture practice"
+    },
+    {
+      "name": "AURIX / TriCore",
+      "desc": "Real-time MCU architecture, safety/security mechanisms and software ecosystem",
+      "iso": "Infineon AURIX public product information"
+    },
+    {
+      "name": "Principal Leadership",
+      "desc": "Methodology, technical decisions, customer interface, audits and capability building",
+      "iso": "Role-focused engineering practice"
+    }
+  ],
+  "focusMap2": [],
+  "quiz": [
+    {
+      "q": "How should you position your cybersecurity experience?",
+      "options": [
+        "Claim ISO/SAE 21434 specialist expertise",
+        "Say you have no relevant cybersecurity experience",
+        "State that your depth is FS and SW architecture and you are extending it into TARA and security architecture",
+        "Avoid mentioning cybersecurity"
+      ],
+      "answer": 2,
+      "why": "This is consistent with the evidence in your application."
+    },
+    {
+      "q": "What is the core difference between HARA and TARA?",
+      "options": [
+        "HARA is hardware; TARA is software",
+        "HARA addresses malfunction-related hazards; TARA addresses malicious threats",
+        "HARA is quantitative; TARA is qualitative",
+        "They are the same process"
+      ],
+      "answer": 1,
+      "why": "Their initiating risk sources differ, although both drive requirements and architecture."
+    },
+    {
+      "q": "Why is an HSM important at MCU level?",
+      "options": [
+        "It replaces the RTOS",
+        "It provides a protected security domain for key material and cryptographic operations",
+        "It guarantees ISO 26262 compliance",
+        "It removes the need for secure boot"
+      ],
+      "answer": 1,
+      "why": "AURIX HSM provides an isolated security domain and hardware-supported security functions."
+    }
+  ],
+  "references": [
+    "ISO 26262:2018",
+    "ISO/SAE 21434:2021",
+    "Infineon AURIX TriCore public product information",
+    "Infineon AURIX security solutions public product information"
+  ]
+}
